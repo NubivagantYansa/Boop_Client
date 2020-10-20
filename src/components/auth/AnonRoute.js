@@ -1,5 +1,6 @@
-import React from "react";
+import React, { Component } from "react";
 import { Route, Redirect } from "react-router-dom";
+
 const AnonRoute = ({
   component: Component,
   authenticated,
@@ -12,7 +13,7 @@ const AnonRoute = ({
         authenticated === false ? (
           <Component {...props} authenticate={authenticate} />
         ) : (
-          <Redirect to="/" />
+          <Redirect to='/profilesBoard' />
         )
       }
       {...rest}

@@ -1,18 +1,22 @@
 import React from "react";
-import { BrowserRouter, Link, Switch } from "react-router-dom";
+import { BrowserRouter, Switch } from "react-router-dom";
 import "./App.css";
+import Navbar from "./components/Layout/Navbar";
 import AnonRoute from "./components/auth/AnonRoute";
 import PrivateRoute from "./components/auth/PrivateRoute";
 import { validateSession } from "./services/userService";
-import Home from "./views/Home";
-import Login from "./views/Login";
-import Signup from "./views/Signup";
+import Dashboard from "./Pages/Dashboard";
+import Home from "./Pages/Home";
+import Login from "./Pages/Login";
+import ProfilesBoard from "./Pages/ProfilesBoard";
+import Signup from "./Pages/Signup";
 
 class App extends React.Component {
   state = {
     authenticated: false,
     user: {},
   };
+
   componentDidMount = () => {
     const accessToken = localStorage.getItem("accessToken");
     if (accessToken) {
@@ -21,13 +25,13 @@ class App extends React.Component {
           console.log(response, "RESPONSE");
           this.authenticate(response.session.userId);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => console.log("Access token", err));
     }
   };
 
   authenticate = (user) => {
     this.setState({
-      authenticated: true,
+      authenticated: false,
       user,
     });
   };
@@ -42,39 +46,47 @@ class App extends React.Component {
   render() {
     const { authenticated } = this.state;
     return (
-      <div className="App">
+      <div className='App'>
         <BrowserRouter>
-          <nav>
-            {authenticated && <Link to="/"> Home </Link>}
-            {!authenticated && <Link to="/login"> Login </Link>}
-            {!authenticated && <Link to="/signup"> Signup </Link>}
-            {authenticated && (
-              <Link to={"/"} onClick={this.handleLogout}>
-                Logout
-              </Link>
-            )}
-          </nav>
+          <Navbar
+            authenticated={authenticated}
+            handleLogout={this.handleLogout}
+          />
           <Switch>
-            <PrivateRoute
+            <AnonRoute
               exact
-              path="/"
-              user={this.state.user}
+              path='/'
               authenticated={authenticated}
+              authenticate={this.authenticate}
               component={Home}
             />
             <AnonRoute
               exact
-              path="/login"
+              path='/login'
               authenticated={authenticated}
               authenticate={this.authenticate}
               component={Login}
             />
             <AnonRoute
               exact
-              path="/signup"
+              path='/signup'
               authenticated={authenticated}
               authenticate={this.authenticate}
               component={Signup}
+            />
+            <PrivateRoute
+              exact
+              path='/dashBoard'
+              authenticated={authenticated}
+              authenticate={this.authenticate}
+              component={Dashboard}
+            />
+            <PrivateRoute
+              exact
+              path='/profilesBoard'
+              authenticated={authenticated}
+              authenticate={this.authenticate}
+              component={ProfilesBoard}
             />
           </Switch>
         </BrowserRouter>

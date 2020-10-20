@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 import { Route, Redirect } from "react-router-dom";
 
 const PrivateRoute = ({
@@ -13,7 +13,7 @@ const PrivateRoute = ({
         authenticated ? (
           <Component {...props} user={user} />
         ) : (
-          <Redirect to="/login" />
+          <Redirect to='/login' />
         )
       }
       {...rest}

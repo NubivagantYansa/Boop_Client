@@ -62,7 +62,7 @@ This is a platform where dog owners can look for dogsitters and vice versa.
 
 - Auth: SignUp, Login, Logout
 - Home (anon)
-  - Input: profiles (show limited amount)
+  - Input: all profiles
   - Output: none
 - About (anon)
   - Input: none
@@ -93,16 +93,20 @@ This is a platform where dog owners can look for dogsitters and vice versa.
 
 ## Services
 
-auth.login(user)
-auth.signup(user)
-auth.logout()
-getAllUsers()
-getUser(userId)
-editUser(userId)
-editPassword(userId)
-getBorough()
-getBreed()
-uploadImage()
+- Auth Service
+  auth.login(user)
+  auth.signup(user)
+  auth.validate()
+  auth.logout()
+
+- Users Service
+  getAllUsers()
+  getUser(userId)
+  editUser(userId)
+  editPassword(userId)
+  getBorough()
+  getBreed()
+  uploadImage()
 
 <br>
 
@@ -225,13 +229,13 @@ size: {type: String, enum: ['small', 'medium', 'large'],
 
 ### Trello
 
-[Go to Trello Board]()
+[Go to Trello Board](https://trello.com/b/0WXX4m1Z/project-3-boop)
 
 ### Github
 
-[Server Repository]()
+[Server Repository](https://github.com/NubivagantYansa/Boop_server)
 
-[Client Repository]()
+[Client Repository](https://github.com/NubivagantYansa/Boop_Client)
 
 [Deployed App Link](
 
