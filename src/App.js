@@ -10,7 +10,7 @@ import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import ProfilesBoard from "./Pages/ProfilesBoard";
 import Signup from "./Pages/Signup";
-
+import "bulma/css/bulma.css";
 class App extends React.Component {
   state = {
     authenticated: false,
@@ -31,7 +31,7 @@ class App extends React.Component {
 
   authenticate = (user) => {
     this.setState({
-      authenticated: false,
+      authenticated: true,
       user,
     });
   };
