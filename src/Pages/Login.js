@@ -7,6 +7,7 @@ class Login extends React.Component {
     password: "",
     errorMessage: "",
   };
+
   handleChange = (event) => {
     const { name, value } = event.target;
     this.setState({
@@ -24,8 +25,9 @@ class Login extends React.Component {
       .then((response) =>
         response.accessToken
           ? (localStorage.setItem("accessToken", response.accessToken),
-            this.props.authenticate(response.user),
-            this.props.history.push("/"))
+            console.log("response", response),
+            this.props.authenticate(response.user, response.features),
+            this.props.history.push("/dashBoard"))
           : this.setState({
               errorMessage: response.errorMessage,
             })
@@ -36,28 +38,41 @@ class Login extends React.Component {
   };
 
   render() {
+    console.log("props login", this.props);
     const { email, password, errorMessage } = this.state;
     return (
       <div>
         {errorMessage !== "" && errorMessage}
         <form onSubmit={this.handleSubmit}>
-          <label>Email: </label>
-          <input
-            name="email"
-            value={email}
-            onChange={this.handleChange}
-            required={true}
-            type="email"
-          />
-          <label>Password: </label>
-          <input
-            name="password"
-            type="password"
-            value={password}
-            onChange={this.handleChange}
-            required={true}
-          />
-          <button type="submit"> Login </button>
+          <div className='field'>
+            <label className='label'>Email: </label>
+            <div className='control has-icons-left'>
+              <input
+                className='input'
+                name='email'
+                value={email}
+                onChange={this.handleChange}
+                required
+                type='email'
+              />
+            </div>
+          </div>
+          <div className='field'>
+            <label className='label'>Password: </label>
+            <div className='control has-icons-left'>
+              <input
+                className='input'
+                name='password'
+                type='password'
+                value={password}
+                onChange={this.handleChange}
+                required
+              />
+            </div>
+          </div>
+          <button className='button is-link' type='submit'>
+            Login
+          </button>
         </form>
       </div>
     );

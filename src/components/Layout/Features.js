@@ -3,7 +3,7 @@ import { getAllBreeds } from "../../services/breedsService";
 //don't forget conditional rendering for the forms if they are dogsitters or dog owners
 
 const Features = (props) => {
-  //I TRIED TO DO GET BREEDS FROM APIs - failed
+  //I TRIED TO DO GET BREEDS FROM APIs
   // componentDidMount() {
   //   props.fetchData();
   // }
@@ -23,7 +23,7 @@ const Features = (props) => {
     size,
     energy,
     behaves,
-    pottyTrain,
+    pottyTraining,
     chill,
     breed,
     errorMessage,
@@ -33,9 +33,12 @@ const Features = (props) => {
     <div>
       {errorMessage !== "" && errorMessage}
       <h1>Features</h1>
+      {/* 
+                            size
+       */}
       <span className='columns is-desktop'>
         <div className='field column'>
-          <label className='label'>Size</label>
+          <label className='label'>Size 📐</label>
           <div className='control'>
             <div className='select'>
               <select
@@ -53,9 +56,11 @@ const Features = (props) => {
             </div>
           </div>
         </div>
-
+        {/* 
+                                energy
+       */}
         <div className='field column'>
-          <label className='label'>Energy levels</label>
+          <label className='label'>Energy levels 🔋</label>
           <div className='control'>
             <div className='select'>
               <select
@@ -73,9 +78,11 @@ const Features = (props) => {
             </div>
           </div>
         </div>
-
+        {/* 
+                                training
+       */}
         <div className='field column'>
-          <label className='label'>Training</label>
+          <label className='label'>Training 📚</label>
           <div className='control'>
             <div className='select'>
               <select
@@ -94,28 +101,35 @@ const Features = (props) => {
           </div>
         </div>
       </span>
+
       <span className='columns is-desktop'>
+        {/* 
+                                potty training
+       */}
         <div className=' field column'>
-          <label className='label'>Potty training level</label>
+          <label className='label'>Potty training level 🚽</label>
           <div className='control'>
             <div className='select'>
               <select
-                name='pottyTrain'
-                value={pottyTrain}
+                name='pottyTraining'
+                value={pottyTraining}
                 onChange={props.handleChange}
                 required
               >
                 {/* value none to be grayed out */}
                 <option value='none'>none</option>
-                <option value='expert'>Small</option>
+                <option value='expert'>Expert</option>
                 <option value='okay'>Okay</option>
                 <option value='ouch'>Ouch!</option>
               </select>
             </div>
           </div>
         </div>
+        {/* 
+                                I like to chill
+       */}
         <div className='field column'>
-          <label className='label'>I like to chill</label>
+          <label className='label'>I like to chill 🐾 </label>
           <div className='control'>
             <div className='select'>
               <select

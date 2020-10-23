@@ -14,7 +14,9 @@ const AddImage = ({ addImage }) => {
       <form>
         <input type='file' onChange={handleImageUpload} />
         <br />
-        <button type='submit'>Submit</button>
+        <button className='button is-link' type='submit'>
+          Submit
+        </button>
       </form>
     </>
   );

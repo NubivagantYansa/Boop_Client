@@ -4,13 +4,15 @@ import "./App.css";
 import Navbar from "./components/Layout/Navbar";
 import AnonRoute from "./components/auth/AnonRoute";
 import PrivateRoute from "./components/auth/PrivateRoute";
-import { validateSession } from "./services/userService";
+import { validateSession, userLogout } from "./services/userService";
 import Dashboard from "./Pages/Dashboard";
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
 import ProfilesBoard from "./Pages/ProfilesBoard";
 import Signup from "./Pages/Signup";
 import "bulma/css/bulma.css";
+import EditProfile from "./Pages/EditProfile";
+import DeleteProfile from "./Pages/DeleteProfile";
 class App extends React.Component {
   state = {
     authenticated: false,
@@ -22,11 +24,15 @@ class App extends React.Component {
     if (accessToken) {
       validateSession(accessToken)
         .then((response) => {
-          console.log(response, "RESPONSE");
           this.authenticate(response.session.userId);
+          console.log("response I Am authenticating", response.session);
         })
         .catch((err) => console.log("Access token", err));
     }
+  };
+
+  componentDidUpdate = () => {
+    console.log("this state on update", this.state);
   };
 
   authenticate = (user) => {
@@ -34,9 +40,11 @@ class App extends React.Component {
       authenticated: true,
       user,
     });
+    console.log("this state on authenticate", this.state);
   };
 
   handleLogout = () => {
+    // userLogout();
     localStorage.clear();
     this.setState({
       authenticated: false,
@@ -44,7 +52,8 @@ class App extends React.Component {
     });
   };
   render() {
-    const { authenticated } = this.state;
+    const { authenticated, user, features } = this.state;
+    console.log("this is features", features);
     return (
       <div className='App'>
         <BrowserRouter>
@@ -65,6 +74,7 @@ class App extends React.Component {
               path='/login'
               authenticated={authenticated}
               authenticate={this.authenticate}
+              features={features}
               component={Login}
             />
             <AnonRoute
@@ -79,6 +89,8 @@ class App extends React.Component {
               path='/dashBoard'
               authenticated={authenticated}
               authenticate={this.authenticate}
+              user={localStorage.getItem("accessToken") ? user : ""}
+              features={localStorage.getItem("accessToken") ? features : ""}
               component={Dashboard}
             />
             <PrivateRoute
@@ -87,6 +99,20 @@ class App extends React.Component {
               authenticated={authenticated}
               authenticate={this.authenticate}
               component={ProfilesBoard}
+            />
+            <PrivateRoute
+              exact
+              path='/editProfile'
+              authenticated={authenticated}
+              authenticate={this.authenticate}
+              component={EditProfile}
+            />
+            <PrivateRoute
+              exact
+              path='/deleteProfile'
+              authenticated={authenticated}
+              authenticate={this.authenticate}
+              component={DeleteProfile}
             />
           </Switch>
         </BrowserRouter>

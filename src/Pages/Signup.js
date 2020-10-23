@@ -17,7 +17,7 @@ class Signup extends React.Component {
     size: "",
     energy: "",
     behaves: "",
-    pottyTrain: "",
+    pottyTraining: "",
     chill: "",
     errorMessage: "",
   };
@@ -45,15 +45,15 @@ class Signup extends React.Component {
         size: this.state.size,
         energy: this.state.energy,
         behaves: this.state.behaves,
-        pottyTrain: this.state.pottyTrain,
+        pottyTraining: this.state.pottyTraining,
         chill: this.state.chill,
       },
     })
       .then((response) =>
         response.accessToken
           ? (localStorage.setItem("accessToken", response.accessToken),
-            this.props.authenticate(response.user),
-            this.props.history.push("/"))
+            this.props.authenticate(response.user, response.features),
+            this.props.history.push("/dashBoard"))
           : this.setState({
               errorMessage: response.errorMessage,
             })
@@ -69,12 +69,14 @@ class Signup extends React.Component {
       password,
       aboutMe,
       borough,
+      image,
       errorMessage,
     } = this.state;
     return (
       <div>
         {errorMessage !== "" && errorMessage}
         {/* check with Andre add image props */}
+        {image && <img src={image} />}
         <AddImage addImage={(image) => this.setState({ image })} />
         <form onSubmit={this.handleSubmit}>
           <div className='field'>
@@ -167,7 +169,10 @@ class Signup extends React.Component {
           </div>
 
           <Features handleChange={this.handleChange} state={this.state} />
-          <button type='submit'> Sign up </button>
+          <button className='button is-link' type='submit'>
+            {" "}
+            Sign up{" "}
+          </button>
         </form>
       </div>
     );

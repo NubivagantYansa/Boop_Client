@@ -8,7 +8,10 @@ const service = axios.create({
 export const validateSession = (accessToken) => {
   return service
     .get(`/auth/session/${accessToken}`)
-    .then((response) => response.data)
+    .then((response) => {
+      console.log("VALIDATE THE SESSION", response.data);
+      return response.data;
+    })
     .catch((err) => err);
 };
 
@@ -34,7 +37,10 @@ export const signup = ({
       borough,
       features,
     })
-    .then((response) => response.data)
+    .then((response) => {
+      console.log("new user", response.data);
+      return response.data;
+    })
     .catch((err) => err);
 };
 
@@ -42,11 +48,30 @@ export const signup = ({
 export const login = ({ email, password }) => {
   return service
     .post("/auth/login", { email, password })
-    .then((response) => response.data)
+    .then((response) => {
+      console.log("response login", response);
+      return response.data;
+    })
     .catch((err) => {
       console.log(err);
     });
 };
+
+// logout
+// export const userLogout = (accessToken) => {
+//   console.log("access", accessToken);
+//   return service
+//     .post(`auth/logout/${accessToken}`)
+//     .then((response) => response.data)
+//     .catch((err) => console.log(err));
+// };
+// export const userLogout = (accessToken) => {
+//   console.log("access", accessToken);
+//   return service
+//     .delete(`auth/logout/${accessToken}`)
+//     .then((response) => response.data)
+//     .catch((err) => console.log(err));
+// };
 
 //upload image
 export function uploadImage(image) {
@@ -58,3 +83,22 @@ export function uploadImage(image) {
     .then(({ data }) => data)
     .catch(console.error);
 }
+
+// edit profile
+export const editProfile = (editInfo, token) => {
+  const headers = {
+    accessToken: token,
+  };
+  return service
+    .post("auth/edit", editInfo, { headers })
+    .then((editResp) => editResp.data)
+    .catch((error) => console.log(error));
+};
+
+//gets features extra layer
+export const getFeatures = (authorId) => {
+  return service
+    .get(`/user/features/${authorId}`)
+    .then((response) => response.data)
+    .catch((err) => err);
+};

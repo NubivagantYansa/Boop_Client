@@ -5,6 +5,7 @@ const PrivateRoute = ({
   component: Component,
   authenticated,
   user,
+  features,
   ...rest
 }) => {
   return (
