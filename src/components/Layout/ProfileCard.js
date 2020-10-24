@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "./ProfileCard.css";
+// import "./ProfileCard.css";
 
 class ProfileCard extends Component {
   state = {
@@ -21,18 +21,22 @@ class ProfileCard extends Component {
     const aboutMeBrief = aboutMe.slice(0, 40);
     return (
       <div className='card'>
-        <Link to={`/profile/${_id}`}>
-          <img src={image} className='card-img-top' alt={username} />
-        </Link>
-        <div className='card-body'>
-          <h5 className='card-title'>{username}</h5>
-          <h6 className='card-title'>{borough}</h6>
-          <p className='card-text'>
-            {this.state.expand ? aboutMe : aboutMeBrief}
-          </p>
-          <a href='#' className='card-link' onClick={this.readMore}>
-            {this.state.expand ? "Read Less" : "Read More"}
-          </a>
+        <div className='card-image'>
+          <figure className='image is-1by1'>
+            <Link to={`/profile/${_id}`}>
+              <img src={image} alt={username} />
+            </Link>
+          </figure>
+        </div>
+        <div className='card-content'>
+          <h5 className='title is-4'>{username}</h5>
+          <h6 className='subtitle is-6'>{borough}</h6>
+          <div className='content'>
+            <p>{this.state.expand ? aboutMe : aboutMeBrief}</p>
+            <a href='#' className='card-link' onClick={this.readMore}>
+              {this.state.expand ? "Read Less" : "Read More"}
+            </a>
+          </div>
         </div>
       </div>
     );

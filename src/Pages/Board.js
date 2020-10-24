@@ -43,8 +43,8 @@ export default class Board extends Component {
       <>
         <h1>Hello this is the Board page</h1>
         <Searchbar onHandleSearch={this.handleSearch} />
-        <div className='row'>
-          <div className='col-12 p-4'>
+        <div>
+          <div className='columns is-multiline'>
             <ProfilesList profilesList={srchResults} />
           </div>
         </div>
