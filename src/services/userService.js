@@ -9,7 +9,6 @@ export const validateSession = (accessToken) => {
   return service
     .get(`/auth/session/${accessToken}`)
     .then((response) => {
-      console.log("VALIDATE THE SESSION", response.data);
       return response.data;
     })
     .catch((err) => err);

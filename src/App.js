@@ -8,7 +8,7 @@ import { validateSession, userLogout } from "./services/userService";
 import Dashboard from "./Pages/Dashboard";
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
-import ProfileCard from "./Pages/ProfileCard";
+import ProfileCard from "./components/Layout/ProfileCard";
 import Signup from "./Pages/Signup";
 import "bulma/css/bulma.css";
 import EditProfile from "./Pages/EditProfile";
@@ -27,14 +27,9 @@ class App extends React.Component {
       validateSession(accessToken)
         .then((response) => {
           this.authenticate(response.session.userId);
-          console.log("I Am authenticating", response.session);
         })
-        .catch((err) => console.log("Access token", err));
+        .catch((err) => console.log("Access token error", err));
     }
-  };
-
-  componentDidUpdate = () => {
-    console.log("this state on update", this.state);
   };
 
   authenticate = (user) => {
@@ -54,8 +49,7 @@ class App extends React.Component {
     });
   };
   render() {
-    const { authenticated, user, features } = this.state;
-    console.log("this is features", features);
+    const { authenticated, user } = this.state;
     return (
       <div className='App'>
         <BrowserRouter>
@@ -91,7 +85,6 @@ class App extends React.Component {
               authenticated={authenticated}
               authenticate={this.authenticate}
               user={localStorage.getItem("accessToken") ? user : ""}
-              features={localStorage.getItem("accessToken") ? features : ""}
               component={Dashboard}
             />
             <PrivateRoute
@@ -100,7 +93,6 @@ class App extends React.Component {
               authenticated={authenticated}
               authenticate={this.authenticate}
               user={localStorage.getItem("accessToken") ? user : ""}
-              features={localStorage.getItem("accessToken") ? features : ""}
               component={Board}
             />
             <PrivateRoute
@@ -109,7 +101,6 @@ class App extends React.Component {
               authenticated={authenticated}
               authenticate={this.authenticate}
               user={localStorage.getItem("accessToken") ? user : ""}
-              features={localStorage.getItem("accessToken") ? features : ""}
               component={EditProfile}
             />
             <PrivateRoute
