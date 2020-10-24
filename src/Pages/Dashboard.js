@@ -5,6 +5,10 @@ class Dashboard extends Component {
   state = {
     expand: false,
   };
+
+  componentDidMount = () => {
+    console.log("DASH", this.props);
+  };
   render() {
     console.log("dashboard", this.props);
     const { username, email, borough, aboutMe, image } = this.props.user;

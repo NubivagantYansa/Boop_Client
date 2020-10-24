@@ -37,10 +37,10 @@ class App extends React.Component {
     console.log("this state on update", this.state);
   };
 
-  authenticate = (user, features) => {
+  authenticate = (user) => {
     this.setState({
       authenticated: true,
-      user: { ...user, features: { ...features } },
+      user,
     });
     console.log("this state on authenticate", this.state);
   };

@@ -108,11 +108,3 @@ export const editPassword = (editedPassword, token) => {
     })
     .catch((error) => console.log(error));
 };
-
-//gets features extra layer
-export const getFeatures = (authorId) => {
-  return service
-    .get(`/user/features/${authorId}`)
-    .then((response) => response.data)
-    .catch((err) => err);
-};
