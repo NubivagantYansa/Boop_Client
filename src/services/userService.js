@@ -95,6 +95,20 @@ export const editProfile = (editInfo, token) => {
     .catch((error) => console.log(error));
 };
 
+// edit password
+export const editPassword = (editedPassword, token) => {
+  const headers = {
+    accessToken: token,
+  };
+  return service
+    .post("user/edit-password", editedPassword, { headers })
+    .then((response) => {
+      console.log("EDITED password", response);
+      return response.data;
+    })
+    .catch((error) => console.log(error));
+};
+
 //gets features extra layer
 export const getFeatures = (authorId) => {
   return service

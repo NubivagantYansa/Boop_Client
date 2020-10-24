@@ -8,7 +8,7 @@ const Navbar = (props) => {
       <div className='navbar-start'>
         <div className='navbar-item'>{<Link to='/'> Logo </Link>}</div>
         <div className='navbar-item'>
-          {props.authenticated && <Link to='/dashboard'> Your dashboard </Link>}
+          {props.authenticated && <Link to='/dashBoard'> Your dashboard </Link>}
         </div>
       </div>
       <div className='navbar-end'>

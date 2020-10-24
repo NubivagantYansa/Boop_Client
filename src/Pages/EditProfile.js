@@ -21,10 +21,10 @@ export default class EditProfile extends Component {
     chill: this.props.user.features.chill,
     errorMessage: "",
   };
-  componentDidMount = () => {
-    console.log("component EDIT PROFILE mounted", this.props);
-    console.log("SESSSSSION", localStorage.getItem("accessToken"));
-  };
+  // componentDidMount = () => {
+  //   console.log("component EDIT PROFILE mounted", this.props);
+  //   console.log("SESSSSSION", localStorage.getItem("accessToken"));
+  // };
 
   handleChange = (event) => {
     const { name, value } = event.target;
@@ -75,7 +75,6 @@ export default class EditProfile extends Component {
 
         <div>
           <h1> Edit {username}'s profile</h1>
-          <p>Edit your profile and save</p>
         </div>
         {this.state.errorMessage !== "" && this.state.errorMessage}
 

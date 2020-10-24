@@ -14,6 +14,7 @@ import "bulma/css/bulma.css";
 import EditProfile from "./Pages/EditProfile";
 import DeleteProfile from "./Pages/DeleteProfile";
 import Board from "./Pages/Board";
+import EditPassword from "./Pages/EditPassword";
 class App extends React.Component {
   state = {
     authenticated: false,
@@ -25,7 +26,6 @@ class App extends React.Component {
     if (accessToken) {
       validateSession(accessToken)
         .then((response) => {
-          console.log(response);
           this.authenticate(response.session.userId);
           console.log("I Am authenticating", response.session);
         })
@@ -37,10 +37,10 @@ class App extends React.Component {
     console.log("this state on update", this.state);
   };
 
-  authenticate = (user) => {
+  authenticate = (user, features) => {
     this.setState({
       authenticated: true,
-      user,
+      user: { ...user, features: { ...features } },
     });
     console.log("this state on authenticate", this.state);
   };
@@ -76,7 +76,6 @@ class App extends React.Component {
               path='/login'
               authenticated={authenticated}
               authenticate={this.authenticate}
-              features={features}
               component={Login}
             />
             <AnonRoute
@@ -117,6 +116,14 @@ class App extends React.Component {
               authenticated={authenticated}
               authenticate={this.authenticate}
               component={DeleteProfile}
+            />
+            <PrivateRoute
+              exact
+              path='/edit-password'
+              authenticated={authenticated}
+              authenticate={this.authenticate}
+              user={localStorage.getItem("accessToken") ? user : ""}
+              component={EditPassword}
             />
           </Switch>
         </BrowserRouter>
