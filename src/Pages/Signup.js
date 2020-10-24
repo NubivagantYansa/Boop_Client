@@ -75,7 +75,6 @@ class Signup extends React.Component {
     return (
       <div>
         {errorMessage !== "" && errorMessage}
-        {/* check with Andre add image props */}
         {image && <img src={image} />}
         <AddImage addImage={(image) => this.setState({ image })} />
         <form onSubmit={this.handleSubmit}>
@@ -170,8 +169,7 @@ class Signup extends React.Component {
 
           <Features handleChange={this.handleChange} state={this.state} />
           <button className='button is-link' type='submit'>
-            {" "}
-            Sign up{" "}
+            Sign up
           </button>
         </form>
       </div>

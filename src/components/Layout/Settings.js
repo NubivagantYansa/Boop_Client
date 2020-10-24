@@ -5,13 +5,10 @@ const Settings = (props) => {
   return (
     <>
       <div className='box'>
-        <button>{<Link to='/user/edit-profile'> Edit Profile </Link>}</button>{" "}
+        <button>{<Link to='/edit-profile'> Edit Profile </Link>}</button> <br />
+        <button>{<Link to='/edit-password'> Edit Password </Link>}</button>
         <br />
-        <button>{<Link to='/user/edit-password'> Edit Password </Link>}</button>
-        <br />
-        <button>
-          {<Link to='/user/delete-profile'> Delete Profile </Link>}
-        </button>
+        <button>{<Link to='/delete-profile'> Delete Profile </Link>}</button>
       </div>
 
       <div className='box'>

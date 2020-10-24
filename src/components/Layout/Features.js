@@ -28,7 +28,7 @@ const Features = (props) => {
     breed,
     errorMessage,
   } = props.state;
-  console.log("this props", props);
+  console.log("this props FEATURES", props);
   return (
     <div>
       {errorMessage !== "" && errorMessage}
@@ -107,7 +107,7 @@ const Features = (props) => {
                                 potty training
        */}
         <div className=' field column'>
-          <label className='label'>Potty training level 🚽</label>
+          <label className='label'>Potty training 🚽</label>
           <div className='control'>
             <div className='select'>
               <select

@@ -8,11 +8,12 @@ import { validateSession, userLogout } from "./services/userService";
 import Dashboard from "./Pages/Dashboard";
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
-import ProfilesBoard from "./Pages/ProfilesBoard";
+import ProfileCard from "./Pages/ProfileCard";
 import Signup from "./Pages/Signup";
 import "bulma/css/bulma.css";
 import EditProfile from "./Pages/EditProfile";
 import DeleteProfile from "./Pages/DeleteProfile";
+import Board from "./Pages/Board";
 class App extends React.Component {
   state = {
     authenticated: false,
@@ -24,8 +25,9 @@ class App extends React.Component {
     if (accessToken) {
       validateSession(accessToken)
         .then((response) => {
+          console.log(response);
           this.authenticate(response.session.userId);
-          console.log("response I Am authenticating", response.session);
+          console.log("I Am authenticating", response.session);
         })
         .catch((err) => console.log("Access token", err));
     }
@@ -95,21 +97,23 @@ class App extends React.Component {
             />
             <PrivateRoute
               exact
-              path='/profilesBoard'
+              path='/board'
               authenticated={authenticated}
               authenticate={this.authenticate}
-              component={ProfilesBoard}
+              component={Board}
             />
             <PrivateRoute
               exact
-              path='/editProfile'
+              path='/edit-profile'
               authenticated={authenticated}
               authenticate={this.authenticate}
+              user={localStorage.getItem("accessToken") ? user : ""}
+              features={localStorage.getItem("accessToken") ? features : ""}
               component={EditProfile}
             />
             <PrivateRoute
               exact
-              path='/deleteProfile'
+              path='/delete-profile'
               authenticated={authenticated}
               authenticate={this.authenticate}
               component={DeleteProfile}

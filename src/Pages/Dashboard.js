@@ -20,11 +20,11 @@ class Dashboard extends Component {
       <>
         <Settings />
         <div>
-          <h1> {this.props.user.username} welcome to your dashboard</h1>
+          <h1> {username}, welcome to your dashboard</h1>
         </div>
         <div className='box'>
           <div className='box'>
-            {image && <img className='immagine' src={image} />}
+            {image && <img className='image' src={image} />}
             <p>username: {username}</p>
             <p>email: {email}</p>
             <p>borough: {borough}</p>

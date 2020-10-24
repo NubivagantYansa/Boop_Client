@@ -50,21 +50,18 @@ export const login = ({ email, password }) => {
     .post("/auth/login", { email, password })
     .then((response) => {
       console.log("response login", response);
-      return response.data;
+      return { data: response.data, status: true };
     })
     .catch((err) => {
-      console.log(err);
+      console.log(err.response);
+      return {
+        errorMessage: err.response?.data.errorMessage,
+        status: false,
+        statusCode: err.response.status,
+      };
     });
 };
 
-// logout
-// export const userLogout = (accessToken) => {
-//   console.log("access", accessToken);
-//   return service
-//     .post(`auth/logout/${accessToken}`)
-//     .then((response) => response.data)
-//     .catch((err) => console.log(err));
-// };
 export const userLogout = (accessToken) => {
   console.log("access", accessToken);
   return service
@@ -90,8 +87,11 @@ export const editProfile = (editInfo, token) => {
     accessToken: token,
   };
   return service
-    .post("auth/edit", editInfo, { headers })
-    .then((editResp) => editResp.data)
+    .post("user/edit", editInfo, { headers })
+    .then((editResp) => {
+      console.log("EDITED USER", editResp);
+      return editResp.data;
+    })
     .catch((error) => console.log(error));
 };
 

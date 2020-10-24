@@ -13,7 +13,7 @@ const AnonRoute = ({
         authenticated === false ? (
           <Component {...props} authenticate={authenticate} />
         ) : (
-          <Redirect to='/profilesBoard' />
+          <Redirect to='/board' />
         )
       }
       {...rest}
