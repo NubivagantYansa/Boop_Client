@@ -99,6 +99,8 @@ class App extends React.Component {
               path='/board'
               authenticated={authenticated}
               authenticate={this.authenticate}
+              user={localStorage.getItem("accessToken") ? user : ""}
+              features={localStorage.getItem("accessToken") ? features : ""}
               component={Board}
             />
             <PrivateRoute
@@ -115,6 +117,8 @@ class App extends React.Component {
               path='/delete-profile'
               authenticated={authenticated}
               authenticate={this.authenticate}
+              user={localStorage.getItem("accessToken") ? user : ""}
+              handleLogout={this.handleLogout}
               component={DeleteProfile}
             />
             <PrivateRoute

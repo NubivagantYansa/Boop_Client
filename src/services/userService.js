@@ -63,7 +63,6 @@ export const login = ({ email, password }) => {
 };
 
 export const userLogout = (accessToken) => {
-  console.log("access", accessToken);
   return service
     .post(`auth/logout/${accessToken}`)
     .then((response) => response.data)
@@ -106,5 +105,14 @@ export const editPassword = (editedPassword, token) => {
       console.log("EDITED password", response);
       return response.data;
     })
+    .catch((error) => console.log(error));
+};
+
+//delete profile
+
+export const deleteProfile = (userId) => {
+  return service
+    .post(`user/delete-profile/${userId}`)
+    .then((response) => console.log(response.data))
     .catch((error) => console.log(error));
 };
