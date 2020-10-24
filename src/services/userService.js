@@ -65,13 +65,13 @@ export const login = ({ email, password }) => {
 //     .then((response) => response.data)
 //     .catch((err) => console.log(err));
 // };
-// export const userLogout = (accessToken) => {
-//   console.log("access", accessToken);
-//   return service
-//     .delete(`auth/logout/${accessToken}`)
-//     .then((response) => response.data)
-//     .catch((err) => console.log(err));
-// };
+export const userLogout = (accessToken) => {
+  console.log("access", accessToken);
+  return service
+    .post(`auth/logout/${accessToken}`)
+    .then((response) => response.data)
+    .catch((error) => console.log(error));
+};
 
 //upload image
 export function uploadImage(image) {
