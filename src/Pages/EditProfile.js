@@ -95,7 +95,9 @@ export default class EditProfile extends Component {
                       onChange={this.handleChange}
                       required
                     >
-                      <option value='none'>none</option>
+                      <option className='is-unselectable' value='none'>
+                        none
+                      </option>
                       <option value='Dog owner'>Dog owner</option>
                       <option value='Dogsitter'>Dogsitter</option>
                     </select>
@@ -134,8 +136,8 @@ export default class EditProfile extends Component {
               <div className='field'>
                 <label className='label'>About me: </label>
                 <div className='control'>
-                  <input
-                    className='input'
+                  <textarea
+                    className='textarea'
                     name='aboutMe'
                     value={aboutMe}
                     onChange={this.handleChange}

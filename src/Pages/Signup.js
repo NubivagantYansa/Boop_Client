@@ -89,7 +89,9 @@ class Signup extends React.Component {
                   required
                 >
                   {/* value none to be grayed out */}
-                  <option value='none'>none</option>
+                  <option className='is-unselectable' value='none'>
+                    none
+                  </option>
                   <option value='Dog owner'>Dog owner</option>
                   <option value='Dogsitter'>Dogsitter</option>
                 </select>
@@ -142,8 +144,8 @@ class Signup extends React.Component {
           <div className='field'>
             <label className='label'>About me: </label>
             <div className='control'>
-              <input
-                className='input'
+              <textarea
+                className='textarea'
                 name='aboutMe'
                 value={aboutMe}
                 onChange={this.handleChange}

@@ -47,11 +47,12 @@ const Features = (props) => {
                 onChange={props.handleChange}
                 required
               >
-                {/* value none to be grayed out */}
-                <option value='none'>none</option>
-                <option value='small'>Small</option>
-                <option value='medium'>Medium</option>
-                <option value='large'>Large</option>
+                <option className='is-unselectable' value='none'>
+                  none
+                </option>
+                <option value='Small'>Small</option>
+                <option value='Medium'>Medium</option>
+                <option value='Large'>Large</option>
               </select>
             </div>
           </div>
@@ -69,11 +70,12 @@ const Features = (props) => {
                 onChange={props.handleChange}
                 required
               >
-                {/* value none to be grayed out */}
-                <option value='none'>none</option>
-                <option value='tornado'>Tornado</option>
-                <option value='chilled'>Chilled</option>
-                <option value='couch potato'>Couch Potato</option>
+                <option className='is-unselectable' value='none'>
+                  none
+                </option>
+                <option value='Tornado'>Tornado</option>
+                <option value='Chilled'>Chilled</option>
+                <option value='Couch potato'>Couch Potato</option>
               </select>
             </div>
           </div>
@@ -91,9 +93,10 @@ const Features = (props) => {
                 onChange={props.handleChange}
                 required
               >
-                {/* value none to be grayed out */}
-                <option value='none'>none</option>
-                <option value='soldier'>Soldier</option>
+                <option className='is-unselectable' value='none'>
+                  none
+                </option>
+                <option value='Soldier'>Soldier</option>
                 <option value='I kinda get it'>I kinda get it</option>
                 <option value='huh?'>huh?</option>
               </select>
@@ -116,11 +119,12 @@ const Features = (props) => {
                 onChange={props.handleChange}
                 required
               >
-                {/* value none to be grayed out */}
-                <option value='none'>none</option>
-                <option value='expert'>Expert</option>
-                <option value='okay'>Okay</option>
-                <option value='ouch'>Ouch!</option>
+                <option className='is-unselectable' value='none'>
+                  none
+                </option>
+                <option value='Expert'>Expert</option>
+                <option value='Okay'>Okay</option>
+                <option value='Ouch!'>Ouch!</option>
               </select>
             </div>
           </div>
@@ -138,10 +142,11 @@ const Features = (props) => {
                 onChange={props.handleChange}
                 required
               >
-                {/* value none to be grayed out */}
-                <option value='none'>none</option>
-                <option value='outdoor'>Outdoor</option>
-                <option value='indoor'>Indoor</option>
+                <option className='is-unselectable' value='none'>
+                  none
+                </option>
+                <option value='Outdoor'>Outdoor</option>
+                <option value='Indoor'>Indoor</option>
               </select>
             </div>
           </div>
