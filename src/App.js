@@ -8,13 +8,13 @@ import { validateSession, userLogout } from "./services/userService";
 import Dashboard from "./Pages/Dashboard";
 import Home from "./Pages/Home";
 import Login from "./Pages/Login";
-import ProfileCard from "./components/Layout/ProfileCard";
 import Signup from "./Pages/Signup";
 import "bulma/css/bulma.css";
 import EditProfile from "./Pages/EditProfile";
 import DeleteProfile from "./Pages/DeleteProfile";
 import Board from "./Pages/Board";
 import EditPassword from "./Pages/EditPassword";
+import ProfileDetails from "./Pages/ProfileDetails";
 class App extends React.Component {
   state = {
     authenticated: false,
@@ -51,7 +51,7 @@ class App extends React.Component {
   render() {
     const { authenticated, user } = this.state;
     return (
-      <div className='App'>
+      <div className='App container'>
         <BrowserRouter>
           <Navbar
             authenticated={authenticated}
@@ -119,6 +119,14 @@ class App extends React.Component {
               authenticate={this.authenticate}
               user={localStorage.getItem("accessToken") ? user : ""}
               component={EditPassword}
+            />
+            <PrivateRoute
+              exact
+              path='/profile/:id'
+              authenticated={authenticated}
+              authenticate={this.authenticate}
+              user={localStorage.getItem("accessToken") ? user : ""}
+              component={ProfileDetails}
             />
           </Switch>
         </BrowserRouter>

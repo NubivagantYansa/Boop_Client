@@ -1,29 +1,42 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Settings = (props) => {
+const Settings = () => {
   return (
-    <>
-      <div className='box buttons'>
-        <button className='button is-link is-light'>
-          {<Link to='/edit-profile'> Edit Profile </Link>}
-        </button>{" "}
-        <br />
-        <button className='button is-link is-light'>
-          {<Link to='/edit-password'> Edit Password </Link>}
-        </button>
-        <br />
-        <button className='button is-danger is-light'>
-          {<Link to='/delete-profile'> Delete Profile </Link>}
-        </button>
+    <div className='column is-flex-direction-column'>
+      <div className='box buttons is-flex-direction-column  '>
+        {
+          <Link to='/delete-profile'>
+            <button className='button is-danger is-rounded'>
+              Delete Profile
+            </button>
+          </Link>
+        }
+        {
+          <Link to='/edit-password'>
+            <button className='button is-link is-rounded'>Edit Password</button>
+          </Link>
+        }
+        {
+          <Link to='/edit-profile'>
+            <button className='button is-link is-rounded'>Edit Profile</button>
+          </Link>
+        }
       </div>
 
-      <div className='box'>
-        <button className='button is-link is-light'>
-          {<Link to='/board'> Search profiles </Link>}{" "}
-        </button>
+      <div className='box buttons is-flex-direction-column'>
+        <span>
+          <h1>Begin your search!</h1>
+        </span>
+        {
+          <Link to='/board'>
+            <button className='button is-info is-rounded m-2'>
+              Search profiles
+            </button>
+          </Link>
+        }
       </div>
-    </>
+    </div>
   );
 };
 

@@ -153,7 +153,7 @@ const Features = (props) => {
         </div>
 
         <div className='field column'>
-          <label className='label'>Breed 🐕: </label>
+          <label className='label'>Breed 🐕 </label>
           <div className='control'>
             <input
               className='input'

@@ -15,3 +15,12 @@ export const getAllProfiles = () => {
     })
     .catch((err) => err);
 };
+
+export const getProfileDetails = (_id) => {
+  return service
+    .get(`/comm/get-profile/${_id}`)
+    .then((response) => {
+      return response.data.profile;
+    })
+    .catch((err) => err);
+};
