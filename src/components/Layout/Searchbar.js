@@ -15,20 +15,16 @@ export default class Searchbar extends Component {
 
   render() {
     return (
-      <>
-        <div className='row mb-4 mt-3'>
-          <div className='col-12'>
-            <label>Search keyword: </label>
-            <input
-              type='text'
-              name='srchwrd'
-              placeholder='dog lover'
-              value={this.state.srchwrd}
-              onChange={this.handleSearch}
-            />
-          </div>
-        </div>
-      </>
+      <div className='mt-3'>
+        <label>Search keyword: </label>
+        <input
+          type='text'
+          name='srchwrd'
+          placeholder='dog lover'
+          value={this.state.srchwrd}
+          onChange={this.handleSearch}
+        />
+      </div>
     );
   }
 }

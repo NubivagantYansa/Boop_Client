@@ -32,10 +32,7 @@ class Login extends React.Component {
         return response.data.accessToken
           ? (localStorage.setItem("accessToken", response.data.accessToken),
             console.log("response LOGIN", response),
-            this.props.authenticate({
-              ...response.data.user,
-              features: { ...response.data.features },
-            }),
+            this.props.authenticate(response.data.user),
             this.props.history.push("/dashBoard"))
           : this.setState({
               errorMessage: response.data.errorMessage,

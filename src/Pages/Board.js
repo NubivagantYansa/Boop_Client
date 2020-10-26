@@ -2,11 +2,14 @@ import React, { Component } from "react";
 import { getAllProfiles } from "../services/communityService";
 import Searchbar from "../components/Layout/Searchbar";
 import ProfilesList from "../components/Layout/ProfilesList";
+import RoleFiler from "../components/Layout/RoleFilter";
+import RoleFilter from "../components/Layout/RoleFilter";
 
 export default class Board extends Component {
   state = {
     profilesList: [],
     srchResults: [],
+    userRole: null,
   };
 
   componentDidMount = () => {
@@ -31,21 +34,26 @@ export default class Board extends Component {
     });
   };
 
-  // filterBySeason = (season) => this.setState({ season });
+  filterBySeason = (season) => this.setState({ season });
+  filterByRole = (userRole) => this.setState({ userRole });
 
   render() {
-    const { srchResults } = this.state;
-    // const ProfilesToShow = srchResults.filter(
-    //   (profile) =>
-    //     season === null || Number(season) === singleEpisode.season
-    // );
+    const { srchResults, userRole } = this.state;
+    const profilesToShow = srchResults.filter(
+      (profiles) =>
+        (profiles.username != this.props.user.username && userRole === null) ||
+        userRole === profiles.userRole
+    );
     return (
       <>
         <h1>Hello this is the Board page</h1>
-        <Searchbar onHandleSearch={this.handleSearch} />
+        <div className='box m-3'>
+          <RoleFilter onFilterRole={this.filterByRole} />
+          <Searchbar onHandleSearch={this.handleSearch} />
+        </div>
         <div>
           <div className='columns is-multiline p-3'>
-            <ProfilesList profilesList={srchResults} />
+            <ProfilesList profilesList={profilesToShow} />
           </div>
         </div>
       </>

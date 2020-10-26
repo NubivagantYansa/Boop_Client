@@ -48,7 +48,6 @@ export const login = ({ email, password }) => {
   return service
     .post("/auth/login", { email, password })
     .then((response) => {
-      console.log("response login", response);
       return { data: response.data, status: true };
     })
     .catch((err) => {

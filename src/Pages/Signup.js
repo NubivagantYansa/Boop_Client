@@ -88,7 +88,6 @@ class Signup extends React.Component {
                   onChange={this.handleChange}
                   required
                 >
-                  {/* value none to be grayed out */}
                   <option className='is-unselectable' value='none'>
                     none
                   </option>
