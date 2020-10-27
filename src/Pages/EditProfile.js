@@ -36,7 +36,6 @@ export default class EditProfile extends Component {
   handleSubmit = (event) => {
     event.preventDefault();
     const accessToken = localStorage.getItem("accessToken");
-    console.log("state", this.state);
     editProfile(
       {
         userRole: this.state.userRole,
@@ -58,7 +57,6 @@ export default class EditProfile extends Component {
       accessToken
     )
       .then((response) => {
-        console.log("EDITED profile in component", response);
         this.props.authenticate(response.user);
         this.props.history.push("/dashBoard");
         return response;

@@ -6,7 +6,6 @@ const service = axios.create({
 
 //get profiles on Board
 export const getAllProfiles = () => {
-  console.log("Hit the profiles");
   return service
     .get(`/comm/get-profiles`)
     .then((response) => {

@@ -21,7 +21,7 @@ export default class Filters extends Component {
         <Searchbar onHandleSearch={this.props.onHandleSearch} />
         <a href='#' onClick={this.readMore}>
           {this.state.expand ? "Read Less" : "More Filters"}
-        </a>{" "}
+        </a>
         <div className='content mt-3'>
           {this.state.expand && (
             <FeaturesFilter onFilterFeatures={this.props.onFilterFeatures} />

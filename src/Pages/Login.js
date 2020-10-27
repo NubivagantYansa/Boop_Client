@@ -23,7 +23,6 @@ class Login extends React.Component {
       password: this.state.password,
     })
       .then((response) => {
-        console.log("HEYYYYYYYYY", response);
         if (!response.status) {
           this.setState({ errorMessage: response.errorMessage });
           return;
@@ -31,7 +30,6 @@ class Login extends React.Component {
 
         return response.data.accessToken
           ? (localStorage.setItem("accessToken", response.data.accessToken),
-            console.log("response LOGIN", response),
             this.props.authenticate(response.data.user),
             this.props.history.push("/dashBoard"))
           : this.setState({
@@ -44,7 +42,6 @@ class Login extends React.Component {
   };
 
   render() {
-    console.log("props login", this.props);
     const { email, password, errorMessage } = this.state;
     return (
       <div>

@@ -11,7 +11,6 @@ export default class ProfileDetails extends Component {
   componentDidMount() {
     getProfileDetails(this.props.match.params.id)
       .then((profile) => {
-        console.log("response profile XXXXXXXXXXX", profile);
         return this.setState({ profile: profile, features: profile.features });
       })
       .catch((error) => console.log(error));

@@ -4,6 +4,7 @@ import Searchbar from "../components/Layout/FiltersCard/Searchbar";
 import ProfilesList from "../components/Layout/ProfilesList";
 import RoleFilter from "../components/Layout/FiltersCard/RoleFilter";
 import Filters from "../components/Layout/FiltersCard/Filters";
+import { isElement } from "react-dom/test-utils";
 
 export default class Board extends Component {
   state = {
@@ -11,45 +12,34 @@ export default class Board extends Component {
     srchResults: [],
     userRole: null,
     boroughSelection: null,
-    sizeSelection: null,
-    energySelection: null,
-    behavesSelection: null,
-    pottyTrainingSelection: null,
-    chillSelection: null,
-    breedSelection: null,
+    size: null,
+    energy: null,
+    behaves: null,
+    pottyTraining: null,
+    chill: null,
+    breed: null,
   };
 
   componentDidMount = () => {
-    console.log("BOARD", this.props);
     getAllProfiles()
       .then((profilesList) => {
         this.setState({
           profilesList: profilesList.profilesList,
           srchResults: profilesList.profilesList,
         });
-        // console.log("THIS STATE", this.state);
       })
       .catch((error) => console.log(error));
   };
 
-  // componentDidUpdate = () => {
-  //   console.log("LALALALALA", this.state);
-  // };
-
   handleSearch = (value) => {
     console.log("I am the blooooody value", value);
-    const srchResults = this.state.profilesList.filter(
-      (profile) => {
-        // console.log("loooook here", Object.values(profile));
-
-        return Object.values(profile).some(
-          (values) =>
-            console.log(values) ||
-            values.toString().toLowerCase().includes(value.toLowerCase())
-        );
-      }
-      // Object.key(profile).some(key => profile[key].toLowerCase().includes(value.toLowerCase()))
-    );
+    const srchResults = this.state.profilesList.filter((profile) => {
+      return Object.values(profile).some(
+        (values) =>
+          console.log(values) ||
+          values.toString().toLowerCase().includes(value.toLowerCase())
+      );
+    });
     this.setState({
       srchResults: srchResults,
     });
@@ -57,41 +47,79 @@ export default class Board extends Component {
 
   filterByRole = (userRole) => this.setState({ userRole });
 
-  filterFeatures = (
-    sizeSelection,
-    energySelection,
-    behavesSelection,
-    pottyTrainingSelection,
-    chillSelection,
-    breedSelection
-  ) =>
+  filterFeatures = (size, energy, behaves, pottyTraining, chill, breed) => {
     this.setState({
-      sizeSelection,
-      energySelection,
-      behavesSelection,
-      pottyTrainingSelection,
-      chillSelection,
-      breedSelection,
+      size,
+      energy,
+      behaves,
+      pottyTraining,
+      chill,
+      breed,
     });
+  };
 
   render() {
     const {
       srchResults,
       userRole,
-      sizeSelection,
-      energySelection,
-      behavesSelection,
-      pottyTrainingSelection,
-      chillSelection,
-      breedSelection,
+      size,
+      energy,
+      behaves,
+      pottyTraining,
+      chill,
+      breed,
     } = this.state;
-    const profilesToShow = srchResults.filter(
-      (profiles) =>
-        profiles.username != this.props.user.username &&
-        (userRole === null || userRole === profiles.userRole)
-    );
+
+    //variable controls profiles showed on the board - checks if any filter is applied
+    let profilesToShow = srchResults.filter((profiles) => {
+      const isNotCurrUser = profiles.username !== this.props.user.username;
+      const isUserRole = userRole === null || userRole === profiles.userRole;
+      const isSize =
+        !size ||
+        profiles.features.size.toLowerCase().trim() ===
+          size.toLowerCase().trim();
+      const isEnergy =
+        !energy ||
+        profiles.features.energy.toLowerCase().trim() ===
+          energy.toLowerCase().trim();
+      const isBehaves =
+        !behaves ||
+        profiles.features.behaves.toLowerCase().trim() ===
+          behaves.toLowerCase().trim();
+      const isPottyTraining =
+        !pottyTraining ||
+        profiles.features.pottyTraining.toLowerCase().trim() ===
+          pottyTraining.toLowerCase().trim();
+      const isChill =
+        !chill ||
+        profiles.features.chill.toLowerCase().trim() ===
+          chill.toLowerCase().trim();
+      const isBreed =
+        !breed ||
+        profiles.features.breed.toLowerCase().trim() ===
+          chill.toLowerCase().trim();
+      return (
+        isNotCurrUser &&
+        isUserRole &&
+        isSize &&
+        isEnergy &&
+        isBehaves &&
+        isPottyTraining &&
+        isChill &&
+        isBreed
+      );
+
+      // const isSize = size === ""
+      //const
+    });
+    // const profilesToShow = srchResults.filter(
+    //   (profiles) =>
+    //     profiles.username != this.props.user.username &&
+    //     (userRole === null || userRole === profiles.userRole)
+    // );
+    //   if (user)
     // .filter(
-    //   (profile) => sizeSelection === " " || sizeSelection === profile.size
+    //   (profile) => size === " " || size === profile.size
     // );
     return (
       <>

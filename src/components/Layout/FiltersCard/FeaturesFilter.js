@@ -3,39 +3,37 @@ import React, { Component } from "react";
 export default class FeaturesFilter extends Component {
   state = {
     boroughSelection: "",
-    sizeSelection: "",
-    energySelection: "",
-    behavesSelection: "",
-    pottyTrainingSelection: "",
-    chillSelection: "",
-    breedSelection: "",
+    size: "",
+    energy: "",
+    behaves: "",
+    pottyTraining: "",
+    chill: "",
+    breed: "",
   };
 
   handleChange = (event) => {
     const { name, value } = event.target;
-    this.setState({
-      [name]: value,
-    });
-
-    this.props.onFilterFeatures(
-      this.sizeSelection,
-      this.energySelection,
-      this.behavesSelection,
-      this.pottyTrainingSelection,
-      this.chillSelection,
-      this.breedSelection
+    this.setState(
+      {
+        [name]: value,
+      },
+      () => {
+        this.props.onFilterFeatures(
+          this.state.size,
+          this.state.energy,
+          this.state.behaves,
+          this.state.pottyTraining,
+          this.state.chill,
+          this.state.breed
+        );
+      }
     );
+
+    return;
   };
 
   render() {
-    const {
-      sizeSelection,
-      energySelection,
-      behavesSelection,
-      pottyTrainingSelection,
-      chillSelection,
-      breedSelection,
-    } = this.state;
+    const { size, energy, behaves, pottyTraining, chill, breed } = this.state;
 
     return (
       <div>
@@ -47,12 +45,8 @@ export default class FeaturesFilter extends Component {
             <label className='label'>Size 📐</label>
             <div className='control'>
               <div className='select'>
-                <select
-                  name='sizeSelection'
-                  value={sizeSelection}
-                  onChange={this.handleChange}
-                >
-                  <option className='is-unselectable' value='none'>
+                <select name='size' value={size} onChange={this.handleChange}>
+                  <option className='is-unselectable' value=''>
                     none
                   </option>
                   <option value='Small'>Small</option>
@@ -70,8 +64,8 @@ export default class FeaturesFilter extends Component {
             <div className='control'>
               <div className='select'>
                 <select
-                  name='energySelection'
-                  value={energySelection}
+                  name='energy'
+                  value={energy}
                   onChange={this.handleChange}
                 >
                   <option className='is-unselectable' value='none'>
@@ -92,11 +86,11 @@ export default class FeaturesFilter extends Component {
             <div className='control'>
               <div className='select'>
                 <select
-                  name='behavesSelection'
-                  value={behavesSelection}
+                  name='behaves'
+                  value={behaves}
                   onChange={this.handleChange}
                 >
-                  <option className='is-unselectable' value='none'>
+                  <option className='is-unselectable' value=''>
                     none
                   </option>
                   <option value='Soldier'>Soldier</option>
@@ -117,12 +111,12 @@ export default class FeaturesFilter extends Component {
             <div className='control'>
               <div className='select'>
                 <select
-                  name='pottyTrainingSelection'
-                  value={pottyTrainingSelection}
+                  name='pottyTraining'
+                  value={pottyTraining}
                   onChange={this.handleChange}
                   required
                 >
-                  <option className='is-unselectable' value='none'>
+                  <option className='is-unselectable' value=''>
                     none
                   </option>
                   <option value='Expert'>Expert</option>
@@ -139,12 +133,8 @@ export default class FeaturesFilter extends Component {
             <label className='label'>I like to chill 🐾 </label>
             <div className='control'>
               <div className='select'>
-                <select
-                  name='chillSelection'
-                  value={chillSelection}
-                  onChange={this.handleChange}
-                >
-                  <option className='is-unselectable' value='none'>
+                <select name='chill' value={chill} onChange={this.handleChange}>
+                  <option className='is-unselectable' value=''>
                     none
                   </option>
                   <option value='Outdoor'>Outdoor</option>
@@ -160,8 +150,8 @@ export default class FeaturesFilter extends Component {
               <input
                 className='input'
                 placeholder='Pinsher'
-                name='breedSelection'
-                value={breedSelection}
+                name='breed'
+                value={breed}
                 onChange={this.handleChange}
                 type='text'
               />
