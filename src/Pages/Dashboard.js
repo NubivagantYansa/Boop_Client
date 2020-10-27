@@ -13,6 +13,7 @@ class Dashboard extends Component {
     console.log("dashboard", this.props);
     const { username, email, borough, aboutMe, image } = this.props.user;
     const {
+      userRole,
       behaves,
       breed,
       chill,
@@ -61,6 +62,11 @@ class Dashboard extends Component {
 
             <div>
               <div className='box'>
+                {userRole === "Dog owner" ? (
+                  <h1>My ID:</h1>
+                ) : (
+                  <h1>My peferences</h1>
+                )}
                 <p>
                   <strong>Size 📐 : </strong> {size}
                 </p>

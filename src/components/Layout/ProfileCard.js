@@ -7,9 +7,9 @@ class ProfileCard extends Component {
     expand: false,
   };
 
-  componentDidMount = () => {
-    console.log("CARDDD", this.props);
-  };
+  // componentDidMount = () => {
+  //   console.log("CARDDD", this.props);
+  // };
   readMore = (e) => {
     e.preventDefault();
     this.setState({ expand: !this.state.expand });

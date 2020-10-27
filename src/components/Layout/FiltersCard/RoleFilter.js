@@ -4,7 +4,7 @@ const RoleFilter = ({ onFilterRole }) => {
   return (
     <div>
       <div>
-        <div className=' buttons'>
+        <div className=' buttons m-3'>
           {[null, "Dog owner", "Dogsitter"].map((role) => (
             <button
               className='button is-info'

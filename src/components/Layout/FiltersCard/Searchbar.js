@@ -15,7 +15,7 @@ export default class Searchbar extends Component {
 
   render() {
     return (
-      <div className='mt-3'>
+      <div className='m-3'>
         <label>Search keyword: </label>
         <input
           type='text'

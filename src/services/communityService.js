@@ -10,7 +10,7 @@ export const getAllProfiles = () => {
   return service
     .get(`/comm/get-profiles`)
     .then((response) => {
-      console.log(response.data.profilesList);
+      // console.log(response.data.profilesList);
       return response.data;
     })
     .catch((err) => err);

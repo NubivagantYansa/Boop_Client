@@ -20,6 +20,7 @@ const Features = (props) => {
   // }
 
   const {
+    userRole,
     size,
     energy,
     behaves,
@@ -32,7 +33,7 @@ const Features = (props) => {
   return (
     <div>
       {errorMessage !== "" && errorMessage}
-      <h1>Features</h1>
+      {userRole === "Dog owner" ? <h1>My ID:</h1> : <h1>My peferences</h1>}
       {/* 
                             size
        */}
