@@ -13,10 +13,6 @@ const AddImage = ({ addImage }) => {
     <>
       <form>
         <input type='file' onChange={handleImageUpload} />
-        <br />
-        <button className='button is-link is rounded' type='submit'>
-          Submit
-        </button>
       </form>
     </>
   );

@@ -26,12 +26,10 @@ const Features = (props) => {
     pottyTraining,
     chill,
     breed,
-    errorMessage,
   } = props.state;
   console.log("this props FEATURES", props);
   return (
     <div>
-      <div>{errorMessage !== "" && errorMessage}</div>
       <div>
         {userRole === "Dog owner" ? <h1>My ID:</h1> : <h1>My peferences</h1>}
       </div>
