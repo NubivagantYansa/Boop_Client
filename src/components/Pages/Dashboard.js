@@ -67,38 +67,27 @@ class Dashboard extends Component {
                 )}
                 <p>
                   <strong>
-                    Size <span>📐</span> :{" "}
-                  </strong>{" "}
+                    Size <span>📐</span> :
+                  </strong>
                   {size}
                 </p>
                 <p>
-                  <strong>
-                    Training <span>📚</span> :{" "}
-                  </strong>{" "}
+                  <strong>training</strong>
                   {behaves}
                 </p>
                 <p>
-                  <strong>
-                    Breed <span>🐕</span> :{" "}
-                  </strong>{" "}
-                  {breed}
+                  <strong>Breed</strong> {breed}
                 </p>
                 <p>
-                  <strong>
-                    I like to chill <span>🐾</span> :{" "}
-                  </strong>
+                  <strong>I like to chill</strong>
                   {chill}
                 </p>
                 <p>
-                  <strong>
-                    Energy levels <span>🔋</span> :{" "}
-                  </strong>{" "}
+                  <strong>Energy levels</strong>
                   {energy}
                 </p>
                 <p>
-                  <strong>
-                    Potty training <span>🚽</span> :{" "}
-                  </strong>{" "}
+                  <strong>Potty training</strong>
                   {pottyTraining}
                 </p>
               </div>

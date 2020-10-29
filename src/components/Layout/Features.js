@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 // import { getAllBreeds } from "../../services/breedsService";
 
 const Features = (props) => {
@@ -63,9 +63,7 @@ const Features = (props) => {
                                 energy
        */}
         <div className='field column'>
-          <label className='label'>
-            Energy levels <span>🔋</span>
-          </label>
+          <label className='label'>Energy levels</label>
           <div className='control'>
             <div className='select'>
               <select
@@ -88,9 +86,7 @@ const Features = (props) => {
                                 training
        */}
         <div className='field column'>
-          <label className='label'>
-            Training <span>📚</span>
-          </label>
+          <label className='label'>Training</label>
           <div className='control'>
             <div className='select'>
               <select
@@ -116,9 +112,7 @@ const Features = (props) => {
                                 potty training
        */}
         <div className=' field column'>
-          <label className='label'>
-            Potty training <span>🚽</span>
-          </label>
+          <label className='label'>Potty training</label>
           <div className='control'>
             <div className='select'>
               <select
@@ -141,9 +135,7 @@ const Features = (props) => {
                                 I like to chill
        */}
         <div className='field column'>
-          <label className='label'>
-            I like to chill <span>🐾</span>
-          </label>
+          <label className='label'>I like to chill</label>
           <div className='control'>
             <div className='select'>
               <select
@@ -163,9 +155,7 @@ const Features = (props) => {
         </div>
 
         <div className='field column'>
-          <label className='label'>
-            Breed <span>🐕</span>
-          </label>
+          <label className='label'>Breed</label>
           <div className='control'>
             <input
               className='input'

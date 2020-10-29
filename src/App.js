@@ -37,7 +37,6 @@ class App extends React.Component {
       authenticated: true,
       user,
     });
-    // console.log("this state on authenticate", this.state);
   };
 
   handleLogout = () => {
