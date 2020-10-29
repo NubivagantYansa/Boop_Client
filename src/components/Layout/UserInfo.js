@@ -2,9 +2,17 @@ import React from "react";
 
 const UserInfo = (props) => {
   console.log("get here soem props", props);
-  const { userRole, username, email, password, aboutMe, borough } = props.state;
+  const {
+    userRole,
+    username,
+    email,
+    aboutMe,
+    borough,
+    errorMessage,
+  } = props.state;
   return (
     <>
+      <div> {errorMessage !== "" && errorMessage}</div>
       <div className='field'>
         <label className='label'>I am: </label>
         <div className='control'>

@@ -31,8 +31,11 @@ const Features = (props) => {
   console.log("this props FEATURES", props);
   return (
     <div>
-      {errorMessage !== "" && errorMessage}
-      {userRole === "Dog owner" ? <h1>My ID:</h1> : <h1>My peferences</h1>}
+      <div>{errorMessage !== "" && errorMessage}</div>
+      <div>
+        {userRole === "Dog owner" ? <h1>My ID:</h1> : <h1>My peferences</h1>}
+      </div>
+
       {/* 
                             size
        */}

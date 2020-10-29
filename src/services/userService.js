@@ -37,10 +37,16 @@ export const signup = ({
       features,
     })
     .then((response) => {
-      console.log("new user", response.data);
-      return response.data;
+      return { data: response.data, status: true };
     })
-    .catch((err) => err);
+    .catch((err) => {
+      console.log(err.response);
+      return {
+        errorMessage: err.response?.data.errorMessage,
+        status: false,
+        statusCode: err.response.status,
+      };
+    });
 };
 
 //login
