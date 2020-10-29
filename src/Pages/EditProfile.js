@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import AddImage from "../components/Layout/AddImage";
 import Features from "../components/Layout/Features";
 import Settings from "../components/Layout/Settings";
@@ -168,6 +169,9 @@ export default class EditProfile extends Component {
               </button>
             </form>
           </div>
+        </div>
+        <div>
+          <Link to='/dashBoard'>Back</Link>
         </div>
       </>
     );

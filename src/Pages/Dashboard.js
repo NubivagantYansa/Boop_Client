@@ -89,8 +89,8 @@ class Dashboard extends Component {
               </div>
             </div>
           </section>
-          <div className='column is-3 is-narrow'>
-            <Settings className='column is-3 is-narrow' />
+          <div className='column is-5 is-narrow'>
+            <Settings className='column is-5 is-narrow' />
           </div>
         </div>
       </>

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import Settings from "../components/Layout/Settings";
 import { editPassword } from "../services/userService";
 
@@ -64,6 +65,9 @@ export default class EditPassword extends Component {
             Save
           </button>
         </form>
+        <div>
+          <Link to='/dashBoard'>Back</Link>
+        </div>
       </>
     );
   }

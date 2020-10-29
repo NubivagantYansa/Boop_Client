@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import { deleteProfile } from "../services/userService";
 
 export default class DeleteProfile extends Component {
@@ -20,6 +21,9 @@ export default class DeleteProfile extends Component {
           <form onSubmit={this.handleSubmit}>
             <button className='button is-danger'>Delete</button>
           </form>
+          <div>
+            <Link to='/dashBoard'>Back</Link>
+          </div>
         </div>
       </>
     );

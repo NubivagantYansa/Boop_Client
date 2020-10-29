@@ -23,3 +23,12 @@ export const getProfileDetails = (_id) => {
     })
     .catch((err) => err);
 };
+
+export const sendEmail = (bodyEmail, receiver, sender) => {
+  return service
+    .post(`/comm/send-email/${receiver}`, { bodyEmail, sender })
+    .then((response) => {
+      return console.log("send email", response.data);
+    })
+    .catch((err) => err);
+};

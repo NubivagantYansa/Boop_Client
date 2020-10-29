@@ -32,7 +32,6 @@ export default class Board extends Component {
   };
 
   handleSearch = (value) => {
-    console.log("I am the blooooody value", value);
     const srchResults = this.state.profilesList.filter((profile) => {
       return Object.values(profile).some(
         (values) =>
@@ -108,19 +107,8 @@ export default class Board extends Component {
         isChill &&
         isBreed
       );
-
-      // const isSize = size === ""
-      //const
     });
-    // const profilesToShow = srchResults.filter(
-    //   (profiles) =>
-    //     profiles.username != this.props.user.username &&
-    //     (userRole === null || userRole === profiles.userRole)
-    // );
-    //   if (user)
-    // .filter(
-    //   (profile) => size === " " || size === profile.size
-    // );
+
     return (
       <>
         <h1>Hello this is the Board page</h1>

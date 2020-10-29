@@ -1,21 +1,48 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { getProfileDetails } from "../services/communityService";
+import { getProfileDetails, sendEmail } from "../services/communityService";
 
 export default class ProfileDetails extends Component {
   state = {
     profile: {},
     features: {},
+    expand: false,
+    bodyEmail: "",
   };
 
   componentDidMount() {
     getProfileDetails(this.props.match.params.id)
       .then((profile) => {
-        return this.setState({ profile: profile, features: profile.features });
-      })
+        return this.setState({
+          profile: profile,
+          features: profile.features,
+        });
+      }, console.log(this.props))
       .catch((error) => console.log(error));
   }
 
+  readMore = (e) => {
+    e.preventDefault();
+    this.setState({ expand: !this.state.expand });
+  };
+
+  handleChange = (event) => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value,
+    });
+  };
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    console.log("HELLOOOOO");
+    const sender = this.props.user._id;
+    const receiver = this.state.profile._id;
+    const bodyEmail = this.state.bodyEmail;
+    sendEmail(bodyEmail, receiver, sender)
+      .then((response) => console.log(response))
+      .catch((error) => console.log(error));
+  };
   render() {
     const { username, aboutMe, borough, image } = this.state.profile;
     const {
@@ -71,6 +98,33 @@ export default class ProfileDetails extends Component {
           </div>
           <div>
             <Link to='/'>Back to Board</Link>
+          </div>
+          <div>
+            <a href='#' onClick={this.readMore}>
+              {this.state.expand ? "Read Less" : "Get in touch"}
+            </a>
+          </div>
+          <div>
+            {" "}
+            {this.state.expand && (
+              <form onSubmit={this.handleSubmit}>
+                <div className='field'>
+                  <label className='label'>Write your text here: </label>
+                  <div className='control'>
+                    <textarea
+                      className='textarea'
+                      name='bodyEmail'
+                      value={this.state.bodyEmail}
+                      onChange={this.handleChange}
+                      required
+                      type='text'
+                      placeholder='Hi Jenny! I think you would be a great dogsitter for my Rocco! Feel free to get in touch at email@email.com for a chat. Best, Diana & Rocco'
+                    />
+                  </div>
+                </div>
+                <button>Send email</button>
+              </form>
+            )}
           </div>
         </div>
       </div>
