@@ -1,10 +1,7 @@
 import React, { Component } from "react";
-import { getAllProfiles } from "../services/communityService";
-import Searchbar from "../components/Layout/FiltersCard/Searchbar";
-import ProfilesList from "../components/Layout/ProfilesList";
-import RoleFilter from "../components/Layout/FiltersCard/RoleFilter";
-import Filters from "../components/Layout/FiltersCard/Filters";
-import { isElement } from "react-dom/test-utils";
+import { getAllProfiles } from "../../services/communityService";
+import ProfilesList from "../Layout/ProfilesList";
+import Filters from "../Layout/FiltersCard/FiltersContainer";
 
 export default class Board extends Component {
   state = {
@@ -115,7 +112,7 @@ export default class Board extends Component {
         <div className='box m-3'>
           <Filters
             onFilterRole={this.filterByRole}
-            onHandleSearch={this.handleSearch}
+            handleSearch={this.handleSearch}
             onFilterFeatures={this.filterFeatures}
           />
         </div>

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Settings from "../components/Layout/Settings";
-import { editPassword } from "../services/userService";
+import Settings from "../Layout/Settings";
+import { editPassword } from "../../services/userService";
 
 export default class EditPassword extends Component {
   state = {
@@ -34,7 +34,7 @@ export default class EditPassword extends Component {
       .then((response) => {
         console.log("EDITED password", response);
         this.props.authenticate(response.user);
-        this.props.history.push("/dashBoard");
+        this.props.history.push("/dashboard");
         return response;
       })
       .catch((error) => console.log(error));
@@ -66,7 +66,7 @@ export default class EditPassword extends Component {
           </button>
         </form>
         <div>
-          <Link to='/dashBoard'>Back</Link>
+          <Link to='/dashboard'>Back</Link>
         </div>
       </>
     );

@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import AddImage from "../components/Layout/AddImage";
-import Features from "../components/Layout/Features";
-import Settings from "../components/Layout/Settings";
-import { editProfile } from "../services/userService";
+import AddImage from "../Layout/AddImage";
+import Features from "../Layout/Features";
+import Settings from "../Layout/Settings";
+import UserInfo from "../Layout/UserInfo";
+import { editProfile } from "../../services/userService";
 import "./Dasboard.css";
 
 export default class EditProfile extends Component {
@@ -22,10 +23,6 @@ export default class EditProfile extends Component {
     chill: this.props.user.features.chill,
     errorMessage: "",
   };
-  // componentDidMount = () => {
-  //   console.log("component EDIT PROFILE mounted", this.props);
-  //   console.log("SESSSSSION", localStorage.getItem("accessToken"));
-  // };
 
   handleChange = (event) => {
     const { name, value } = event.target;
@@ -59,7 +56,7 @@ export default class EditProfile extends Component {
     )
       .then((response) => {
         this.props.authenticate(response.user);
-        this.props.history.push("/dashBoard");
+        this.props.history.push("/dashboard");
         return response;
       })
       .catch((error) => console.log(error));
@@ -84,7 +81,7 @@ export default class EditProfile extends Component {
               <AddImage addImage={(image) => this.setState({ image })} />
             </div>
             <form onSubmit={this.handleSubmit}>
-              <div className='field'>
+              {/* <div className='field'>
                 <label className='label'>I am: </label>
                 <div className='control'>
                   <div className='select'>
@@ -158,8 +155,10 @@ export default class EditProfile extends Component {
                     type='text'
                   />
                 </div>
+              </div> */}
+              <div className='box'>
+                <UserInfo handleChange={this.handleChange} state={this.state} />
               </div>
-
               <div className='box'>
                 <Features handleChange={this.handleChange} state={this.state} />
               </div>
@@ -171,7 +170,7 @@ export default class EditProfile extends Component {
           </div>
         </div>
         <div>
-          <Link to='/dashBoard'>Back</Link>
+          <Link to='/dashboard'>Back</Link>
         </div>
       </>
     );

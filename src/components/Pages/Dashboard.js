@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Settings from "../components/Layout/Settings";
+import Settings from "../Layout/Settings";
 import "./Dasboard.css";
 class Dashboard extends Component {
   state = {
@@ -37,9 +37,7 @@ class Dashboard extends Component {
             <div>
               <article className='media'>
                 <div className='media-left'>
-                  <figure className='image is-480x480 m-3'>
-                    {image && <img src={image} />}
-                  </figure>
+                  <figure className=''>{image && <img src={image} />}</figure>
                 </div>
 
                 <div className='media-content mt-5 m-3'>
@@ -47,14 +45,14 @@ class Dashboard extends Component {
                     <strong>Username:</strong> {username}
                   </p>
                   <p>
-                    <strong>email: </strong>
+                    <strong>Email: </strong>
                     {email}
                   </p>
                   <p>
-                    <strong>borough:</strong> {borough}
+                    <strong>Borough:</strong> {borough}
                   </p>
                   <p>
-                    <strong>about:</strong> {aboutMe}
+                    <strong>About:</strong> {aboutMe}
                   </p>
                 </div>
               </article>

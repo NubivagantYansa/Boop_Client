@@ -5,11 +5,11 @@ export default class Searchbar extends Component {
     srchwrd: "",
   };
 
-  handleSearch = (e) => {
+  handleOnChange = (e) => {
     const {
       target: { value },
     } = e;
-    this.props.onHandleSearch(value);
+    this.props.handleSearch(value);
     this.setState({ srchwrd: value });
   };
 
@@ -22,7 +22,7 @@ export default class Searchbar extends Component {
           name='srchwrd'
           placeholder='dog lover'
           value={this.state.srchwrd}
-          onChange={this.handleSearch}
+          onChange={this.handleOnChange}
         />
       </div>
     );

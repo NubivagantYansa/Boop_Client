@@ -81,7 +81,7 @@ class App extends React.Component {
             />
             <PrivateRoute
               exact
-              path='/dashBoard'
+              path='/dashboard'
               authenticated={authenticated}
               authenticate={this.authenticate}
               user={localStorage.getItem("accessToken") ? user : ""}

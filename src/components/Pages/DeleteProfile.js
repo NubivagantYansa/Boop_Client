@@ -22,7 +22,7 @@ export default class DeleteProfile extends Component {
             <button className='button is-danger'>Delete</button>
           </form>
           <div>
-            <Link to='/dashBoard'>Back</Link>
+            <Link to='/dashboard'>Back</Link>
           </div>
         </div>
       </>

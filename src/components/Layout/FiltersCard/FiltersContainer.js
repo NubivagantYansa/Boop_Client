@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import FeaturesFilter from "./FeaturesFilter";
+import FeaturesFilter from "./FeatBorFilter";
 import RoleFilter from "./RoleFilter";
 import Searchbar from "./Searchbar";
 
@@ -14,11 +14,10 @@ export default class Filters extends Component {
   };
 
   render() {
-    // console.log("props filters", this.props);
     return (
       <div className='content'>
         <RoleFilter onFilterRole={this.props.onFilterRole} />
-        <Searchbar onHandleSearch={this.props.onHandleSearch} />
+        <Searchbar handleSearch={this.props.handleSearch} />
         <a href='#' onClick={this.readMore}>
           {this.state.expand ? "Read Less" : "More Filters"}
         </a>

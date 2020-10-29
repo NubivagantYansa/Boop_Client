@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { getProfileDetails, sendEmail } from "../services/communityService";
+import { getProfileDetails, sendEmail } from "../../services/communityService";
 
 export default class ProfileDetails extends Component {
   state = {
