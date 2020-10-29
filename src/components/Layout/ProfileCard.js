@@ -1,15 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-// import "./ProfileCard.css";
 
 class ProfileCard extends Component {
   state = {
     expand: false,
   };
 
-  // componentDidMount = () => {
-  //   console.log("CARDDD", this.props);
-  // };
   readMore = (e) => {
     e.preventDefault();
     this.setState({ expand: !this.state.expand });

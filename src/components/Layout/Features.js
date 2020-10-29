@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { getAllBreeds } from "../../services/breedsService";
-//don't forget conditional rendering for the forms if they are dogsitters or dog owners
+// import { getAllBreeds } from "../../services/breedsService";
 
 const Features = (props) => {
   //I TRIED TO DO GET BREEDS FROM APIs
@@ -39,7 +38,9 @@ const Features = (props) => {
        */}
       <span className='columns is-desktop'>
         <div className='field column'>
-          <label className='label'>Size 📐</label>
+          <label className='label'>
+            Size <span>📐</span>
+          </label>
           <div className='control'>
             <div className='select'>
               <select
@@ -62,7 +63,9 @@ const Features = (props) => {
                                 energy
        */}
         <div className='field column'>
-          <label className='label'>Energy levels 🔋</label>
+          <label className='label'>
+            Energy levels <span>🔋</span>
+          </label>
           <div className='control'>
             <div className='select'>
               <select
@@ -85,7 +88,9 @@ const Features = (props) => {
                                 training
        */}
         <div className='field column'>
-          <label className='label'>Training 📚</label>
+          <label className='label'>
+            Training <span>📚</span>
+          </label>
           <div className='control'>
             <div className='select'>
               <select
@@ -111,7 +116,9 @@ const Features = (props) => {
                                 potty training
        */}
         <div className=' field column'>
-          <label className='label'>Potty training 🚽</label>
+          <label className='label'>
+            Potty training <span>🚽</span>
+          </label>
           <div className='control'>
             <div className='select'>
               <select
@@ -134,7 +141,9 @@ const Features = (props) => {
                                 I like to chill
        */}
         <div className='field column'>
-          <label className='label'>I like to chill 🐾 </label>
+          <label className='label'>
+            I like to chill <span>🐾</span>
+          </label>
           <div className='control'>
             <div className='select'>
               <select
@@ -154,7 +163,9 @@ const Features = (props) => {
         </div>
 
         <div className='field column'>
-          <label className='label'>Breed 🐕 </label>
+          <label className='label'>
+            Breed <span>🐕</span>
+          </label>
           <div className='control'>
             <input
               className='input'

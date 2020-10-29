@@ -63,12 +63,11 @@ export default class EditProfile extends Component {
   };
 
   render() {
-    const { userRole, username, email, borough, aboutMe, image } = this.state;
+    const { username, image } = this.state;
 
     return (
       <>
         <Settings />
-
         <div>
           <h1> Edit {username}'s profile</h1>
         </div>
@@ -81,81 +80,6 @@ export default class EditProfile extends Component {
               <AddImage addImage={(image) => this.setState({ image })} />
             </div>
             <form onSubmit={this.handleSubmit}>
-              {/* <div className='field'>
-                <label className='label'>I am: </label>
-                <div className='control'>
-                  <div className='select'>
-                    <select
-                      name='userRole'
-                      value={userRole}
-                      onChange={this.handleChange}
-                      required
-                    >
-                      <option className='is-unselectable' value='none'>
-                        none
-                      </option>
-                      <option value='Dog owner'>Dog owner</option>
-                      <option value='Dogsitter'>Dogsitter</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-
-              <div className='field'>
-                <label className='label'>Username: </label>
-                <div className='control has-icons-left'>
-                  <input
-                    className='input'
-                    name='username'
-                    value={username}
-                    onChange={this.handleChange}
-                    required
-                    type='text'
-                  />
-                </div>
-              </div>
-
-              <div className='field'>
-                <label className='label'>Email: </label>
-                <div className='control has-icons-left'>
-                  <input
-                    className='input'
-                    name='email'
-                    value={email}
-                    onChange={this.handleChange}
-                    required
-                    type='email'
-                  />
-                </div>
-              </div>
-
-              <div className='field'>
-                <label className='label'>About me: </label>
-                <div className='control'>
-                  <textarea
-                    className='textarea'
-                    name='aboutMe'
-                    value={aboutMe}
-                    onChange={this.handleChange}
-                    required
-                    type='text'
-                  />
-                </div>
-              </div>
-
-              <div className='field'>
-                <label className='label'>Borough: </label>
-                <div className='control'>
-                  <input
-                    className='input'
-                    name='borough'
-                    value={borough}
-                    onChange={this.handleChange}
-                    required
-                    type='text'
-                  />
-                </div>
-              </div> */}
               <div className='box'>
                 <UserInfo handleChange={this.handleChange} state={this.state} />
               </div>
