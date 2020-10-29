@@ -5,16 +5,16 @@ import Navbar from "./components/Layout/Navbar";
 import AnonRoute from "./components/auth/AnonRoute";
 import PrivateRoute from "./components/auth/PrivateRoute";
 import { validateSession, userLogout } from "./services/userService";
-import Dashboard from "./Pages/Dashboard";
-import Home from "./Pages/Home";
-import Login from "./Pages/Login";
-import Signup from "./Pages/Signup";
+import Dashboard from "./components/Pages/Dashboard";
+import Home from "./components/Pages/Home";
+import Login from "./components/Pages/Login";
+import Signup from "./components/Pages/Signup";
 import "bulma/css/bulma.css";
-import EditProfile from "./Pages/EditProfile";
-import DeleteProfile from "./Pages/DeleteProfile";
-import Board from "./Pages/Board";
-import EditPassword from "./Pages/EditPassword";
-import ProfileDetails from "./Pages/ProfileDetails";
+import EditProfile from "./components/Pages/EditProfile";
+import DeleteProfile from "./components/Pages/DeleteProfile";
+import Board from "./components/Pages/Board";
+import EditPassword from "./components/Pages/EditPassword";
+import ProfileDetails from "./components/Pages/ProfileDetails";
 class App extends React.Component {
   state = {
     authenticated: false,

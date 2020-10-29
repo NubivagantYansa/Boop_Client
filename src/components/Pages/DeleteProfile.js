@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { deleteProfile } from "../services/userService";
+import { deleteProfile } from "../../services/userService";
 
 export default class DeleteProfile extends Component {
   componentDidMount = () => {
