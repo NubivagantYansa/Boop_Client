@@ -25,14 +25,18 @@ class Signup extends React.Component {
 
   handleChange = (event) => {
     const { name, value } = event.target;
+    if (name === "breed") return;
     this.setState({
       [name]: value,
     });
   };
 
+  handleChangeBreedOnly = (breed) => {
+    this.setState({ breed });
+  };
+
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log("state", this.state);
     signup({
       userRole: this.state.userRole,
       username: this.state.username,
@@ -88,7 +92,11 @@ class Signup extends React.Component {
               />
             </div>
           </div>
-          <Features handleChange={this.handleChange} state={this.state} />
+          <Features
+            handleChange={this.handleChange}
+            state={this.state}
+            handleChangeBreedOnly={this.handleChangeBreedOnly}
+          />
           <button className='button is-link' type='submit'>
             Sign up
           </button>

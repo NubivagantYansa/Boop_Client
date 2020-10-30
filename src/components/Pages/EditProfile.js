@@ -26,9 +26,14 @@ export default class EditProfile extends Component {
 
   handleChange = (event) => {
     const { name, value } = event.target;
+    if (name === "breed") return;
     this.setState({
       [name]: value,
     });
+  };
+
+  handleChangeBreedOnly = (breed) => {
+    this.setState({ breed });
   };
 
   handleSubmit = (event) => {
@@ -84,7 +89,11 @@ export default class EditProfile extends Component {
                 <UserInfo handleChange={this.handleChange} state={this.state} />
               </div>
               <div className='box'>
-                <Features handleChange={this.handleChange} state={this.state} />
+                <Features
+                  handleChange={this.handleChange}
+                  state={this.state}
+                  handleChangeBreedOnly={this.handleChangeBreedOnly}
+                />
               </div>
 
               <button className='button is-link' type='submit'>

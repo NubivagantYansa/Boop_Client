@@ -75,23 +75,23 @@ export default class ProfileDetails extends Component {
             <div>
               <div className='box'>
                 <p>
-                  <strong>Size 📐 : </strong> {size}
+                  <strong>Size : </strong> {size}
                 </p>
                 <p>
-                  <strong>Training 📚 : </strong> {behaves}
+                  <strong>Training : </strong> {behaves}
                 </p>
                 <p>
-                  <strong>Breed 🐕 : </strong> {breed}
+                  <strong>Breed : </strong> {breed}
                 </p>
                 <p>
-                  <strong>I like to chill 🐾 : </strong>
+                  <strong>I like to chill : </strong>
                   {chill}
                 </p>
                 <p>
-                  <strong>Energy levels 🔋 : </strong> {energy}
+                  <strong>Energy levels : </strong> {energy}
                 </p>
                 <p>
-                  <strong>Potty training 🚽 : </strong> {pottyTraining}
+                  <strong>Potty training : </strong> {pottyTraining}
                 </p>
               </div>
             </div>

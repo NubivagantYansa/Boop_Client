@@ -6,11 +6,7 @@ class Dashboard extends Component {
     expand: false,
   };
 
-  componentDidMount = () => {
-    console.log("DASH", this.props);
-  };
   render() {
-    console.log("dashboard", this.props);
     const { username, email, borough, aboutMe, image } = this.props.user;
     const {
       userRole,
@@ -66,28 +62,26 @@ class Dashboard extends Component {
                   <h1>My peferences</h1>
                 )}
                 <p>
-                  <strong>
-                    Size <span>📐</span> :
-                  </strong>
+                  <strong>Size : </strong>
                   {size}
                 </p>
                 <p>
-                  <strong>training</strong>
+                  <strong>Training : </strong>
                   {behaves}
                 </p>
                 <p>
-                  <strong>Breed</strong> {breed}
+                  <strong>Breed : </strong> {breed}
                 </p>
                 <p>
-                  <strong>I like to chill</strong>
+                  <strong>I like to chill : </strong>
                   {chill}
                 </p>
                 <p>
-                  <strong>Energy levels</strong>
+                  <strong>Energy levels : </strong>
                   {energy}
                 </p>
                 <p>
-                  <strong>Potty training</strong>
+                  <strong>Potty training : </strong>
                   {pottyTraining}
                 </p>
               </div>

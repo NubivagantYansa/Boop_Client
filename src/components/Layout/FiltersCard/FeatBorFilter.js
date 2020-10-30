@@ -18,7 +18,7 @@ export default class FeaturesFilter extends Component {
         [name]: value,
       },
       () => {
-        this.props.onFilterFeatures(
+        this.props.filterFeatures(
           this.state.size,
           this.state.energy,
           this.state.behaves,
@@ -42,7 +42,7 @@ export default class FeaturesFilter extends Component {
        */}
         <span className='columns is-desktop'>
           <div className='field column'>
-            <label className='label'>Size 📐</label>
+            <label className='label'>Size </label>
             <div className='control'>
               <div className='select'>
                 <select name='size' value={size} onChange={this.handleChange}>
@@ -60,7 +60,7 @@ export default class FeaturesFilter extends Component {
                                 energy
        */}
           <div className='field column'>
-            <label className='label'>Energy levels 🔋</label>
+            <label className='label'>Energy levels </label>
             <div className='control'>
               <div className='select'>
                 <select
@@ -82,7 +82,7 @@ export default class FeaturesFilter extends Component {
                                 training
        */}
           <div className='field column'>
-            <label className='label'>Training 📚</label>
+            <label className='label'>Training </label>
             <div className='control'>
               <div className='select'>
                 <select
@@ -107,7 +107,7 @@ export default class FeaturesFilter extends Component {
                                 potty training
        */}
           <div className=' field column'>
-            <label className='label'>Potty training 🚽</label>
+            <label className='label'>Potty training </label>
             <div className='control'>
               <div className='select'>
                 <select
@@ -130,7 +130,7 @@ export default class FeaturesFilter extends Component {
                                 I like to chill
        */}
           <div className='field column'>
-            <label className='label'>I like to chill 🐾 </label>
+            <label className='label'>I like to chill </label>
             <div className='control'>
               <div className='select'>
                 <select name='chill' value={chill} onChange={this.handleChange}>
@@ -145,7 +145,7 @@ export default class FeaturesFilter extends Component {
           </div>
 
           <div className='field column'>
-            <label className='label'>Breed 🐕 </label>
+            <label className='label'>Breed </label>
             <div className='control'>
               <input
                 className='input'

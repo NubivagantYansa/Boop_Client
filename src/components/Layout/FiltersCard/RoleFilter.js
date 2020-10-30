@@ -1,6 +1,6 @@
 import React from "react";
 
-const RoleFilter = ({ onFilterRole }) => {
+const RoleFilter = ({ filterRole }) => {
   return (
     <div>
       <div>
@@ -10,7 +10,7 @@ const RoleFilter = ({ onFilterRole }) => {
               className='button is-info'
               key={role}
               onClick={() => {
-                onFilterRole(role);
+                filterRole(role);
               }}
             >
               {role ? `${role}` : "All"}

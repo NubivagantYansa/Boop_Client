@@ -13,6 +13,19 @@ export default class Searchbar extends Component {
     this.setState({ srchwrd: value });
   };
 
+  handleSearch = (value) => {
+    const srchResults = this.state.profilesList.filter((profile) => {
+      return Object.values(profile).some(
+        (values) =>
+          console.log(values) ||
+          values.toString().toLowerCase().includes(value.toLowerCase())
+      );
+    });
+    this.setState({
+      srchResults: srchResults,
+    });
+  };
+
   render() {
     return (
       <div className='m-3'>

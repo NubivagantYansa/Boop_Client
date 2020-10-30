@@ -92,7 +92,6 @@ export const editProfile = (editInfo, token) => {
   return service
     .post("user/edit", editInfo, { headers })
     .then((editResp) => {
-      console.log("EDITED USER", editResp);
       return editResp.data;
     })
     .catch((error) => console.log(error));

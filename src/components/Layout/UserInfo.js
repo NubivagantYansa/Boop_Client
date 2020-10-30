@@ -1,7 +1,6 @@
 import React from "react";
 
 const UserInfo = (props) => {
-  console.log("get here soem props", props);
   const { userRole, username, email, aboutMe, borough } = props.state;
   return (
     <>

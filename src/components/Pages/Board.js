@@ -1,12 +1,15 @@
 import React, { Component } from "react";
 import { getAllProfiles } from "../../services/communityService";
 import ProfilesList from "../Layout/ProfilesList";
-import Filters from "../Layout/FiltersCard/FiltersContainer";
+import RoleFilter from "../Layout/FiltersCard/RoleFilter";
+import Searchbar from "../Layout/FiltersCard/Searchbar";
+import FeatBorFilter from "../Layout/FiltersCard/FeatBorFilter";
 
 export default class Board extends Component {
   state = {
     profilesList: [],
     srchResults: [],
+    expand: false,
     userRole: null,
     boroughSelection: null,
     size: null,
@@ -27,7 +30,7 @@ export default class Board extends Component {
       })
       .catch((error) => console.log(error));
   };
-
+  //handle the search bar
   handleSearch = (value) => {
     const srchResults = this.state.profilesList.filter((profile) => {
       return Object.values(profile).some(
@@ -40,9 +43,10 @@ export default class Board extends Component {
       srchResults: srchResults,
     });
   };
+  //filters by user role
+  filterRole = (userRole) => this.setState({ userRole });
 
-  filterByRole = (userRole) => this.setState({ userRole });
-
+  //filters by dog features
   filterFeatures = (size, energy, behaves, pottyTraining, chill, breed) => {
     this.setState({
       size,
@@ -51,6 +55,25 @@ export default class Board extends Component {
       pottyTraining,
       chill,
       breed,
+    });
+  };
+
+  //expands filters card
+  readMore = (e) => {
+    e.preventDefault();
+    this.setState({ expand: !this.state.expand });
+  };
+
+  clearFilters = () => {
+    return this.setState({
+      userRole: null,
+      boroughSelection: null,
+      size: null,
+      energy: null,
+      behaves: null,
+      pottyTraining: null,
+      chill: null,
+      breed: null,
     });
   };
 
@@ -93,7 +116,7 @@ export default class Board extends Component {
       const isBreed =
         !breed ||
         profiles.features.breed.toLowerCase().trim() ===
-          chill.toLowerCase().trim();
+          breed.toLowerCase().trim();
       return (
         isNotCurrUser &&
         isUserRole &&
@@ -110,11 +133,17 @@ export default class Board extends Component {
       <>
         <h1>Hello this is the Board page</h1>
         <div className='box m-3'>
-          <Filters
-            onFilterRole={this.filterByRole}
-            handleSearch={this.handleSearch}
-            onFilterFeatures={this.filterFeatures}
-          />
+          <RoleFilter filterRole={this.filterRole} />
+          <Searchbar handleSearch={this.handleSearch} />
+          <a href='#' onClick={this.readMore}>
+            {this.state.expand ? "Read Less" : "More Filters"}
+          </a>
+          <div className='content mt-3'>
+            {this.state.expand && (
+              <FeatBorFilter filterFeatures={this.filterFeatures} />
+            )}
+            <button onClick={this.clearFilters}>Clear Filters</button>
+          </div>
         </div>
         <div>
           <div className='columns is-multiline p-3'>
