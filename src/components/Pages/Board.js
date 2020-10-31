@@ -64,19 +64,6 @@ export default class Board extends Component {
     this.setState({ expand: !this.state.expand });
   };
 
-  clearFilters = () => {
-    return this.setState({
-      userRole: null,
-      boroughSelection: null,
-      size: null,
-      energy: null,
-      behaves: null,
-      pottyTraining: null,
-      chill: null,
-      breed: null,
-    });
-  };
-
   render() {
     const {
       srchResults,
@@ -142,7 +129,6 @@ export default class Board extends Component {
             {this.state.expand && (
               <FeatBorFilter filterFeatures={this.filterFeatures} />
             )}
-            <button onClick={this.clearFilters}>Clear Filters</button>
           </div>
         </div>
         <div>
