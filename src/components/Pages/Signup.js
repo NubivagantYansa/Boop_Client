@@ -82,7 +82,7 @@ class Signup extends React.Component {
 
   render() {
     console.log("MYT PROPS, MY PROPS, MY ", this.props);
-    if (!this.state.itWorked) {
+    if (this.state.itWorked) {
       return <Redirect to='/' />;
     }
     const { password, image, errorMessage } = this.state;
