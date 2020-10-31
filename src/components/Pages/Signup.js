@@ -59,6 +59,14 @@ class Signup extends React.Component {
           this.setState({ errorMessage: response.errorMessage });
           return;
         }
+        console.log("HERE it successes ");
+        if (response.accessToken) {
+          localStorage.setItem("accessToken", response.accessToken);
+          this.props.authenticate(response.user);
+          this.props.history.push("/dashboard");
+          return;
+        }
+        return this.setState({ errorMessage: response.errorMessage });
         return response.accessToken
           ? (localStorage.setItem("accessToken", response.accessToken),
             this.props.authenticate(response.user),
