@@ -56,7 +56,7 @@ class Signup extends React.Component {
         chill: this.state.chill,
       },
     })
-      .then((response) => {
+      .then(async (response) => {
         if (!response.status) {
           this.setState({ errorMessage: response.errorMessage });
           return;
@@ -64,7 +64,7 @@ class Signup extends React.Component {
         console.log("HERE it successes ");
         if (response.accessToken) {
           localStorage.setItem("accessToken", response.accessToken);
-          this.props.authenticate(response.user);
+          await this.props.authenticate(response.user);
           this.setState({ itWorked: true });
           return;
         }
@@ -89,14 +89,14 @@ class Signup extends React.Component {
     return (
       <div>
         {errorMessage !== "" && errorMessage}
-        <button
+        {/* <button
           style={{ height: "100vh", width: "100vw", backgroundColor: "BLUE" }}
           onClick={() => {
             this.props.history.push("/");
           }}
         >
           CLICK ME EHEREOHGKDJHFSJKGHFJKSGHSJKHGKJSHFG
-        </button>
+        </button> */}
         {image && <img src={image} />}
         <AddImage addImage={(image) => this.setState({ image })} />
         <form onSubmit={this.handleSubmit}>

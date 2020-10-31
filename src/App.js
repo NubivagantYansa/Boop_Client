@@ -33,9 +33,14 @@ class App extends React.Component {
   };
 
   authenticate = (user) => {
-    this.setState({
-      authenticated: true,
-      user,
+    return new Promise((res) => {
+      this.setState(
+        {
+          authenticated: true,
+          user,
+        },
+        res
+      );
     });
   };
 
