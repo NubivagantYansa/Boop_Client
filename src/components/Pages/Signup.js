@@ -89,6 +89,14 @@ class Signup extends React.Component {
     return (
       <div>
         {errorMessage !== "" && errorMessage}
+        <button
+          style={{ height: "100vh", width: "100vw", backgroundColor: "BLUE" }}
+          onCLick={() => {
+            this.props.history.push("/");
+          }}
+        >
+          CLICK ME EHEREOHGKDJHFSJKGHFJKSGHSJKHGKJSHFG
+        </button>
         {image && <img src={image} />}
         <AddImage addImage={(image) => this.setState({ image })} />
         <form onSubmit={this.handleSubmit}>
