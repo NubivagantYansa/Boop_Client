@@ -57,6 +57,7 @@ class Signup extends React.Component {
       },
     })
       .then(async (response) => {
+        console.log(response);
         if (!response.status) {
           this.setState({ errorMessage: response.errorMessage });
           return;
