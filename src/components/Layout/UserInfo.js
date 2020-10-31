@@ -4,6 +4,9 @@ const UserInfo = (props) => {
   const { userRole, username, email, aboutMe, borough } = props.state;
   return (
     <>
+      {/* 
+                              Role
+      */}
       <div className='field'>
         <label className='label'>I am: </label>
         <div className='control'>
@@ -23,6 +26,9 @@ const UserInfo = (props) => {
           </div>
         </div>
       </div>
+      {/* 
+                              Username
+      */}
       <div className='field'>
         <label className='label'>Username: </label>
         <div className='control has-icons-left'>
@@ -36,6 +42,9 @@ const UserInfo = (props) => {
           />
         </div>
       </div>
+      {/* 
+                              Email
+      */}
       <div className='field'>
         <label className='label'>Email: </label>
         <div className='control has-icons-left'>
@@ -49,19 +58,9 @@ const UserInfo = (props) => {
           />
         </div>
       </div>
-      {/* <div className='field'>
-        <label className='label'>Password: </label>
-        <div className='control'>
-          <input
-            className='input'
-            name='password'
-            type='password'
-            value={password}
-            onChange={props.handleChange}
-            required
-          />
-        </div>
-      </div> */}
+      {/* 
+                              About me
+      */}
       <div className='field'>
         <label className='label'>About me: </label>
         <div className='control'>
@@ -75,6 +74,9 @@ const UserInfo = (props) => {
           />
         </div>
       </div>
+      {/* 
+                              Borough
+      */}
       <div className='field'>
         <label className='label'>Borough: </label>
         <div className='control'>

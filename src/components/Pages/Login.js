@@ -1,7 +1,17 @@
 import React from "react";
 import { login } from "../../services/userService";
-
+// import useAuth from "../hooks/useAuth";
 class Login extends React.Component {
+  // const [state, errorMessage, handleChange, handleSubmit] = useAuth(
+  //   {
+  //     email: "",
+  //   password: "",
+  //   errorMessage: "",
+  //   },
+  //   "login",
+  //   props
+  // );
+
   state = {
     email: "",
     password: "",
@@ -18,7 +28,6 @@ class Login extends React.Component {
   handleSubmit = (event) => {
     event.preventDefault();
     login({
-      username: this.state.username,
       email: this.state.email,
       password: this.state.password,
     })
@@ -31,7 +40,7 @@ class Login extends React.Component {
         return response.data.accessToken
           ? (localStorage.setItem("accessToken", response.data.accessToken),
             this.props.authenticate(response.data.user),
-            this.props.history.push("/dashboard"))
+            this.props.history.push("/board"))
           : this.setState({
               errorMessage: response.data.errorMessage,
             });
