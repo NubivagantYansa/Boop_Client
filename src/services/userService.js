@@ -105,7 +105,6 @@ export const editPassword = (editedPassword, token) => {
   return service
     .post("user/edit-password", editedPassword, { headers })
     .then((response) => {
-      console.log("EDITED password", response);
       return response.data;
     })
     .catch((error) => console.log(error));

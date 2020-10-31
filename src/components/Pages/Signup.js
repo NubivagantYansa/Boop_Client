@@ -3,7 +3,6 @@ import AddImage from "../Layout/AddImage";
 import Features from "../Layout/Features";
 import UserInfo from "../Layout/UserInfo";
 import { signup } from "../../services/userService";
-import { Redirect } from "react-router-dom";
 
 class Signup extends React.Component {
   state = {
@@ -22,7 +21,6 @@ class Signup extends React.Component {
     pottyTraining: "",
     chill: "",
     errorMessage: "",
-    itWorked: false,
   };
 
   handleChange = (event) => {
@@ -56,23 +54,11 @@ class Signup extends React.Component {
         chill: this.state.chill,
       },
     })
-      .then(async (response) => {
-        console.log(response);
+      .then((response) => {
         if (!response.status) {
           this.setState({ errorMessage: response.errorMessage });
           return;
         }
-        console.log("HERE it successes ");
-        if (response.accessToken) {
-          localStorage.setItem("accessToken", response.accessToken);
-          await this.props.authenticate(response.user);
-          console.log("BEFORE UPDATING OUR THINGY", this.state);
-          this.setState({ itWorked: true }, () => {
-            console.log("ANY CHANGES?", this.state);
-          });
-          return;
-        }
-        return this.setState({ errorMessage: response.errorMessage });
         return response.accessToken
           ? (localStorage.setItem("accessToken", response.accessToken),
             this.props.authenticate(response.user),
@@ -85,23 +71,10 @@ class Signup extends React.Component {
   };
 
   render() {
-    console.log("MYT PROPS, MY PROPS, MY ", this.props);
-    if (this.state.itWorked) {
-      console.log("REACHING HERE? PLEASE DO TELL ME");
-      return <Redirect to='/' />;
-    }
     const { password, image, errorMessage } = this.state;
     return (
       <div>
         {errorMessage !== "" && errorMessage}
-        {/* <button
-          style={{ height: "100vh", width: "100vw", backgroundColor: "BLUE" }}
-          onClick={() => {
-            this.props.history.push("/");
-          }}
-        >
-          CLICK ME EHEREOHGKDJHFSJKGHFJKSGHSJKHGKJSHFG
-        </button> */}
         {image && <img src={image} />}
         <AddImage addImage={(image) => this.setState({ image })} />
         <form onSubmit={this.handleSubmit}>
