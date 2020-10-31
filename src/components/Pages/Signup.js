@@ -3,6 +3,7 @@ import AddImage from "../Layout/AddImage";
 import Features from "../Layout/Features";
 import UserInfo from "../Layout/UserInfo";
 import { signup } from "../../services/userService";
+import { Redirect } from "react-router-dom";
 
 class Signup extends React.Component {
   state = {
@@ -21,6 +22,7 @@ class Signup extends React.Component {
     pottyTraining: "",
     chill: "",
     errorMessage: "",
+    itWorked: false,
   };
 
   handleChange = (event) => {
@@ -63,7 +65,7 @@ class Signup extends React.Component {
         if (response.accessToken) {
           localStorage.setItem("accessToken", response.accessToken);
           this.props.authenticate(response.user);
-          this.props.history.push("/board");
+          this.setState({ itWorked: true });
           return;
         }
         return this.setState({ errorMessage: response.errorMessage });
@@ -80,6 +82,9 @@ class Signup extends React.Component {
 
   render() {
     console.log("MYT PROPS, MY PROPS, MY ", this.props);
+    if (this.state.itWorked) {
+      return <Redirect to='/' />;
+    }
     const { password, image, errorMessage } = this.state;
     return (
       <div>
