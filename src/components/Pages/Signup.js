@@ -65,7 +65,10 @@ class Signup extends React.Component {
         if (response.accessToken) {
           localStorage.setItem("accessToken", response.accessToken);
           await this.props.authenticate(response.user);
-          this.setState({ itWorked: true });
+          console.log("BEFORE UPDATING OUR THINGY", this.state);
+          this.setState({ itWorked: true }, () => {
+            console.log("ANY CHANGES?", this.state);
+          });
           return;
         }
         return this.setState({ errorMessage: response.errorMessage });
@@ -83,6 +86,7 @@ class Signup extends React.Component {
   render() {
     console.log("MYT PROPS, MY PROPS, MY ", this.props);
     if (this.state.itWorked) {
+      console.log("REACHING HERE? PLEASE DO TELL ME");
       return <Redirect to='/' />;
     }
     const { password, image, errorMessage } = this.state;
