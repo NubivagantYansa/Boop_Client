@@ -1,6 +1,5 @@
 import React from "react";
 import AddImage from "../Layout/AddImage";
-// import Features from "../Layout/Features";
 import UserInfo from "../Layout/UserInfo";
 import { signup } from "../../services/userService";
 import FeaturesInfo from "../Layout/FeaturesInfo";
@@ -92,7 +91,6 @@ class Signup extends React.Component {
           <FeaturesInfo
             handleChangeFeatures={this.handleChangeFeatures}
             state={this.state}
-            // handleChangeBreedOnly={this.handleChangeBreedOnly}
           />
 
           <button className='button is-link' type='submit'>

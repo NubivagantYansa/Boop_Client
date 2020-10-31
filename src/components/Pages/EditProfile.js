@@ -6,6 +6,7 @@ import Settings from "../Layout/Settings";
 import UserInfo from "../Layout/UserInfo";
 import { editProfile } from "../../services/userService";
 import "./Dasboard.css";
+import FeaturesInfo from "../Layout/FeaturesInfo";
 
 export default class EditProfile extends Component {
   state = {
@@ -15,6 +16,7 @@ export default class EditProfile extends Component {
     borough: this.props.user.borough,
     aboutMe: this.props.user.aboutMe,
     image: this.props.user.image,
+    features: this.state.features,
     breed: this.props.user.features.breed,
     size: this.props.user.features.size,
     energy: this.props.user.features.energy,
@@ -32,8 +34,12 @@ export default class EditProfile extends Component {
     });
   };
 
-  handleChangeBreedOnly = (breed) => {
-    this.setState({ breed });
+  // handleChangeBreedOnly = (breed) => {
+  //   this.setState({ breed });
+  // };
+  handleChangeFeatures = (features) => {
+    console.log("features here prelogin", features);
+    this.setState({ features });
   };
 
   handleSubmit = (event) => {
@@ -48,14 +54,13 @@ export default class EditProfile extends Component {
         aboutMe: this.state.aboutMe,
         borough: this.state.borough,
         image: this.state.image,
-        features: {
-          breed: this.state.breed,
-          size: this.state.size,
-          energy: this.state.energy,
-          behaves: this.state.behaves,
-          pottyTraining: this.state.pottyTraining,
-          chill: this.state.chill,
-        },
+        features: this.state.features,
+        // breed: this.state.breed,
+        // size: this.state.size,
+        // energy: this.state.energy,
+        // behaves: this.state.behaves,
+        // pottyTraining: this.state.pottyTraining,
+        // chill: this.state.chill,
       },
       accessToken
     )
@@ -89,6 +94,10 @@ export default class EditProfile extends Component {
                 <UserInfo handleChange={this.handleChange} state={this.state} />
               </div>
               <div className='box'>
+                {/* <FeaturesInfo
+                  handleChangeFeatures={this.handleChangeFeatures}
+                  state={this.state}
+                /> */}
                 <Features
                   handleChange={this.handleChange}
                   state={this.state}

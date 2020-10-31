@@ -36,7 +36,10 @@ export default class FeaturesInfo extends Component {
       {
         [name]: value,
       },
-      () => this.addFeatures()
+      () => {
+        this.handleSearchBreed(value);
+        this.addFeatures();
+      }
     );
   };
 
@@ -64,6 +67,10 @@ export default class FeaturesInfo extends Component {
     this.setState({ results: srchBreedResults });
   };
 
+  saveBreedValue = (value) => {
+    this.setState({ results: value });
+  };
+
   render() {
     const { userRole } = this.props.state;
     const { breed, size, energy, behaves, pottyTraining, chill } = this.state;
@@ -89,7 +96,10 @@ export default class FeaturesInfo extends Component {
             />
             <Suggestions
               results={this.state.results}
-              saveValue={this.handleChangeFeat}
+              saveValue={this.saveBreedValue}
+              acceptedBreed={(breed) => {
+                this.setState({ breed, results: [] });
+              }}
             />
           </div>
         </div>
