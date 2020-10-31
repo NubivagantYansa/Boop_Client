@@ -91,7 +91,7 @@ class Signup extends React.Component {
         {errorMessage !== "" && errorMessage}
         <button
           style={{ height: "100vh", width: "100vw", backgroundColor: "BLUE" }}
-          onCLick={() => {
+          onClick={() => {
             this.props.history.push("/");
           }}
         >
