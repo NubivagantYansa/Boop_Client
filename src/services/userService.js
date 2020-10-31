@@ -37,7 +37,7 @@ export const signup = ({
       features,
     })
     .then((response) => {
-      return { data: response.data, status: true };
+      return { ...response.data, status: true };
     })
     .catch((err) => {
       console.log(err.response);
