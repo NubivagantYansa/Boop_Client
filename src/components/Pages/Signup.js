@@ -63,7 +63,7 @@ class Signup extends React.Component {
         if (response.accessToken) {
           localStorage.setItem("accessToken", response.accessToken);
           this.props.authenticate(response.user);
-          this.props.history.push("/dashboard");
+          this.props.history.push("/board");
           return;
         }
         return this.setState({ errorMessage: response.errorMessage });
@@ -79,6 +79,7 @@ class Signup extends React.Component {
   };
 
   render() {
+    console.log("MYT PROPS, MY PROPS, MY ", this.props);
     const { password, image, errorMessage } = this.state;
     return (
       <div>
