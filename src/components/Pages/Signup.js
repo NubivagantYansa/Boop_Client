@@ -1,12 +1,12 @@
 import React from "react";
 import AddImage from "../Layout/AddImage";
-import Features from "../Layout/Features";
+// import Features from "../Layout/Features";
 import UserInfo from "../Layout/UserInfo";
 import { signup } from "../../services/userService";
+import FeaturesInfo from "../Layout/FeaturesInfo";
 
 class Signup extends React.Component {
   state = {
-    boroughList: [],
     userRole: "",
     username: "",
     email: "",
@@ -14,12 +14,7 @@ class Signup extends React.Component {
     image: "",
     aboutMe: "",
     borough: "",
-    breed: "",
-    size: "",
-    energy: "",
-    behaves: "",
-    pottyTraining: "",
-    chill: "",
+    features: {},
     errorMessage: "",
   };
 
@@ -31,13 +26,15 @@ class Signup extends React.Component {
     });
   };
 
-  handleChangeBreedOnly = (breed) => {
-    this.setState({ breed });
+  handleChangeFeatures = (features) => {
+    console.log("features here prelogin", features);
+    this.setState({ features });
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
-    signup({
+    return signup({
+      features: this.state.features,
       userRole: this.state.userRole,
       username: this.state.username,
       email: this.state.email,
@@ -45,14 +42,6 @@ class Signup extends React.Component {
       aboutMe: this.state.aboutMe,
       borough: this.state.borough,
       image: this.state.image,
-      features: {
-        breed: this.state.breed,
-        size: this.state.size,
-        energy: this.state.energy,
-        behaves: this.state.behaves,
-        pottyTraining: this.state.pottyTraining,
-        chill: this.state.chill,
-      },
     })
       .then((response) => {
         if (!response.status) {
@@ -62,7 +51,7 @@ class Signup extends React.Component {
         return response.accessToken
           ? (localStorage.setItem("accessToken", response.accessToken),
             this.props.authenticate(response.user),
-            this.props.history.push("/dashboard"))
+            this.props.history.push("/board"))
           : this.setState({
               errorMessage: response.errorMessage,
             });
@@ -75,10 +64,17 @@ class Signup extends React.Component {
     return (
       <div>
         {errorMessage !== "" && errorMessage}
+        {/* 
+                            image
+       */}
         {image && <img src={image} />}
         <AddImage addImage={(image) => this.setState({ image })} />
+        {/* 
+                            signupform
+       */}
         <form onSubmit={this.handleSubmit}>
           <UserInfo handleChange={this.handleChange} state={this.state} />
+
           <div className='field'>
             <label className='label'>Password: </label>
             <div className='control'>
@@ -92,11 +88,13 @@ class Signup extends React.Component {
               />
             </div>
           </div>
-          <Features
-            handleChange={this.handleChange}
+
+          <FeaturesInfo
+            handleChangeFeatures={this.handleChangeFeatures}
             state={this.state}
-            handleChangeBreedOnly={this.handleChangeBreedOnly}
+            // handleChangeBreedOnly={this.handleChangeBreedOnly}
           />
+
           <button className='button is-link' type='submit'>
             Sign up
           </button>
