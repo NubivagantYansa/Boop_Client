@@ -3,7 +3,7 @@ import React, { Children } from "react";
 const Suggestions = (props) => {
   if (props.results) {
     const options = props.results.map((result, idx) => (
-      <li onClick={() => props.acceptedBreed(result)} key={idx}>
+      <li onClick={() => props.selectedBreed(result)} key={idx}>
         {result}
       </li>
     ));

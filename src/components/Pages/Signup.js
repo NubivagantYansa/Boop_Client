@@ -19,28 +19,27 @@ class Signup extends React.Component {
 
   handleChange = (event) => {
     const { name, value } = event.target;
-    if (name === "breed") return;
+    // if (name === "breed") return;
     this.setState({
       [name]: value,
     });
   };
 
   handleChangeFeatures = (features) => {
-    console.log("features here prelogin", features);
     this.setState({ features });
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
     return signup({
-      features: this.state.features,
       userRole: this.state.userRole,
       username: this.state.username,
       email: this.state.email,
       password: this.state.password,
-      aboutMe: this.state.aboutMe,
       borough: this.state.borough,
+      aboutMe: this.state.aboutMe,
       image: this.state.image,
+      features: this.state.features,
     })
       .then((response) => {
         if (!response.status) {
@@ -62,14 +61,13 @@ class Signup extends React.Component {
     const { password, image, errorMessage } = this.state;
     return (
       <div>
-        {errorMessage !== "" && errorMessage}
         {/* 
                             image
        */}
-        {image && <img src={image} />}
+        {image && <img className='image' src={image} />}
         <AddImage addImage={(image) => this.setState({ image })} />
         {/* 
-                            signupform
+                            signup form
        */}
         <form onSubmit={this.handleSubmit}>
           <UserInfo handleChange={this.handleChange} state={this.state} />
@@ -93,6 +91,7 @@ class Signup extends React.Component {
             state={this.state}
           />
 
+          {errorMessage !== "" && errorMessage}
           <button className='button is-link' type='submit'>
             Sign up
           </button>

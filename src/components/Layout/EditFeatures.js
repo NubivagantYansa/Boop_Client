@@ -4,12 +4,12 @@ import Suggestions from "./Suggestions";
 
 export default class FeaturesInfo extends Component {
   state = {
-    breed: "",
-    size: "",
-    energy: "",
-    behaves: "",
-    pottyTraining: "",
-    chill: "",
+    breed: this.props.user.features.breed,
+    size: this.props.user.features.size,
+    energy: this.props.user.features.energy,
+    behaves: this.props.user.features.behaves,
+    pottyTraining: this.props.user.features.pottyTraining,
+    chill: this.props.user.features.chill,
     features: {},
     errorMessage: "",
     breedsList: [],
@@ -18,7 +18,6 @@ export default class FeaturesInfo extends Component {
 
   componentDidMount() {
     this.fetchData();
-    console.log("ZZZZ", this.props);
   }
 
   fetchData = () => {
@@ -38,7 +37,9 @@ export default class FeaturesInfo extends Component {
         [name]: value,
       },
       () => {
-        this.handleSearchBreed(value);
+        if (name === "breed") {
+          return this.handleSearchBreed(value);
+        }
         this.addFeatures();
       }
     );
@@ -57,7 +58,10 @@ export default class FeaturesInfo extends Component {
           chill,
         },
       },
-      () => this.props.handleChangeFeatures(this.state.features)
+      () => {
+        console.log("uffaaaaaaaaa", this.state.features);
+        this.props.handleChangeFeatures(this.state.features);
+      }
     );
   };
 
@@ -68,12 +72,12 @@ export default class FeaturesInfo extends Component {
     this.setState({ results: srchBreedResults });
   };
 
-  saveBreedValue = (value) => {
-    this.setState({ results: value });
-  };
+  //   saveBreedValue = (value) => {
+  //     this.setState({ results: value });
+  //   };
 
   render() {
-    const { userRole } = this.props.state;
+    const { userRole } = this.props.user;
     const { breed, size, energy, behaves, pottyTraining, chill } = this.state;
     return (
       <div>
@@ -97,7 +101,7 @@ export default class FeaturesInfo extends Component {
             />
             <Suggestions
               results={this.state.results}
-              saveValue={this.saveBreedValue}
+              //   saveValue={this.saveBreedValue}
               selectedBreed={(breed) => {
                 this.setState({ breed, results: [] });
               }}

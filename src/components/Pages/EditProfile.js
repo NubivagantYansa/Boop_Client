@@ -6,26 +6,24 @@ import Settings from "../Layout/Settings";
 import UserInfo from "../Layout/UserInfo";
 import { editProfile } from "../../services/userService";
 import "./Dasboard.css";
-import FeaturesInfo from "../Layout/FeaturesInfo";
+import EditFeatures from "../Layout/EditFeatures";
 
 export default class EditProfile extends Component {
   state = {
+    user: this.props.user,
     userRole: this.props.user.userRole,
     username: this.props.user.username,
     email: this.props.user.email,
     borough: this.props.user.borough,
     aboutMe: this.props.user.aboutMe,
     image: this.props.user.image,
-    features: this.state.features,
-    breed: this.props.user.features.breed,
-    size: this.props.user.features.size,
-    energy: this.props.user.features.energy,
-    behaves: this.props.user.features.behaves,
-    pottyTraining: this.props.user.features.pottyTraining,
-    chill: this.props.user.features.chill,
+    features: {},
     errorMessage: "",
   };
 
+  componentDidMount = () => {
+    console.log("propppps", this.props);
+  };
   handleChange = (event) => {
     const { name, value } = event.target;
     if (name === "breed") return;
@@ -34,9 +32,6 @@ export default class EditProfile extends Component {
     });
   };
 
-  // handleChangeBreedOnly = (breed) => {
-  //   this.setState({ breed });
-  // };
   handleChangeFeatures = (features) => {
     console.log("features here prelogin", features);
     this.setState({ features });
@@ -55,12 +50,6 @@ export default class EditProfile extends Component {
         borough: this.state.borough,
         image: this.state.image,
         features: this.state.features,
-        // breed: this.state.breed,
-        // size: this.state.size,
-        // energy: this.state.energy,
-        // behaves: this.state.behaves,
-        // pottyTraining: this.state.pottyTraining,
-        // chill: this.state.chill,
       },
       accessToken
     )
@@ -73,7 +62,7 @@ export default class EditProfile extends Component {
   };
 
   render() {
-    const { username, image } = this.state;
+    const { username, image, errorMessage } = this.state;
 
     return (
       <>
@@ -81,30 +70,32 @@ export default class EditProfile extends Component {
         <div>
           <h1> Edit {username}'s profile</h1>
         </div>
-        {this.state.errorMessage !== "" && this.state.errorMessage}
 
         <div className='box'>
           <div className='box'>
+            {/* 
+                            image
+       */}
             <div className='box'>
               {image && <img className='image' src={image} />}
               <AddImage addImage={(image) => this.setState({ image })} />
             </div>
+            {/* 
+                            edit form
+       */}
             <form onSubmit={this.handleSubmit}>
               <div className='box'>
                 <UserInfo handleChange={this.handleChange} state={this.state} />
               </div>
+
               <div className='box'>
-                {/* <FeaturesInfo
+                <EditFeatures
                   handleChangeFeatures={this.handleChangeFeatures}
-                  state={this.state}
-                /> */}
-                <Features
-                  handleChange={this.handleChange}
-                  state={this.state}
-                  handleChangeBreedOnly={this.handleChangeBreedOnly}
+                  user={this.state.user}
                 />
               </div>
 
+              {errorMessage !== "" && errorMessage}
               <button className='button is-link' type='submit'>
                 Save
               </button>
