@@ -99,7 +99,7 @@ export default class FeaturesInfo extends Component {
               results={this.state.results}
               saveValue={this.saveBreedValue}
               selectedBreed={(breed) => {
-                this.setState({ breed, results: [] });
+                this.setState({ breed, results: [] }, () => this.addFeatures());
               }}
             />
           </div>

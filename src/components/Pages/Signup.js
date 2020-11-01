@@ -1,8 +1,8 @@
 import React from "react";
-import AddImage from "../Layout/AddImage";
-import UserInfo from "../Layout/UserInfo";
 import { signup } from "../../services/userService";
+import AddImage from "../Layout/AddImage";
 import FeaturesInfo from "../Layout/FeaturesInfo";
+import UserInfo from "../Layout/UserInfo";
 
 class Signup extends React.Component {
   state = {

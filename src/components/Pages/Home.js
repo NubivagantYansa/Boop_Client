@@ -1,8 +1,6 @@
 import React from "react";
-import RoleFilter from "../Layout/FiltersCard/RoleFilter";
-import Searchbar from "../Layout/FiltersCard/Searchbar";
-import FeatBorFilter from "../Layout/FiltersCard/FeatBorFilter";
 import { Link } from "react-router-dom";
+import FeatBorFilter from "../Layout/FiltersCard/FeatBorFilter";
 
 const Home = () => {
   return (

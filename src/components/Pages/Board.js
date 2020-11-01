@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { getAllProfiles } from "../../services/communityService";
-import ProfilesList from "../Layout/ProfilesList";
+import FeatBorFilter from "../Layout/FiltersCard/FeatBorFilter";
 import RoleFilter from "../Layout/FiltersCard/RoleFilter";
 import Searchbar from "../Layout/FiltersCard/Searchbar";
-import FeatBorFilter from "../Layout/FiltersCard/FeatBorFilter";
+import ProfilesList from "../Layout/ProfilesList";
 
 export default class Board extends Component {
   state = {

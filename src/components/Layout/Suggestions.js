@@ -1,4 +1,4 @@
-import React, { Children } from "react";
+import React from "react";
 
 const Suggestions = (props) => {
   if (props.results) {

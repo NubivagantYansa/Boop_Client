@@ -66,6 +66,7 @@ export const login = ({ email, password }) => {
     });
 };
 
+//logout
 export const userLogout = (accessToken) => {
   return service
     .post(`auth/logout/${accessToken}`)

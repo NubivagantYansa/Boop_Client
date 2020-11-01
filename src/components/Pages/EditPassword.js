@@ -1,17 +1,12 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import Settings from "../Layout/Settings";
 import { editPassword } from "../../services/userService";
+import Settings from "../Layout/Settings";
 
 export default class EditPassword extends Component {
   state = {
     password: "",
     errorMessage: "",
-  };
-
-  componentDidMount = () => {
-    console.log("component EDIT PWD mounted", this.props);
-    console.log("TOKEN", localStorage.getItem("accessToken"));
   };
 
   handleChange = (event) => {

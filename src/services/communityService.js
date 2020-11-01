@@ -9,12 +9,12 @@ export const getAllProfiles = () => {
   return service
     .get(`/comm/get-profiles`)
     .then((response) => {
-      // console.log(response.data.profilesList);
       return response.data;
     })
     .catch((err) => err);
 };
 
+//gets profile Details of specific user
 export const getProfileDetails = (_id) => {
   return service
     .get(`/comm/get-profile/${_id}`)
@@ -24,6 +24,7 @@ export const getProfileDetails = (_id) => {
     .catch((err) => err);
 };
 
+//get in touch - send email
 export const sendEmail = (bodyEmail, receiver, sender) => {
   return service
     .post(`/comm/send-email/${receiver}`, { bodyEmail, sender })

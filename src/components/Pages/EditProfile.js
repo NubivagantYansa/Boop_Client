@@ -1,12 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import { editProfile } from "../../services/userService";
 import AddImage from "../Layout/AddImage";
-import Features from "../Layout/Features";
+import EditFeatures from "../Layout/EditFeatures";
 import Settings from "../Layout/Settings";
 import UserInfo from "../Layout/UserInfo";
-import { editProfile } from "../../services/userService";
 import "./Dasboard.css";
-import EditFeatures from "../Layout/EditFeatures";
 
 export default class EditProfile extends Component {
   state = {
