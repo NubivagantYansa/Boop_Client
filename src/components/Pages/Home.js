@@ -11,7 +11,7 @@ const Home = () => {
         Book trusted sitters and dog walkers who'll treat your pets like family
         or join ad dog owner and wait for a dogsitter to get in touch with you!
       </p>
-      <Link to='/login'>
+      {/* <Link to='/login'>
         <div className='box m-3'>
           <div className='content mt-3'>
             <h4>I am looking for: </h4>
@@ -23,7 +23,7 @@ const Home = () => {
             <FeatBorFilter />
           </div>
         </div>
-      </Link>
+      </Link> */}
       <p>
         Perfect if you need overnight pet care or house-sitting services. Get i
         ntouch wenever your dog needs a walk or ask for daytime pet care in your

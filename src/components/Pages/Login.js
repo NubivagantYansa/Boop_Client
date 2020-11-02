@@ -1,17 +1,56 @@
-import React from "react";
+import React, { useState } from "react";
+import useAuth from "../../hooks/useAuth";
 import { login } from "../../services/userService";
-// import useAuth from "../hooks/useAuth";
-class Login extends React.Component {
-  // const [state, errorMessage, handleChange, handleSubmit] = useAuth(
-  //   {
-  //     email: "",
-  //   password: "",
-  //   errorMessage: "",
-  //   },
-  //   "login",
-  //   props
-  // );
 
+// const Login = () => {
+//   const [state, errorMessage, handleChange, handleSubmit] = useAuth(
+//     {
+//       email: "",
+//       password: "",
+//       errorMessage: "",
+//     },
+//     "login",
+//     props
+//   );
+//   return (
+//     <div>
+//       {errorMessage !== "" && errorMessage}
+//       <form onSubmit={handleSubmit}>
+//         <div className='field'>
+//           <label className='label'>Email: </label>
+//           <div className='control has-icons-left'>
+//             <input
+//               className='input'
+//               name='email'
+//               value={state.email}
+//               onChange={handleChange}
+//               required
+//               type='email'
+//             />
+//           </div>
+//         </div>
+//         <div className='field'>
+//           <label className='label'>Password: </label>
+//           <div className='control has-icons-left'>
+//             <input
+//               className='input'
+//               name='password'
+//               type='password'
+//               value={state.password}
+//               onChange={handleChange}
+//               required
+//             />
+//           </div>
+//         </div>
+//         <button className='button is-link' type='submit'>
+//           Login
+//         </button>
+//       </form>
+//     </div>
+//   );
+// };
+
+class Login extends React.Component {
   state = {
     email: "",
     password: "",

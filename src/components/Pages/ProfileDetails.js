@@ -8,6 +8,7 @@ export default class ProfileDetails extends Component {
     features: {},
     expand: false,
     bodyEmail: "",
+    isEmailSent: false,
   };
 
   componentDidMount() {
@@ -39,8 +40,12 @@ export default class ProfileDetails extends Component {
     const sender = this.props.user._id;
     const receiver = this.state.profile._id;
     const bodyEmail = this.state.bodyEmail;
+    //keep getting undefined on line 43 then the code stops
     sendEmail(bodyEmail, receiver, sender)
-      .then((response) => console.log(response))
+      .then((response) => {
+        this.setState({ expand: false, isEmailSent: true });
+        return console.log("IT DOESN:T SHOW THE CONSOLE.LOG", response);
+      })
       .catch((error) => console.log(error));
   };
   render() {
@@ -105,7 +110,6 @@ export default class ProfileDetails extends Component {
             </a>
           </div>
           <div>
-            {" "}
             {this.state.expand && (
               <form onSubmit={this.handleSubmit}>
                 <div className='field'>
@@ -125,6 +129,7 @@ export default class ProfileDetails extends Component {
                 <button>Send email</button>
               </form>
             )}
+            {this.state.isEmailSent && <p>Your email has been sent!</p>}
           </div>
         </div>
       </div>

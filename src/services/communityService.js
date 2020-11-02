@@ -29,7 +29,15 @@ export const sendEmail = (bodyEmail, receiver, sender) => {
   return service
     .post(`/comm/send-email/${receiver}`, { bodyEmail, sender })
     .then((response) => {
-      return console.log("send email", response.data);
+      console.log("WHAT IS GOING ON");
+      return { data: response.data, status: true };
     })
-    .catch((err) => err);
+    .catch((err) => {
+      console.log(err.response);
+      return {
+        errorMessage: err.response?.data.errorMessage,
+        status: false,
+        statusCode: err.response.status,
+      };
+    });
 };
