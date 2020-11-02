@@ -1,9 +1,24 @@
-import React, { Component } from "react";
+import React, { Component, useEffect } from "react";
 import { getAllProfiles } from "../../services/communityService";
 import FeatBorFilter from "../Layout/FiltersCard/FeatBorFilter";
 import RoleFilter from "../Layout/FiltersCard/RoleFilter";
 import Searchbar from "../Layout/FiltersCard/Searchbar";
 import ProfilesList from "../Layout/ProfilesList";
+
+// export default function Board() {
+//   useEffect(
+//     getAllProfiles()
+//       .then((profilesList) => {
+//         this.setState({
+//           profilesList: profilesList.profilesList,
+//           srchResults: profilesList.profilesList,
+//         });
+//       })
+//       .catch((error) => console.log(error))
+//   );
+
+//   return <div></div>;
+// }
 
 export default class Board extends Component {
   state = {

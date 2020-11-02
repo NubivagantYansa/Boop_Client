@@ -18,7 +18,6 @@ export default class FeaturesInfo extends Component {
 
   componentDidMount() {
     this.fetchData();
-    console.log("ZZZZ", this.props);
   }
 
   fetchData = () => {

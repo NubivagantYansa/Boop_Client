@@ -1,104 +1,75 @@
-import React from "react";
-import { signup } from "../../services/userService";
+import React, { useState } from "react";
+import useAuth from "../../hooks/useAuth";
 import AddImage from "../Layout/AddImage";
 import FeaturesInfo from "../Layout/FeaturesInfo";
 import UserInfo from "../Layout/UserInfo";
 
-class Signup extends React.Component {
-  state = {
-    userRole: "",
-    username: "",
-    email: "",
-    password: "",
-    image: "",
-    aboutMe: "",
-    borough: "",
-    features: {},
-    errorMessage: "",
+const Signup = (props) => {
+  const [
+    stateInfo,
+    setStateInfo,
+    errorMessage,
+    handleChange,
+    handleSubmit,
+  ] = useAuth(
+    {
+      userRole: "",
+      username: "",
+      email: "",
+      password: "",
+      image: "",
+      aboutMe: "",
+      borough: "",
+      features: {},
+      errorMessage: "",
+    },
+    "signup",
+    props
+  );
+
+  const handleChangeFeatures = (features) => {
+    setStateInfo({ ...stateInfo, features });
   };
 
-  handleChange = (event) => {
-    const { name, value } = event.target;
-    // if (name === "breed") return;
-    this.setState({
-      [name]: value,
-    });
-  };
-
-  handleChangeFeatures = (features) => {
-    this.setState({ features });
-  };
-
-  handleSubmit = (event) => {
-    event.preventDefault();
-    return signup({
-      userRole: this.state.userRole,
-      username: this.state.username,
-      email: this.state.email,
-      password: this.state.password,
-      borough: this.state.borough,
-      aboutMe: this.state.aboutMe,
-      image: this.state.image,
-      features: this.state.features,
-    })
-      .then((response) => {
-        if (!response.status) {
-          this.setState({ errorMessage: response.errorMessage });
-          return;
-        }
-        return response.accessToken
-          ? (localStorage.setItem("accessToken", response.accessToken),
-            this.props.authenticate(response.user),
-            this.props.history.push("/board"))
-          : this.setState({
-              errorMessage: response.errorMessage,
-            });
-      })
-      .catch((error) => console.log(error));
-  };
-
-  render() {
-    const { password, image, errorMessage } = this.state;
-    return (
-      <div>
-        {/* 
+  return (
+    <div>
+      {/* 
                             image
        */}
-        {image && <img className='image' src={image} />}
-        <AddImage addImage={(image) => this.setState({ image })} />
-        {/* 
+      {stateInfo.image && <img className='image' src={stateInfo.image} />}
+      <AddImage addImage={(image) => setStateInfo({ ...stateInfo, image })} />
+      {/* 
                             signup form
        */}
-        <form onSubmit={this.handleSubmit}>
-          <UserInfo handleChange={this.handleChange} state={this.state} />
+      <form onSubmit={handleSubmit}>
+        <UserInfo handleChange={handleChange} state={stateInfo} />
 
-          <div className='field'>
-            <label className='label'>Password: </label>
-            <div className='control'>
-              <input
-                className='input'
-                name='password'
-                type='password'
-                value={password}
-                onChange={this.handleChange}
-                required
-              />
-            </div>
+        <div className='field'>
+          <label className='label'>Password: </label>
+          <div className='control'>
+            <input
+              className='input'
+              name='password'
+              type='password'
+              value={stateInfo.password}
+              onChange={handleChange}
+              required
+            />
           </div>
+        </div>
 
-          <FeaturesInfo
-            handleChangeFeatures={this.handleChangeFeatures}
-            state={this.state}
-          />
+        <FeaturesInfo
+          handleChangeFeatures={handleChangeFeatures}
+          state={stateInfo}
+        />
 
-          {errorMessage !== "" && errorMessage}
-          <button className='button is-link' type='submit'>
-            Sign up
-          </button>
-        </form>
-      </div>
-    );
-  }
-}
+        {errorMessage !== "" && errorMessage}
+        <button className='button is-link' type='submit'>
+          Sign up
+        </button>
+      </form>
+    </div>
+  );
+};
 
 export default Signup;
