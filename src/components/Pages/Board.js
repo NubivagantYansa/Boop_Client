@@ -1,25 +1,130 @@
-import React, { Component, useEffect } from "react";
+import React, { Component, useEffect, useState } from "react";
 import { getAllProfiles } from "../../services/communityService";
 import FeatBorFilter from "../Layout/FiltersCard/FeatBorFilter";
 import RoleFilter from "../Layout/FiltersCard/RoleFilter";
 import Searchbar from "../Layout/FiltersCard/Searchbar";
 import ProfilesList from "../Layout/ProfilesList";
 
-// export default function Board() {
+// const Board = (props) => {
+//   const [profilesList, setList] = useState([]);
+//   const [searchResults, setSearch] = useState([]);
+//   const [userRole, setUserRole] = useState("");
+//   const [breed, setBreed] = useState("");
+//   const [size, setSize] = useState("");
+//   const [energy, setEnergy] = useState("");
+//   const [behaves, setBehaves] = useState("");
+//   const [pottyTraining, setPottyTraining] = useState("");
+//   const [chill, setChill] = useState("");
+//   const [expand, setExpand] = useState("");
+
 //   useEffect(
 //     getAllProfiles()
 //       .then((profilesList) => {
-//         this.setState({
-//           profilesList: profilesList.profilesList,
-//           srchResults: profilesList.profilesList,
-//         });
+//         setList(profilesList.profilesList);
+//         setSearch(profilesList.profilesList);
 //       })
 //       .catch((error) => console.log(error))
 //   );
 
-//   return <div></div>;
-// }
+//   //handle the search bar
+//   const handleSearch = (value) => {
+//     const results = profilesList.filter((profile) => {
+//       return Object.values(profile).some(
+//         (values) =>
+//           console.log(values) ||
+//           values.toString().toLowerCase().includes(value.toLowerCase())
+//       );
+//     });
+//     setSearch(results);
+//   };
 
+//   //filters by user role
+//   const filterRole = (newUserRole) => setUserRole(newUserRole);
+
+//   //filters by dog features
+//   const filterFeatures = (
+//     size,
+//     energy,
+//     behaves,
+//     pottyTraining,
+//     chill,
+//     breed
+//   ) => {
+//     setBreed(breed);
+//     setSize(size);
+//     setEnergy(energy);
+//     setBehaves(behaves);
+//     setPottyTraining(pottyTraining);
+//     setChill(chill);
+//   };
+
+//   //expands filters card
+//   const readMore = (e) => {
+//     e.preventDefault();
+//     setExpand(!expand);
+//   };
+
+//   //variable controls profiles showed on the board - checks if any filter is applied
+//   let profilesToShow = searchResults.filter((profile) => {
+//     const isNotCurrUser = profile.username !== props.user.username;
+//     const isUserRole = userRole === null || userRole === profile.userRole;
+//     const isSize =
+//       !size ||
+//       profile.features.size.toLowerCase().trim() === size.toLowerCase().trim();
+//     const isEnergy =
+//       !energy ||
+//       profile.features.energy.toLowerCase().trim() ===
+//         energy.toLowerCase().trim();
+//     const isBehaves =
+//       !behaves ||
+//       profile.features.behaves.toLowerCase().trim() ===
+//         behaves.toLowerCase().trim();
+//     const isPottyTraining =
+//       !pottyTraining ||
+//       profile.features.pottyTraining.toLowerCase().trim() ===
+//         pottyTraining.toLowerCase().trim();
+//     const isChill =
+//       !chill ||
+//       profile.features.chill.toLowerCase().trim() ===
+//         chill.toLowerCase().trim();
+//     const isBreed =
+//       !breed ||
+//       profile.features.breed.toLowerCase().trim() ===
+//         breed.toLowerCase().trim();
+//     return (
+//       isNotCurrUser &&
+//       isUserRole &&
+//       isSize &&
+//       isEnergy &&
+//       isBehaves &&
+//       isPottyTraining &&
+//       isChill &&
+//       isBreed
+//     );
+//   });
+//   return (
+//     <div>
+//       <h1>Hello this is the Board page</h1>
+//       <div className='box m-3'>
+//         <RoleFilter filterRole={filterRole} />
+//         <Searchbar handleSearch={handleSearch} />
+//         <a href='#' onClick={readMore}>
+//           {expand ? "Read Less" : "More Filters"}
+//         </a>
+//         <div className='content mt-3'>
+//           {expand && <FeatBorFilter filterFeatures={filterFeatures} />}
+//         </div>
+//       </div>
+//       <div>
+//         <div className='columns is-multiline p-3'>
+//           <ProfilesList profilesList={profilesToShow} />
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Board;
 export default class Board extends Component {
   state = {
     profilesList: [],
@@ -45,7 +150,7 @@ export default class Board extends Component {
       })
       .catch((error) => console.log(error));
   };
-  //handle the search bar
+  // handle the search bar
   handleSearch = (value) => {
     const srchResults = this.state.profilesList.filter((profile) => {
       return Object.values(profile).some(
