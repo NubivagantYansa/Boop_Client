@@ -43,8 +43,7 @@ export default class ProfileDetails extends Component {
     //keep getting undefined on line 43 then the code stops
     sendEmail(bodyEmail, receiver, sender)
       .then((response) => {
-        this.setState({ expand: false, isEmailSent: true });
-        return console.log("IT DOESN:T SHOW THE CONSOLE.LOG", response);
+        return this.setState({ expand: false, isEmailSent: true });
       })
       .catch((error) => console.log(error));
   };
