@@ -1,31 +1,28 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { deleteProfile } from "../../services/userService";
 
-export default class DeleteProfile extends Component {
-  componentDidMount = () => {
-    console.log("DELETE", this.props);
-  };
-  handleSubmit = (e) => {
+const DeleteProfile = (props) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const userId = this.props.user._id;
-    this.props.handleLogout();
+    const userId = props.user._id;
+    props.handleLogout();
     return deleteProfile(userId);
   };
-  render() {
-    return (
-      <>
-        <h1>Delete profile page</h1>
-        <div className='box'>
-          <p>Are you sure you want to delete your profile?</p>
-          <form onSubmit={this.handleSubmit}>
-            <button className='button is-danger'>Delete</button>
-          </form>
-          <div>
-            <Link to='/dashboard'>Back</Link>
-          </div>
+  return (
+    <>
+      <h1>Delete profile page</h1>
+      <div className='box'>
+        <p>Are you sure you want to delete your profile?</p>
+        <form onSubmit={handleSubmit}>
+          <button className='button is-danger'>Delete</button>
+        </form>
+        <div>
+          <Link to='/dashboard'>Back</Link>
         </div>
-      </>
-    );
-  }
-}
+      </div>
+    </>
+  );
+};
+
+export default DeleteProfile;

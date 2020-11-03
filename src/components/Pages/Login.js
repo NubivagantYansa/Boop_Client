@@ -2,7 +2,7 @@ import React from "react";
 import useAuth from "../../hooks/useAuth";
 
 const Login = (props) => {
-  const [stateInfo, errorMessage, handleChange, handleSubmit] = useAuth(
+  const { stateInfo, handleSubmit, errorMessage, handleChange } = useAuth(
     {
       email: "",
       password: "",
@@ -13,24 +13,23 @@ const Login = (props) => {
   );
   return (
     <div>
-      {errorMessage !== "" && errorMessage}
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={(e) => handleSubmit(e)}>
         <div className='field'>
           <label className='label'>Email: </label>
-          <div className='control has-icons-left'>
+          <div className='control'>
             <input
               className='input'
               name='email'
+              type='email'
               value={stateInfo.email}
               onChange={handleChange}
               required
-              type='email'
             />
           </div>
         </div>
         <div className='field'>
           <label className='label'>Password: </label>
-          <div className='control has-icons-left'>
+          <div className='control'>
             <input
               className='input'
               name='password'
@@ -41,6 +40,8 @@ const Login = (props) => {
             />
           </div>
         </div>
+
+        {errorMessage !== "" && errorMessage}
         <button className='button is-link' type='submit'>
           Login
         </button>

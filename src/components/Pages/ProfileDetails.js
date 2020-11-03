@@ -36,11 +36,9 @@ export default class ProfileDetails extends Component {
 
   handleSubmit = (event) => {
     event.preventDefault();
-    console.log("HELLOOOOO");
     const sender = this.props.user._id;
     const receiver = this.state.profile._id;
     const bodyEmail = this.state.bodyEmail;
-    //keep getting undefined on line 43 then the code stops
     sendEmail(bodyEmail, receiver, sender)
       .then((response) => {
         return this.setState({ expand: false, isEmailSent: true });

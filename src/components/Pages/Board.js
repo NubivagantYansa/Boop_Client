@@ -1,262 +1,177 @@
 import React, { Component, useEffect, useState } from "react";
+import { useBoardData } from "../../hooks/useBoardData";
 import { getAllProfiles } from "../../services/communityService";
 import FeatBorFilter from "../Layout/FiltersCard/FeatBorFilter";
 import RoleFilter from "../Layout/FiltersCard/RoleFilter";
 import Searchbar from "../Layout/FiltersCard/Searchbar";
 import ProfilesList from "../Layout/ProfilesList";
 
-// const Board = (props) => {
-//   const [profilesList, setList] = useState([]);
-//   const [searchResults, setSearch] = useState([]);
-//   const [userRole, setUserRole] = useState("");
-//   const [breed, setBreed] = useState("");
-//   const [size, setSize] = useState("");
-//   const [energy, setEnergy] = useState("");
-//   const [behaves, setBehaves] = useState("");
-//   const [pottyTraining, setPottyTraining] = useState("");
-//   const [chill, setChill] = useState("");
-//   const [expand, setExpand] = useState("");
+const Board = (props) => {
+  const {
+    filterRole,
+    handleSearch,
+    expand,
+    readMore,
+    filterFeatures,
+    profilesToShow,
+  } = useBoardData(props);
 
-//   useEffect(
+  console.log(profilesToShow);
+  return (
+    <div>
+      <h1>Hello this is the Board page</h1>
+      <div className='box m-3'>
+        <RoleFilter filterRole={filterRole} />
+        <Searchbar handleSearch={handleSearch} />
+        <a href='#' onClick={readMore}>
+          {expand ? "Read Less" : "More Filters"}
+        </a>
+        <div className='content mt-3'>
+          {expand && <FeatBorFilter filterFeatures={filterFeatures} />}
+        </div>
+      </div>
+      <div>
+        <div className='columns is-multiline p-3'>
+          <ProfilesList profilesList={profilesToShow} />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Board;
+// export default class Board extends Component {
+//   state = {
+//     profilesList: [],
+//     srchResults: [],
+//     expand: false,
+//     userRole: null,
+//     boroughSelection: null,
+//     size: null,
+//     energy: null,
+//     behaves: null,
+//     pottyTraining: null,
+//     chill: null,
+//     breed: null,
+//   };
+
+//   componentDidMount = () => {
 //     getAllProfiles()
 //       .then((profilesList) => {
-//         setList(profilesList.profilesList);
-//         setSearch(profilesList.profilesList);
+//         this.setState({
+//           profilesList: profilesList.profilesList,
+//           srchResults: profilesList.profilesList,
+//         });
 //       })
-//       .catch((error) => console.log(error))
-//   );
-
-//   //handle the search bar
-//   const handleSearch = (value) => {
-//     const results = profilesList.filter((profile) => {
+//       .catch((error) => console.log(error));
+//   };
+//   // handle the search bar
+//   handleSearch = (value) => {
+//     const srchResults = this.state.profilesList.filter((profile) => {
 //       return Object.values(profile).some(
 //         (values) =>
 //           console.log(values) ||
 //           values.toString().toLowerCase().includes(value.toLowerCase())
 //       );
 //     });
-//     setSearch(results);
+//     this.setState({
+//       srchResults: srchResults,
+//     });
 //   };
-
 //   //filters by user role
-//   const filterRole = (newUserRole) => setUserRole(newUserRole);
+//   filterRole = (userRole) => this.setState({ userRole });
 
 //   //filters by dog features
-//   const filterFeatures = (
-//     size,
-//     energy,
-//     behaves,
-//     pottyTraining,
-//     chill,
-//     breed
-//   ) => {
-//     setBreed(breed);
-//     setSize(size);
-//     setEnergy(energy);
-//     setBehaves(behaves);
-//     setPottyTraining(pottyTraining);
-//     setChill(chill);
+//   filterFeatures = (size, energy, behaves, pottyTraining, chill, breed) => {
+//     this.setState({
+//       size,
+//       energy,
+//       behaves,
+//       pottyTraining,
+//       chill,
+//       breed,
+//     });
 //   };
 
 //   //expands filters card
-//   const readMore = (e) => {
+//   readMore = (e) => {
 //     e.preventDefault();
-//     setExpand(!expand);
+//     this.setState({ expand: !this.state.expand });
 //   };
 
-//   //variable controls profiles showed on the board - checks if any filter is applied
-//   let profilesToShow = searchResults.filter((profile) => {
-//     const isNotCurrUser = profile.username !== props.user.username;
-//     const isUserRole = userRole === null || userRole === profile.userRole;
-//     const isSize =
-//       !size ||
-//       profile.features.size.toLowerCase().trim() === size.toLowerCase().trim();
-//     const isEnergy =
-//       !energy ||
-//       profile.features.energy.toLowerCase().trim() ===
-//         energy.toLowerCase().trim();
-//     const isBehaves =
-//       !behaves ||
-//       profile.features.behaves.toLowerCase().trim() ===
-//         behaves.toLowerCase().trim();
-//     const isPottyTraining =
-//       !pottyTraining ||
-//       profile.features.pottyTraining.toLowerCase().trim() ===
-//         pottyTraining.toLowerCase().trim();
-//     const isChill =
-//       !chill ||
-//       profile.features.chill.toLowerCase().trim() ===
-//         chill.toLowerCase().trim();
-//     const isBreed =
-//       !breed ||
-//       profile.features.breed.toLowerCase().trim() ===
-//         breed.toLowerCase().trim();
+//   render() {
+//     const {
+//       srchResults,
+//       userRole,
+//       size,
+//       energy,
+//       behaves,
+//       pottyTraining,
+//       chill,
+//       breed,
+//     } = this.state;
+
+//     //variable controls profiles showed on the board - checks if any filter is applied
+//     let profilesToShow = srchResults.filter((profiles) => {
+//       const isNotCurrUser = profiles.username !== this.props.user.username;
+//       const isUserRole = userRole === null || userRole === profiles.userRole;
+//       const isSize =
+//         !size ||
+//         profiles.features.size.toLowerCase().trim() ===
+//           size.toLowerCase().trim();
+//       const isEnergy =
+//         !energy ||
+//         profiles.features.energy.toLowerCase().trim() ===
+//           energy.toLowerCase().trim();
+//       const isBehaves =
+//         !behaves ||
+//         profiles.features.behaves.toLowerCase().trim() ===
+//           behaves.toLowerCase().trim();
+//       const isPottyTraining =
+//         !pottyTraining ||
+//         profiles.features.pottyTraining.toLowerCase().trim() ===
+//           pottyTraining.toLowerCase().trim();
+//       const isChill =
+//         !chill ||
+//         profiles.features.chill.toLowerCase().trim() ===
+//           chill.toLowerCase().trim();
+//       const isBreed =
+//         !breed ||
+//         profiles.features.breed.toLowerCase().trim() ===
+//           breed.toLowerCase().trim();
+//       return (
+//         isNotCurrUser &&
+//         isUserRole &&
+//         isSize &&
+//         isEnergy &&
+//         isBehaves &&
+//         isPottyTraining &&
+//         isChill &&
+//         isBreed
+//       );
+//     });
+
 //     return (
-//       isNotCurrUser &&
-//       isUserRole &&
-//       isSize &&
-//       isEnergy &&
-//       isBehaves &&
-//       isPottyTraining &&
-//       isChill &&
-//       isBreed
+//       <>
+//         <h1>Hello this is the Board page</h1>
+//         <div className='box m-3'>
+//           <RoleFilter filterRole={this.filterRole} />
+//           <Searchbar handleSearch={this.handleSearch} />
+//           <a href='#' onClick={this.readMore}>
+//             {this.state.expand ? "Read Less" : "More Filters"}
+//           </a>
+//           <div className='content mt-3'>
+//             {this.state.expand && (
+//               <FeatBorFilter filterFeatures={this.filterFeatures} />
+//             )}
+//           </div>
+//         </div>
+//         <div>
+//           <div className='columns is-multiline p-3'>
+//             <ProfilesList profilesList={profilesToShow} />
+//           </div>
+//         </div>
+//       </>
 //     );
-//   });
-//   return (
-//     <div>
-//       <h1>Hello this is the Board page</h1>
-//       <div className='box m-3'>
-//         <RoleFilter filterRole={filterRole} />
-//         <Searchbar handleSearch={handleSearch} />
-//         <a href='#' onClick={readMore}>
-//           {expand ? "Read Less" : "More Filters"}
-//         </a>
-//         <div className='content mt-3'>
-//           {expand && <FeatBorFilter filterFeatures={filterFeatures} />}
-//         </div>
-//       </div>
-//       <div>
-//         <div className='columns is-multiline p-3'>
-//           <ProfilesList profilesList={profilesToShow} />
-//         </div>
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default Board;
-export default class Board extends Component {
-  state = {
-    profilesList: [],
-    srchResults: [],
-    expand: false,
-    userRole: null,
-    boroughSelection: null,
-    size: null,
-    energy: null,
-    behaves: null,
-    pottyTraining: null,
-    chill: null,
-    breed: null,
-  };
-
-  componentDidMount = () => {
-    getAllProfiles()
-      .then((profilesList) => {
-        this.setState({
-          profilesList: profilesList.profilesList,
-          srchResults: profilesList.profilesList,
-        });
-      })
-      .catch((error) => console.log(error));
-  };
-  // handle the search bar
-  handleSearch = (value) => {
-    const srchResults = this.state.profilesList.filter((profile) => {
-      return Object.values(profile).some(
-        (values) =>
-          console.log(values) ||
-          values.toString().toLowerCase().includes(value.toLowerCase())
-      );
-    });
-    this.setState({
-      srchResults: srchResults,
-    });
-  };
-  //filters by user role
-  filterRole = (userRole) => this.setState({ userRole });
-
-  //filters by dog features
-  filterFeatures = (size, energy, behaves, pottyTraining, chill, breed) => {
-    this.setState({
-      size,
-      energy,
-      behaves,
-      pottyTraining,
-      chill,
-      breed,
-    });
-  };
-
-  //expands filters card
-  readMore = (e) => {
-    e.preventDefault();
-    this.setState({ expand: !this.state.expand });
-  };
-
-  render() {
-    const {
-      srchResults,
-      userRole,
-      size,
-      energy,
-      behaves,
-      pottyTraining,
-      chill,
-      breed,
-    } = this.state;
-
-    //variable controls profiles showed on the board - checks if any filter is applied
-    let profilesToShow = srchResults.filter((profiles) => {
-      const isNotCurrUser = profiles.username !== this.props.user.username;
-      const isUserRole = userRole === null || userRole === profiles.userRole;
-      const isSize =
-        !size ||
-        profiles.features.size.toLowerCase().trim() ===
-          size.toLowerCase().trim();
-      const isEnergy =
-        !energy ||
-        profiles.features.energy.toLowerCase().trim() ===
-          energy.toLowerCase().trim();
-      const isBehaves =
-        !behaves ||
-        profiles.features.behaves.toLowerCase().trim() ===
-          behaves.toLowerCase().trim();
-      const isPottyTraining =
-        !pottyTraining ||
-        profiles.features.pottyTraining.toLowerCase().trim() ===
-          pottyTraining.toLowerCase().trim();
-      const isChill =
-        !chill ||
-        profiles.features.chill.toLowerCase().trim() ===
-          chill.toLowerCase().trim();
-      const isBreed =
-        !breed ||
-        profiles.features.breed.toLowerCase().trim() ===
-          breed.toLowerCase().trim();
-      return (
-        isNotCurrUser &&
-        isUserRole &&
-        isSize &&
-        isEnergy &&
-        isBehaves &&
-        isPottyTraining &&
-        isChill &&
-        isBreed
-      );
-    });
-
-    return (
-      <>
-        <h1>Hello this is the Board page</h1>
-        <div className='box m-3'>
-          <RoleFilter filterRole={this.filterRole} />
-          <Searchbar handleSearch={this.handleSearch} />
-          <a href='#' onClick={this.readMore}>
-            {this.state.expand ? "Read Less" : "More Filters"}
-          </a>
-          <div className='content mt-3'>
-            {this.state.expand && (
-              <FeatBorFilter filterFeatures={this.filterFeatures} />
-            )}
-          </div>
-        </div>
-        <div>
-          <div className='columns is-multiline p-3'>
-            <ProfilesList profilesList={profilesToShow} />
-          </div>
-        </div>
-      </>
-    );
-  }
-}
+//   }
+// }

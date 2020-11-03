@@ -7,6 +7,22 @@ import Settings from "../Layout/Settings";
 import UserInfo from "../Layout/UserInfo";
 import "./Dasboard.css";
 
+// export default function EditProfile() {
+//   const [user, setUser] = useState(props.user)
+//   const [userRole, setUserRole] = useState(props.userRole)
+//   const [username, setUsername] = useState(props.username)
+//   const [email, setEmail] = useState(props.email)
+//   const [borough, setBorough] = useState(props.borough)
+//   const [aboutMe, setAboutMe] = useState(props.aboutMe)
+//   const [image, setImage] = useState(props.image)
+//   const [image, setImage] = useState(props.Image)
+//   return (
+//     <div>
+
+//     </div>
+//   )
+// }
+
 export default class EditProfile extends Component {
   state = {
     user: this.props.user,
@@ -20,9 +36,6 @@ export default class EditProfile extends Component {
     errorMessage: "",
   };
 
-  componentDidMount = () => {
-    console.log("propppps", this.props);
-  };
   handleChange = (event) => {
     const { name, value } = event.target;
     if (name === "breed") return;
@@ -32,7 +45,6 @@ export default class EditProfile extends Component {
   };
 
   handleChangeFeatures = (features) => {
-    console.log("features here prelogin", features);
     this.setState({ features });
   };
 

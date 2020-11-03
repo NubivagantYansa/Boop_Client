@@ -13,17 +13,14 @@ const useAuth = (form, typeOfAuth, props) => {
       })
         .then((response) => {
           if (!response.status) {
-            setErrorMessage({ errorMessage: response.errorMessage });
+            setErrorMessage(response.errorMessage);
             return;
           }
-
-          return response.data.accessToken
-            ? (localStorage.setItem("accessToken", response.data.accessToken),
-              props.authenticate(response.data.user),
+          return response.accessToken
+            ? (localStorage.setItem("accessToken", response.accessToken),
+              props.authenticate(response.user),
               props.history.push("/board"))
-            : setErrorMessage({
-                errorMessage: response.data.errorMessage,
-              });
+            : setErrorMessage(response.errorMessage);
         })
         .catch((err) => {
           console.log(err);
@@ -34,16 +31,14 @@ const useAuth = (form, typeOfAuth, props) => {
       })
         .then((response) => {
           if (!response.status) {
-            setErrorMessage({ errorMessage: response.errorMessage });
+            setErrorMessage(response.errorMessage);
             return;
           }
           return response.accessToken
             ? (localStorage.setItem("accessToken", response.accessToken),
               props.authenticate(response.user),
               props.history.push("/board"))
-            : setErrorMessage({
-                errorMessage: response.errorMessage,
-              });
+            : setErrorMessage(response.errorMessage);
         })
         .catch((err) => console.log(err));
     }
@@ -53,7 +48,7 @@ const useAuth = (form, typeOfAuth, props) => {
     setStateInfo({ ...stateInfo, [e.target.name]: e.target.value });
   };
 
-  return [stateInfo, setStateInfo, errorMessage, handleChange, handleSubmit];
+  return { stateInfo, setStateInfo, errorMessage, handleChange, handleSubmit };
 };
 
 export default useAuth;

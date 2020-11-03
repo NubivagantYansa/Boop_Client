@@ -1,17 +1,17 @@
-import React, { useState } from "react";
+import React from "react";
 import useAuth from "../../hooks/useAuth";
 import AddImage from "../Layout/AddImage";
 import FeaturesInfo from "../Layout/FeaturesInfo";
 import UserInfo from "../Layout/UserInfo";
 
 const Signup = (props) => {
-  const [
+  const {
     stateInfo,
     setStateInfo,
     errorMessage,
     handleChange,
     handleSubmit,
-  ] = useAuth(
+  } = useAuth(
     {
       userRole: "",
       username: "",
