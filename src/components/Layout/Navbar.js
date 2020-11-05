@@ -1,7 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useUser } from "../context/userContext";
 
-const Navbar = (props) => {
+const Navbar = () => {
+  const { isAuthenticated, handleLogout } = useUser();
   return (
     <div className='navbar' role='navigation' aria-label='main navigation'>
       <div className='navbar-brand'>
@@ -16,19 +18,19 @@ const Navbar = (props) => {
       <div className='navbar-start'>
         <div className='navbar-item'>{<Link to='/'> Logo </Link>}</div>
         <div className='navbar-item'>
-          {props.authenticated && <Link to='/dashboard'> Your dashboard </Link>}
+          {isAuthenticated && <Link to='/dashboard'> Your dashboard </Link>}
         </div>
       </div>
       <div className='navbar-end'>
         <div className='navbar-item'>
-          {!props.authenticated && <Link to='/signup'> Signup </Link>}
+          {!isAuthenticated && <Link to='/signup'> Signup </Link>}
         </div>
         <div className='navbar-item'>
-          {!props.authenticated && <Link to='/login'> Login </Link>}
+          {!isAuthenticated && <Link to='/login'> Login </Link>}
         </div>
         <div className='navbar-item'>
-          {props.authenticated && (
-            <Link to={"/"} onClick={props.handleLogout}>
+          {isAuthenticated && (
+            <Link to={"/"} onClick={handleLogout}>
               Logout
             </Link>
           )}

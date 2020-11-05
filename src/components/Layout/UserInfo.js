@@ -1,7 +1,15 @@
 import React from "react";
+import { useUser } from "../context/userContext";
 
-const UserInfo = (props) => {
-  const { userRole, username, email, aboutMe, borough } = props.state;
+const UserInfo = () => {
+  const { user, setUser } = useUser();
+  const { userRole, username, email, borough, aboutMe } = user;
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setUser({ [name]: value });
+  };
+
   return (
     <>
       {/* 
@@ -14,7 +22,7 @@ const UserInfo = (props) => {
             <select
               name='userRole'
               value={userRole}
-              onChange={props.handleChange}
+              onChange={handleChange}
               required
             >
               <option className='is-unselectable' value=''>
@@ -36,7 +44,7 @@ const UserInfo = (props) => {
             className='input'
             name='username'
             value={username}
-            onChange={props.handleChange}
+            onChange={handleChange}
             required
             type='text'
           />
@@ -52,7 +60,7 @@ const UserInfo = (props) => {
             className='input'
             name='email'
             value={email}
-            onChange={props.handleChange}
+            onChange={handleChange}
             required
             type='email'
           />
@@ -68,7 +76,7 @@ const UserInfo = (props) => {
             className='textarea'
             name='aboutMe'
             value={aboutMe}
-            onChange={props.handleChange}
+            onChange={handleChange}
             required
             type='text'
           />
@@ -84,7 +92,7 @@ const UserInfo = (props) => {
             className='input'
             name='borough'
             value={borough}
-            onChange={props.handleChange}
+            onChange={handleChange}
             required
             type='text'
           />

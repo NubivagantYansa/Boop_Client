@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import { useUser } from "../context/userContext";
 import Settings from "../Layout/Settings";
 import "./Dasboard.css";

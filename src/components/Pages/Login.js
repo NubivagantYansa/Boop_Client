@@ -2,7 +2,7 @@ import React from "react";
 import useAuth from "../../hooks/useAuth";
 
 const Login = (props) => {
-  const { stateInfo, handleSubmit, errorMessage, handleChange } = useAuth(
+  const { stateInfo, errorMessage, handleChange, handleSubmit } = useAuth(
     {
       email: "",
       password: "",

@@ -17,7 +17,6 @@ export function useBoardData() {
   useEffect(() => {
     getAllProfiles()
       .then(({ profilesList }) => {
-        //console.log("GETTING SHIT", profilesList);
         setList(profilesList);
         setSearch(profilesList);
       })

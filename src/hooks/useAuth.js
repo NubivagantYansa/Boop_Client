@@ -1,7 +1,11 @@
 import { useState } from "react";
 import { login, signup } from "../services/userService";
+import { useHistory } from "react-router-dom";
+import { useUser } from "../components/context/userContext";
 
-const useAuth = (form, typeOfAuth, props) => {
+const useAuth = (form, typeOfAuth) => {
+  const history = useHistory();
+  const { authenticate } = useUser();
   const [stateInfo, setStateInfo] = useState(form);
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -18,8 +22,8 @@ const useAuth = (form, typeOfAuth, props) => {
           }
           return response.accessToken
             ? (localStorage.setItem("accessToken", response.accessToken),
-              props.authenticate(response.user),
-              props.history.push("/board"))
+              authenticate(response.user),
+              history.push("/board"))
             : setErrorMessage(response.errorMessage);
         })
         .catch((err) => {
@@ -36,8 +40,8 @@ const useAuth = (form, typeOfAuth, props) => {
           }
           return response.accessToken
             ? (localStorage.setItem("accessToken", response.accessToken),
-              props.authenticate(response.user),
-              props.history.push("/board"))
+              authenticate(response.user),
+              history.push("/board"))
             : setErrorMessage(response.errorMessage);
         })
         .catch((err) => console.log(err));
@@ -47,6 +51,7 @@ const useAuth = (form, typeOfAuth, props) => {
   const handleChange = (e) => {
     setStateInfo({ ...stateInfo, [e.target.name]: e.target.value });
   };
+  console.log("fEAT", stateInfo);
 
   return { stateInfo, setStateInfo, errorMessage, handleChange, handleSubmit };
 };

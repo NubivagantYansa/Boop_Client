@@ -4,12 +4,11 @@ import { userLogout, validateSession } from "../../services/userService";
 const UserContext = createContext({});
 
 export function UserWrapper({ children }) {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [user, setUser] = useState(null);
   const [accessToken, setAccessToken] = useState("");
 
   const isAuthenticated = Boolean(user);
-  console.log("LIFTOFF", isAuthenticated, loading);
 
   useEffect(() => {
     setLoading(true);
@@ -21,7 +20,12 @@ export function UserWrapper({ children }) {
           setAccessToken(localAccessToken);
           setLoading(false);
         })
-        .catch((err) => console.log("Access token error", err));
+        .catch((err) => {
+          console.log("Access token error", err);
+          setLoading(false);
+        });
+    } else {
+      setLoading(false);
     }
   }, []);
 
@@ -35,13 +39,24 @@ export function UserWrapper({ children }) {
     setUser(null);
   }
 
+  console.log("LOAAAAD", loading);
+
   if (loading) {
     return <div>loading... </div>;
   }
 
   return (
     <UserContext.Provider
-      value={{ user, isAuthenticated, handleLogout, authenticate, loading }}
+      value={{
+        user,
+        setUser,
+        isAuthenticated,
+        handleLogout,
+        authenticate,
+        loading,
+        setLoading,
+        accessToken,
+      }}
     >
       {children}
     </UserContext.Provider>

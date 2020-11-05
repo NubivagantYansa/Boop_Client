@@ -17,116 +17,69 @@ import EditPassword from "./components/Pages/EditPassword";
 import ProfileDetails from "./components/Pages/ProfileDetails";
 import { UserWrapper } from "./components/context/userContext";
 class App extends React.Component {
-  state = {
-    authenticated: false,
-    user: {},
-  };
+  // state = {
+  //   authenticated: false,
+  //   user: {},
+  // };
 
-  componentDidMount = () => {
-    const accessToken = localStorage.getItem("accessToken");
-    if (accessToken) {
-      validateSession(accessToken)
-        .then((response) => {
-          this.authenticate(response.session.userId);
-        })
-        .catch((err) => console.log("Access token error", err));
-    }
-  };
+  // componentDidMount = () => {
+  //   const accessToken = localStorage.getItem("accessToken");
+  //   if (accessToken) {
+  //     validateSession(accessToken)
+  //       .then((response) => {
+  //         this.authenticate(response.session.userId);
+  //       })
+  //       .catch((err) => console.log("Access token error", err));
+  //   }
+  // };
 
-  authenticate = (user) => {
-    return this.setState({
-      authenticated: true,
-      user,
-    });
-  };
+  // authenticate = (user) => {
+  //   return this.setState({
+  //     authenticated: true,
+  //     user,
+  //   });
+  // };
 
-  handleLogout = () => {
-    userLogout(localStorage.getItem("accessToken"));
-    localStorage.clear();
-    this.setState({
-      authenticated: false,
-      user: {},
-    });
-  };
+  // handleLogout = () => {
+  //   userLogout(localStorage.getItem("accessToken"));
+  //   localStorage.clear();
+  //   this.setState({
+  //     authenticated: false,
+  //     user: {},
+  //   });
+  // };
   render() {
-    const { authenticated, user } = this.state;
+    // const { authenticated, user } = this.state;
     return (
       <div className='App'>
         <UserWrapper>
           <BrowserRouter>
-            <Navbar
-              authenticated={authenticated}
-              handleLogout={this.handleLogout}
-            />
+            <Navbar />
             <Switch>
-              <AnonRoute
-                exact
-                path='/'
-                authenticated={authenticated}
-                authenticate={this.authenticate}
-                component={Home}
-              />
-              <AnonRoute
-                exact
-                path='/login'
-                authenticated={authenticated}
-                authenticate={this.authenticate}
-                component={Login}
-              />
-              <AnonRoute
-                exact
-                path='/signup'
-                authenticated={authenticated}
-                authenticate={this.authenticate}
-                component={Signup}
-              />
-              <PrivateRoute
-                exact
-                path='/dashboard'
-                authenticated={authenticated}
-                authenticate={this.authenticate}
-                user={localStorage.getItem("accessToken") ? user : ""}
-                component={Dashboard}
-              />
-              <PrivateRoute
-                exact
-                path='/board'
-                authenticated={authenticated}
-                authenticate={this.authenticate}
-                user={localStorage.getItem("accessToken") ? user : ""}
-                component={Board}
-              />
-              <PrivateRoute
+              <AnonRoute exact path='/' component={Home} />
+              <AnonRoute exact path='/login' component={Login} />
+              <AnonRoute exact path='/signup' component={Signup} />
+              <PrivateRoute exact path='/dashboard' component={Dashboard} />
+              <PrivateRoute exact path='/board' component={Board} />
+              {/* <PrivateRoute
                 exact
                 path='/edit-profile'
-                authenticated={authenticated}
-                authenticate={this.authenticate}
-                user={localStorage.getItem("accessToken") ? user : ""}
                 component={EditProfile}
-              />
+              /> */}
               <PrivateRoute
                 exact
                 path='/delete-profile'
-                authenticated={authenticated}
-                authenticate={this.authenticate}
-                user={localStorage.getItem("accessToken") ? user : ""}
-                handleLogout={this.handleLogout}
                 component={DeleteProfile}
               />
+
               <PrivateRoute
                 exact
                 path='/edit-password'
-                authenticated={authenticated}
-                authenticate={this.authenticate}
-                user={localStorage.getItem("accessToken") ? user : ""}
                 component={EditPassword}
               />
               <PrivateRoute
                 exact
                 path='/profile/:id'
-                authenticated={authenticated}
-                authenticate={this.authenticate}
-                user={localStorage.getItem("accessToken") ? user : ""}
                 component={ProfileDetails}
               />
             </Switch>

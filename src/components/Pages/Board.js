@@ -1,6 +1,5 @@
-import React, { Component, useEffect, useState } from "react";
+import React from "react";
 import { useBoardData } from "../../hooks/useBoardData";
-import { getAllProfiles } from "../../services/communityService";
 import FeatBorFilter from "../Layout/FiltersCard/FeatBorFilter";
 import RoleFilter from "../Layout/FiltersCard/RoleFilter";
 import Searchbar from "../Layout/FiltersCard/Searchbar";

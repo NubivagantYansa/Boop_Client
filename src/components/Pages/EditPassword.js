@@ -1,69 +1,69 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import React, { Component, useState } from "react";
+import { Link, useHistory } from "react-router-dom";
 import { editPassword } from "../../services/userService";
+import { useUser } from "../context/userContext";
 import Settings from "../Layout/Settings";
 
-export default class EditPassword extends Component {
-  state = {
-    password: "",
-    errorMessage: "",
+const EditPassword = () => {
+  const { accessToken, authenticate } = useUser();
+  const [password, setPassword] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const history = useHistory();
+
+  const handleChange = (e) => {
+    const { value } = e.target;
+    setPassword(value);
   };
 
-  handleChange = (event) => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value,
-    });
-  };
-
-  handleSubmit = (event) => {
-    event.preventDefault();
-    const accessToken = localStorage.getItem("accessToken");
-    console.log("state", this.state);
+  const handleSubmit = (e) => {
+    e.preventDefault();
     editPassword(
       {
-        password: this.state.password,
+        password: password,
       },
       accessToken
     )
       .then((response) => {
         console.log("EDITED password", response);
-        this.props.authenticate(response.user);
-        this.props.history.push("/dashboard");
+        authenticate(response.user);
+        history.push("/dashboard");
         return response;
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        setErrorMessage(error);
+        console.log(error);
+      });
   };
-  render() {
-    return (
-      <>
-        {" "}
-        <Settings />
-        <h1>Edit password</h1>
-        {this.state.errorMessage !== "" && this.state.errorMessage}
-        <p>{this.state.password}</p>
-        <form onSubmit={this.handleSubmit}>
-          <div className='field'>
-            <label className='label'>New Password: </label>
-            <div className='control'>
-              <input
-                className='input'
-                name='password'
-                type='password'
-                value={this.state.password}
-                onChange={this.handleChange}
-                required
-              />
-            </div>
+
+  return (
+    <div>
+      <Settings />
+      <h1>Edit password</h1>
+      {errorMessage !== "" && errorMessage}
+      <p>{password}</p>
+      <form onSubmit={handleSubmit}>
+        <div className='field'>
+          <label className='label'>New Password: </label>
+          <div className='control'>
+            <input
+              className='input'
+              name='password'
+              type='password'
+              value={password}
+              onChange={handleChange}
+              required
+            />
           </div>
-          <button className='button is-link' type='submit'>
-            Save
-          </button>
-        </form>
-        <div>
-          <Link to='/dashboard'>Back</Link>
         </div>
-      </>
-    );
-  }
-}
+        <button className='button is-link' type='submit'>
+          Save
+        </button>
+      </form>
+      <div>
+        <Link to='/dashboard'>Back</Link>
+      </div>
+    </div>
+  );
+};
+
+export default EditPassword;

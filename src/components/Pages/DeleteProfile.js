@@ -1,12 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { deleteProfile } from "../../services/userService";
+import { useUser } from "../context/userContext";
 
-const DeleteProfile = (props) => {
+const DeleteProfile = () => {
+  const { user, handleLogout } = useUser();
   const handleSubmit = (e) => {
     e.preventDefault();
-    const userId = props.user._id;
-    props.handleLogout();
+    const userId = user._id;
+    handleLogout();
     return deleteProfile(userId);
   };
   return (
