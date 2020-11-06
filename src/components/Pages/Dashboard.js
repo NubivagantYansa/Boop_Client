@@ -5,17 +5,9 @@ import "./Dasboard.css";
 function Dashboard() {
   const [expand, setExpand] = useState(false);
   const { user } = useUser();
-  const { username, email, borough, aboutMe, image } = user;
+  const { username, userRole, email, borough, aboutMe, image } = user;
 
-  const {
-    userRole,
-    behaves,
-    breed,
-    chill,
-    energy,
-    pottyTraining,
-    size,
-  } = user.features;
+  const { behaves, breed, chill, energy, pottyTraining, size } = user.features;
   return (
     <>
       <section className='herocolumn is-12 is-flexible is-flex-direction-column is-justify-content-center'>

@@ -61,11 +61,11 @@ class App extends React.Component {
               <AnonRoute exact path='/signup' component={Signup} />
               <PrivateRoute exact path='/dashboard' component={Dashboard} />
               <PrivateRoute exact path='/board' component={Board} />
-              {/* <PrivateRoute
+              <PrivateRoute
                 exact
                 path='/edit-profile'
                 component={EditProfile}
-              /> */}
+              />
               <PrivateRoute
                 exact
                 path='/delete-profile'

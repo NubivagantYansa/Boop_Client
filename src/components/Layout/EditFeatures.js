@@ -6,27 +6,33 @@ import Suggestions from "./Suggestions";
 const EditFeatures = () => {
   const { user, setUser } = useUser();
   const { breed, size, behaves, energy, pottyTraining, chill } = user.features;
-  const [breedsList, setList] = useState([]);
-  const [results, setResults] = useState([]);
+  const [breedsList, setBreedsList] = useState("");
+  const [results, setResults] = useState("");
   const [errorMerrage, setErrorMessage] = useState("");
 
   useEffect(() => {
     getAllBreeds()
-      .then(({ breedsList }) => {
-        setList(breedsList);
-        setResults(breedsList);
+      .then((breedsList) => {
+        setBreedsList(breedsList);
       })
       .catch((error) =>
         console.log("Error occurred while fetching the breeds", error)
       );
   }, []);
 
-  const handleChangeFeat = (event) => {
-    const { name, value } = event.target;
-    setUser({ [name]: value });
+  const handleChangeFeat = (e) => {
+    const { name, value } = e.target;
+    setUser((u) => ({ ...u, features: { ...u.features, [name]: value } }));
+    if (name === "breed") {
+      return handleSearchBreed(value);
+    }
   };
 
   const handleSearchBreed = (value) => {
+    console.log("triggered", value);
+    if (value === "") {
+      return;
+    }
     const srchBreedResults = breedsList.filter((breed) =>
       breed.toLowerCase().trim().includes(value.toLowerCase().trim())
     );
@@ -57,13 +63,16 @@ const EditFeatures = () => {
             required
             type='text'
           />
-          {/* <Suggestions
+          <Suggestions
             results={results}
-            //   saveValue={this.saveBreedValue}
             selectedBreed={(breed) => {
-              setUser(breed), () => setResults([]);
+              setUser((u) => ({
+                ...u,
+                features: { ...u.features, breed: breed },
+              }));
+              setResults([]);
             }}
-          /> */}
+          />
         </div>
       </div>
       {/* 

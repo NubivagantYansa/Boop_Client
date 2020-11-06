@@ -5,9 +5,9 @@ const UserInfo = () => {
   const { user, setUser } = useUser();
   const { userRole, username, email, borough, aboutMe } = user;
 
-  const handleChange = (event) => {
-    const { name, value } = event.target;
-    setUser({ [name]: value });
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUser({ ...user, [name]: value });
   };
 
   return (

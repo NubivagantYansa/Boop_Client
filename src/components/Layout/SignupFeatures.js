@@ -12,7 +12,9 @@ const SignupFeatures = (props) => {
       .then((breedsList) => {
         setBreedsList(breedsList);
       })
-      .catch((error) => console.log(error));
+      .catch((error) =>
+        console.log("Error occurred while fetching the breeds", error)
+      );
   }, []);
 
   useEffect(() => {

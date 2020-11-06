@@ -9,21 +9,23 @@ import UserInfo from "../Layout/UserInfo";
 import "./Dasboard.css";
 
 const EditProfile = () => {
-  const { user, authenticate } = useUser();
+  const { user, setUser, authenticate, accessToken } = useUser();
   const history = useHistory();
   const [image, setImage] = useState(user.image);
   const [errorMessage, setErrorMessage] = useState("");
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    const accessToken = localStorage.getItem("accessToken");
+  const handleSubmit = (e) => {
+    e.preventDefault();
     editProfile({ user }, accessToken)
       .then((response) => {
         authenticate(response.user);
         history.push("/dashboard");
         return response;
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        setErrorMessage(error);
+        console.log(error);
+      });
   };
 
   return (
@@ -39,8 +41,13 @@ const EditProfile = () => {
                             image
        */}
           <div className='box'>
-            {image && <img className='image' src={image} />}
-            <AddImage addImage={(image) => setImage(image)} />
+            {image && <img className='image' src={user.image} />}
+            <AddImage
+              addImage={(image) => {
+                setImage(image);
+                setUser({ ...user, image });
+              }}
+            />
           </div>
           {/* 
                             edit form
