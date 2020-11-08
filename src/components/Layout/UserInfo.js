@@ -25,9 +25,7 @@ const UserInfo = () => {
               onChange={handleChange}
               required
             >
-              <option value='' selected={true} disabled='disabled'>
-                none
-              </option>
+              <option value=''>none</option>
               <option value='Dog owner'>Dog owner</option>
               <option value='Dogsitter'>Dogsitter</option>
             </select>

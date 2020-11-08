@@ -16,7 +16,7 @@ const EditProfile = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    editProfile({ user }, accessToken)
+    editProfile(user, accessToken)
       .then((response) => {
         authenticate(response.user);
         history.push("/dashboard");

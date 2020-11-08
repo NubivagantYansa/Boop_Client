@@ -90,6 +90,7 @@ export const editProfile = (editInfo, token) => {
   const headers = {
     accessToken: token,
   };
+
   return service
     .post("user/edit", editInfo, { headers })
     .then((editResp) => {
