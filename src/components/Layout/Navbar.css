@@ -1,0 +1,12 @@
+#navbar {
+  background-color: #4393ac;
+}
+
+#navbar-logo {
+  width: 70px;
+  margin: 0 5px;
+}
+
+.logo-container {
+  display: flex;
+}

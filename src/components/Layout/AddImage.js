@@ -10,11 +10,11 @@ const AddImage = ({ addImage }) => {
   };
 
   return (
-    <>
+    <div className='mt-2'>
       <form>
         <input type='file' onChange={handleImageUpload} />
       </form>
-    </>
+    </div>
   );
 };
 

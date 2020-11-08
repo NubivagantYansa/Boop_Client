@@ -3,11 +3,15 @@ import React from "react";
 const Suggestions = (props) => {
   if (props.results) {
     const options = props.results.map((result, idx) => (
-      <li onClick={() => props.selectedBreed(result)} key={idx}>
+      <li
+        className='list-group-item '
+        onClick={() => props.selectedBreed(result)}
+        key={idx}
+      >
         {result}
       </li>
     ));
-    return <ul>{options}</ul>;
+    return <ul className='text-decoration-none list-group'>{options}</ul>;
   } else {
     return <div></div>;
   }

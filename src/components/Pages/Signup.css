@@ -1,0 +1,16 @@
+.signup-background-image {
+  background-image: url("/images/paw-prints.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100%;
+}
+
+.drop-shadow {
+  filter: drop-shadow(2px, 4px, 8px, #585858);
+}
+
+/* label {
+  background-color: white;
+  width: fit-content;
+} */

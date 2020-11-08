@@ -18,19 +18,18 @@ const Board = (props) => {
   console.log(profilesToShow);
   return (
     <div>
-      <h1>Hello this is the Board page</h1>
-      <div className='box m-3'>
+      <div className='container'>
         <RoleFilter filterRole={filterRole} />
         <Searchbar handleSearch={handleSearch} />
         <a href='#' onClick={readMore}>
           {expand ? "Read Less" : "More Filters"}
         </a>
-        <div className='content mt-3'>
+        <div className='container'>
           {expand && <FeatBorFilter filterFeatures={filterFeatures} />}
         </div>
       </div>
       <div>
-        <div className='columns is-multiline p-3'>
+        <div className='container'>
           <ProfilesList profilesList={profilesToShow} />
         </div>
       </div>

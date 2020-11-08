@@ -1,0 +1,16 @@
+.logo-login {
+  width: "72";
+  height: "72";
+}
+
+#forma {
+  max-width: 250px;
+}
+
+.login-background-image {
+  background-image: url("/images/ken-reid-ZRZSmK362Xw-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+}

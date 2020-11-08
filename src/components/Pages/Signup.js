@@ -2,6 +2,7 @@ import React from "react";
 import useAuth from "../../hooks/useAuth";
 import AddImage from "../Layout/AddImage";
 import SignupFeatures from "../Layout/SignupFeatures";
+import "./Signup.css";
 
 const Signup = (props) => {
   const {
@@ -32,130 +33,175 @@ const Signup = (props) => {
   const { userRole, username, email, password, aboutMe, borough } = stateInfo;
 
   return (
-    <div>
-      {/* 
+    <div className=' container-fluid signup-background-image '>
+      {/* <div className='container'> */}
+      <div className='row d-flex justify-content-center'>
+        {/* 
                             image
        */}
-      {stateInfo.image && <img className='image' src={stateInfo.image} />}
-      <AddImage addImage={(image) => setStateInfo({ ...stateInfo, image })} />
+        <div className='mt-4 col p-4 '>
+          {!stateInfo.image && (
+            <h6 className='m-3 '>Choose your profile image...</h6>
+          )}
+          {stateInfo.image ? (
+            <img
+              className='image img-thumbnail img-fluid rounded '
+              src={stateInfo.image}
+            />
+          ) : (
+            <img
+              className='image img-fluid rounded mx-auto d-block'
+              src='/icons/addImage.png'
+              alt='addImage'
+            />
+          )}
+          <AddImage
+            className='mb-4'
+            addImage={(image) => setStateInfo({ ...stateInfo, image })}
+          />
+        </div>
+        <div className='col p-4 '>
+          <img
+            className='img-fluid rounded float-right '
+            src='/images/boo-logo.png'
+            alt='logo'
+          />
+        </div>
+      </div>
       {/* 
                             signup form
        */}
-      <form onSubmit={handleSubmit}>
-        {/* 
+      <div className='row d-flex justify-content-center'>
+        <form onSubmit={handleSubmit} className='container-fluid'>
+          <div className='form-group container-fluid mt-3'>
+            {/* 
                               Role
       */}
-        <div className='field'>
-          <label className='label'>I am: </label>
-          <div className='control'>
-            <div className='select'>
-              <select
-                name='userRole'
-                value={userRole}
-                onChange={handleChange}
-                required
-              >
-                <option className='is-unselectable' value=''>
-                  none
-                </option>
-                <option value='Dog owner'>Dog owner</option>
-                <option value='Dogsitter'>Dogsitter</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        {/* 
+
+            <div className='row p-2'>
+              <div className='col-sm'>
+                <label>I am: </label>
+
+                <select
+                  className='form-control'
+                  name='userRole'
+                  value={userRole}
+                  onChange={handleChange}
+                  required
+                >
+                  <option value='' disabled>
+                    none
+                  </option>
+                  <option value='Dog owner'>Dog owner</option>
+                  <option value='Dogsitter'>Dogsitter</option>
+                </select>
+              </div>
+              {/* 
                               Username
       */}
-        <div className='field'>
-          <label className='label'>Username: </label>
-          <div className='control has-icons-left'>
-            <input
-              className='input'
-              name='username'
-              value={username}
-              onChange={handleChange}
-              required
-              type='text'
-            />
-          </div>
-        </div>
-        {/* 
+              <div className='col-sm'>
+                <label>Username: </label>
+
+                <input
+                  className='form-control'
+                  name='username'
+                  value={username}
+                  onChange={handleChange}
+                  required
+                  type='text'
+                  placeholder='Boop'
+                />
+              </div>
+              {/* 
                               Email
       */}
-        <div className='field'>
-          <label className='label'>Email: </label>
-          <div className='control has-icons-left'>
-            <input
-              className='input'
-              name='email'
-              value={email}
-              onChange={handleChange}
-              required
-              type='email'
-            />
-          </div>
-        </div>
-        {/* 
+              <div className='col-sm'>
+                <label>Email: </label>
+
+                <input
+                  className='form-control'
+                  name='email'
+                  value={email}
+                  onChange={handleChange}
+                  required
+                  type='email'
+                  placeholder='debora@boop.com'
+                />
+              </div>
+
+              {/* 
                               Password
       */}
-        <div className='field'>
-          <label className='label'>Password: </label>
-          <div className='control'>
-            <input
-              className='input'
-              name='password'
-              type='password'
-              value={password}
-              onChange={handleChange}
-              required
-            />
-          </div>
-        </div>
+              <div className='col-sm'>
+                <label>Password: </label>
 
-        {/* 
+                <input
+                  className='form-control'
+                  name='password'
+                  type='password'
+                  value={password}
+                  onChange={handleChange}
+                  required
+                  placeholder='*******'
+                />
+              </div>
+            </div>
+
+            {/* 
                               About me
       */}
-        <div className='field'>
-          <label className='label'>About me: </label>
-          <div className='control'>
-            <textarea
-              className='textarea'
-              name='aboutMe'
-              value={aboutMe}
-              onChange={handleChange}
-              required
-              type='text'
-            />
-          </div>
-        </div>
-        {/* 
+            <div className='row p-2'>
+              <div className='col-sm'>
+                <label>About me: </label>
+
+                <textarea
+                  className='form-control'
+                  name='aboutMe'
+                  value={aboutMe}
+                  onChange={handleChange}
+                  required
+                  type='text'
+                  placeholder='I have had dogs all my life and could not imagine my days without them...'
+                />
+              </div>
+
+              {/* 
                               Borough
       */}
-        <div className='field'>
-          <label className='label'>Borough: </label>
-          <div className='control'>
-            <input
-              className='input'
-              name='borough'
-              value={borough}
-              onChange={handleChange}
-              required
-              type='text'
-            />
+              <div className='col-sm'>
+                <label>Borough: </label>
+
+                <input
+                  className='form-control'
+                  name='borough'
+                  value={borough}
+                  onChange={handleChange}
+                  required
+                  type='text'
+                  placeholder='Hackney'
+                />
+              </div>
+            </div>
           </div>
-        </div>
-
-        <SignupFeatures
-          handleChangeFeatures={handleChangeFeatures}
-          stateInfo={stateInfo}
-        />
-
-        {errorMessage !== "" && errorMessage}
-        <button className='button is-link' type='submit'>
-          Sign up
-        </button>
-      </form>
+          <div className=' mt-4'>
+            <SignupFeatures
+              handleChangeFeatures={handleChangeFeatures}
+              stateInfo={stateInfo}
+            />
+            <div className='row-fluid p-2'>
+              {errorMessage !== "" && errorMessage}
+            </div>
+            <div className='row p-2'>
+              <button
+                className=' col align-self-center btn info mt-4'
+                type='submit'
+              >
+                Sign up
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
   );
 };

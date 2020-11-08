@@ -40,20 +40,18 @@ export default class FeaturesFilter extends Component {
         {/* 
                             size
        */}
-        <span className='columns is-desktop'>
-          <div className='field column'>
+        <span className=''>
+          <div className=''>
             <label className='label'>Size </label>
             <div className='control'>
-              <div className='select'>
-                <select name='size' value={size} onChange={this.handleChange}>
-                  <option className='is-unselectable' value=''>
-                    none
-                  </option>
-                  <option value='Small'>Small</option>
-                  <option value='Medium'>Medium</option>
-                  <option value='Large'>Large</option>
-                </select>
-              </div>
+              <select name='size' value={size} onChange={this.handleChange}>
+                <option value='' selected={true} disabled='disabled'>
+                  none
+                </option>
+                <option value='Small'>Small</option>
+                <option value='Medium'>Medium</option>
+                <option value='Large'>Large</option>
+              </select>
             </div>
           </div>
           {/* 
@@ -68,9 +66,7 @@ export default class FeaturesFilter extends Component {
                   value={energy}
                   onChange={this.handleChange}
                 >
-                  <option className='is-unselectable' value='none'>
-                    none
-                  </option>
+                  <option value='none'>none</option>
                   <option value='Tornado'>Tornado</option>
                   <option value='Chilled'>Chilled</option>
                   <option value='Couch potato'>Couch Potato</option>
@@ -90,7 +86,7 @@ export default class FeaturesFilter extends Component {
                   value={behaves}
                   onChange={this.handleChange}
                 >
-                  <option className='is-unselectable' value=''>
+                  <option value='' selected={true} disabled='disabled'>
                     none
                   </option>
                   <option value='Soldier'>Soldier</option>
@@ -116,7 +112,7 @@ export default class FeaturesFilter extends Component {
                   onChange={this.handleChange}
                   required
                 >
-                  <option className='is-unselectable' value=''>
+                  <option value='' selected={true} disabled='disabled'>
                     none
                   </option>
                   <option value='Expert'>Expert</option>
@@ -134,7 +130,7 @@ export default class FeaturesFilter extends Component {
             <div className='control'>
               <div className='select'>
                 <select name='chill' value={chill} onChange={this.handleChange}>
-                  <option className='is-unselectable' value=''>
+                  <option value='' selected={true} disabled='disabled'>
                     none
                   </option>
                   <option value='Outdoor'>Outdoor</option>

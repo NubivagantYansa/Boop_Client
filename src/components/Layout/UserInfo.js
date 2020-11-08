@@ -25,7 +25,7 @@ const UserInfo = () => {
               onChange={handleChange}
               required
             >
-              <option className='is-unselectable' value=''>
+              <option value='' selected={true} disabled='disabled'>
                 none
               </option>
               <option value='Dog owner'>Dog owner</option>

@@ -67,9 +67,7 @@ const Features = () => {
           <div className='control'>
             <div className='select'>
               <select name='size' value={size} onChange={handleChange} required>
-                <option className='is-unselectable' value='none'>
-                  none
-                </option>
+                <option value='none'>none</option>
                 <option value='Small'>Small</option>
                 <option value='Medium'>Medium</option>
                 <option value='Large'>Large</option>
@@ -90,9 +88,7 @@ const Features = () => {
                 onChange={handleChange}
                 required
               >
-                <option className='is-unselectable' value='none'>
-                  none
-                </option>
+                <option value='none'>none</option>
                 <option value='Tornado'>Tornado</option>
                 <option value='Chilled'>Chilled</option>
                 <option value='Couch potato'>Couch Potato</option>
@@ -113,9 +109,7 @@ const Features = () => {
                 onChange={handleChange}
                 required
               >
-                <option className='is-unselectable' value='none'>
-                  none
-                </option>
+                <option value='none'>none</option>
                 <option value='Soldier'>Soldier</option>
                 <option value='I kinda get it'>I kinda get it</option>
                 <option value='huh?'>huh?</option>
@@ -139,9 +133,7 @@ const Features = () => {
                 onChange={handleChange}
                 required
               >
-                <option className='is-unselectable' value='none'>
-                  none
-                </option>
+                <option value='none'>none</option>
                 <option value='Expert'>Expert</option>
                 <option value='Okay'>Okay</option>
                 <option value='Ouch!'>Ouch!</option>
@@ -162,9 +154,7 @@ const Features = () => {
                 onChange={handleChange}
                 required
               >
-                <option className='is-unselectable' value='none'>
-                  none
-                </option>
+                <option value='none'>none</option>
                 <option value='Outdoor'>Outdoor</option>
                 <option value='Indoor'>Indoor</option>
               </select>
