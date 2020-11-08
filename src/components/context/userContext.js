@@ -14,10 +14,10 @@ export function UserWrapper({ children }) {
     setLoading(true);
     const localAccessToken = localStorage.getItem("accessToken");
     if (localAccessToken) {
+      setAccessToken(localAccessToken);
       validateSession(localAccessToken)
         .then(({ session }) => {
           setUser(session.userId);
-          setAccessToken(localAccessToken);
           setLoading(false);
         })
         .catch((err) => {
@@ -36,7 +36,7 @@ export function UserWrapper({ children }) {
   async function handleLogout() {
     await userLogout(accessToken);
     localStorage.clear();
-    setUser(null);
+    return setUser(null);
   }
 
   console.log("LOAAAAD", loading);

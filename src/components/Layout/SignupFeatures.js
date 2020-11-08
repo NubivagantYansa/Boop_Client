@@ -39,7 +39,7 @@ const SignupFeatures = (props) => {
   const { userRole } = props.stateInfo;
 
   return (
-    <div className='container shadow p-3 mb-5 bg-white rounded'>
+    <div className='container shadow p-3 mb-2 bg-white rounded'>
       <div className='row'>
         {userRole === "Dog owner" ? (
           <div className='d-inline-flex p-2'>
@@ -56,7 +56,7 @@ const SignupFeatures = (props) => {
               <img src='/icons/dog.png' />
             </span>
             <span>
-              <h1> preferences:</h1>
+              <h1> picks:</h1>
             </span>
           </div>
         )}
