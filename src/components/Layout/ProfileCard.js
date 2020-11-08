@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import "./ProfileCard.css";
 
 const ProfileCard = (props) => {
   const [isExpanded, setExpand] = useState(false);
@@ -13,18 +14,19 @@ const ProfileCard = (props) => {
   const aboutMeBrief = aboutMe.slice(0, 40);
 
   return (
-    <div className='card'>
-      <div className='card-image'>
-        <figure className='image is-1by1'>
-          <Link to={`/profile/${_id}`}>
-            <img src={image} alt={username} />
-          </Link>
-        </figure>
-      </div>
-      <div className='card-content'>
-        <h5 className='title is-4'>{username}</h5>
-        <h6 className='subtitle is-6'>{borough}</h6>
-        <div className='content'>
+    <div className=' card m-1 pt-4'>
+      <Link to={`/profile/${_id}`}>
+        <img
+          className='card-image-top img-card rounded mx-auto d-block'
+          src={image}
+          alt={username}
+        />
+      </Link>
+
+      <div className='card-body'>
+        <h5 className='card-title'>{username}</h5>
+        <h6 className='card-subtitle mb-2 text-muted'>{borough}</h6>
+        <div className='card-tex'>
           <p>{isExpanded ? aboutMe : aboutMeBrief}</p>
           <a href='#' className='card-link' onClick={readMore}>
             {isExpanded ? "Read Less" : "Read More"}

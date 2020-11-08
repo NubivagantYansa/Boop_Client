@@ -36,115 +36,108 @@ export default class FeaturesFilter extends Component {
     const { size, energy, behaves, pottyTraining, chill, breed } = this.state;
 
     return (
-      <div>
+      <div className='container shadow p-3 mb-5 bg-white rounded'>
         {/* 
                             size
        */}
-        <span className=''>
-          <div className=''>
-            <label className='label'>Size </label>
-            <div className='control'>
-              <select name='size' value={size} onChange={this.handleChange}>
-                <option value='' selected={true} disabled='disabled'>
-                  none
-                </option>
+
+        <div className='square p-2'>
+          <div className='row p-2'>
+            <div className='col-sm'>
+              <label>Size </label>
+
+              <select
+                className='form-control'
+                name='size'
+                value={size}
+                onChange={this.handleChange}
+              >
+                <option value=''>none</option>
                 <option value='Small'>Small</option>
                 <option value='Medium'>Medium</option>
                 <option value='Large'>Large</option>
               </select>
             </div>
-          </div>
-          {/* 
+            {/* 
                                 energy
        */}
-          <div className='field column'>
-            <label className='label'>Energy levels </label>
-            <div className='control'>
-              <div className='select'>
-                <select
-                  name='energy'
-                  value={energy}
-                  onChange={this.handleChange}
-                >
-                  <option value='none'>none</option>
-                  <option value='Tornado'>Tornado</option>
-                  <option value='Chilled'>Chilled</option>
-                  <option value='Couch potato'>Couch Potato</option>
-                </select>
-              </div>
+            <div className='col-sm'>
+              <label>Energy levels </label>
+
+              <select
+                className='form-control'
+                name='energy'
+                value={energy}
+                onChange={this.handleChange}
+              >
+                <option value='none'>none</option>
+                <option value='Tornado'>Tornado</option>
+                <option value='Chilled'>Chilled</option>
+                <option value='Couch potato'>Couch Potato</option>
+              </select>
             </div>
-          </div>
-          {/* 
+            {/* 
                                 training
        */}
-          <div className='field column'>
-            <label className='label'>Training </label>
-            <div className='control'>
-              <div className='select'>
-                <select
-                  name='behaves'
-                  value={behaves}
-                  onChange={this.handleChange}
-                >
-                  <option value='' selected={true} disabled='disabled'>
-                    none
-                  </option>
-                  <option value='Soldier'>Soldier</option>
-                  <option value='I kinda get it'>I kinda get it</option>
-                  <option value='huh?'>huh?</option>
-                </select>
-              </div>
-            </div>
-          </div>
-        </span>
+            <div className='col-sm'>
+              <label>Training</label>
 
-        <span className='columns is-desktop'>
-          {/* 
+              <select
+                className='form-control'
+                name='behaves'
+                value={behaves}
+                onChange={this.handleChange}
+              >
+                <option value=''>none</option>
+                <option value='Soldier'>Soldier</option>
+                <option value='I kinda get it'>I kinda get it</option>
+                <option value='huh?'>huh?</option>
+              </select>
+            </div>
+            {/* 
                                 potty training
        */}
-          <div className=' field column'>
-            <label className='label'>Potty training </label>
-            <div className='control'>
-              <div className='select'>
-                <select
-                  name='pottyTraining'
-                  value={pottyTraining}
-                  onChange={this.handleChange}
-                  required
-                >
-                  <option value='' selected={true} disabled='disabled'>
-                    none
-                  </option>
-                  <option value='Expert'>Expert</option>
-                  <option value='Okay'>Okay</option>
-                  <option value='Ouch!'>Ouch!</option>
-                </select>
-              </div>
-            </div>
           </div>
-          {/* 
+          <div className='row p-2'>
+            <div className='col-sm'>
+              <label>Potty training</label>
+
+              <select
+                className='form-control'
+                name='pottyTraining'
+                value={pottyTraining}
+                onChange={this.handleChange}
+                required
+              >
+                <option value=''>none</option>
+                <option value='Expert'>Expert</option>
+                <option value='Okay'>Okay</option>
+                <option value='Ouch!'>Ouch!</option>
+              </select>
+            </div>
+            {/* 
                                 I like to chill
        */}
-          <div className='field column'>
-            <label className='label'>I like to chill </label>
-            <div className='control'>
-              <div className='select'>
-                <select name='chill' value={chill} onChange={this.handleChange}>
-                  <option value='' selected={true} disabled='disabled'>
-                    none
-                  </option>
-                  <option value='Outdoor'>Outdoor</option>
-                  <option value='Indoor'>Indoor</option>
-                </select>
-              </div>
-            </div>
-          </div>
+            <div className='col-sm'>
+              <label>I like to chill</label>
 
-          <div className='field column'>
-            <label className='label'>Breed </label>
-            <div className='control'>
+              <select
+                className='form-control'
+                name='chill'
+                value={chill}
+                onChange={this.handleChange}
+              >
+                <option value=''>none</option>
+                <option value='Outdoor'>Outdoor</option>
+                <option value='Indoor'>Indoor</option>
+              </select>
+            </div>
+
+            <div className='col-sm'>
+              <label>Breed </label>
+
               <input
-                className='input'
+                className='form-control'
                 placeholder='Pinsher'
                 name='breed'
                 value={breed}
@@ -153,7 +146,7 @@ export default class FeaturesFilter extends Component {
               />
             </div>
           </div>
-        </span>
+        </div>
       </div>
     );
   }

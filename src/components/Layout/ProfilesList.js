@@ -5,7 +5,7 @@ const ProfilesList = (props) => {
   console.log(props);
   const list = props.profilesList.map((profile) => {
     return (
-      <div className='column is-4' key={profile._id}>
+      <div className='col' key={profile._id}>
         <ProfileCard profile={profile} />
       </div>
     );

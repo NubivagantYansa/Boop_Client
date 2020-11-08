@@ -7,19 +7,12 @@ const Navbar = () => {
   const { isAuthenticated, handleLogout } = useUser();
   return (
     <div
-      className=' navbar navbar-expand-md navbar-dark'
+      className=' navbar navbar-expand-md navbar-dark overflow-hidden fixed-top'
       id='navbar'
       role='navigation'
       aria-label='main navigation'
     >
       <span className='logo-container'>
-        {/* <div className='navbar-brand' id='navbar-logo'>
-          {
-            <Link to='/'>
-              <img src='/images/Logo project 3 (1).png' alt='logo' />
-            </Link>
-          }
-        </div> */}
         <div className='navbar-brand' id='navbar-logo'>
           {
             <Link to='/'>

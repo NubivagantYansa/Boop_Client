@@ -1,0 +1,51 @@
+/* buttons */
+.info {
+  color: white;
+  background-color: #4393ac;
+  width: fit-content;
+}
+
+.choice {
+  color: white;
+  border: 2px solid white;
+  background-color: #4393ac;
+  width: fit-content;
+}
+
+.danger {
+  color: white;
+  background-color: #cb3b28;
+  width: fit-content;
+}
+
+/* links */
+#link {
+  color: black !important;
+  text-decoration: none !important;
+}
+
+/* forms and layouts */
+.form-control {
+  border: 2px solid #4393ac;
+}
+
+.square {
+  background-color: rgb(208, 228, 234, 0.7);
+  border: 2px solid rgb(208, 228, 234, 0.7);
+}
+
+/* typography */
+h1 {
+  color: #4393ac;
+  font-weight: 900;
+}
+
+h3 {
+  color: white;
+  font-weight: 900;
+}
+
+/* label {
+  background-color: white;
+  width: fit-content;
+} */

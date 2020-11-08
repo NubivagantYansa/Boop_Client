@@ -25,19 +25,24 @@ const Home = () => {
         <h5 className=' p-2 m-1 '>Why not organise a play date?</h5>
       </div>
       <Link to='/login'>
-        <div className='container shadow p-3 mb-5 bg-white rounded'>
-          <div className='p-2' id='link'>
-            <div className='col'>
-              <p>I am looking for: </p>
-            </div>
-            <div className='col'>
-              <div
-                className='btn-group'
-                role='group'
-                aria-label='Basic example'
-              >
-                <button className='btn btn-secondary'> Dogsitters</button>
-                <button className='btn btn-secondary'> Dog owners</button>
+        <div className='container '>
+          <div className='row p-2' id='link'>
+            <div className='col-sm d-flex justify-content-center'>
+              <div className='btn-group d-block'>
+                <button className='btn  btn-lg choice m-1'>
+                  Dogsitters
+                  <img
+                    className='rounded mx-auto d-block'
+                    src='/icons/dogsitter.png'
+                  />
+                </button>
+                <button className='btn  btn-lg choice m-1'>
+                  Dog owners
+                  <img
+                    className='rounded mx-auto d-block'
+                    src='/icons/dog-white.png'
+                  />
+                </button>
               </div>
             </div>
           </div>

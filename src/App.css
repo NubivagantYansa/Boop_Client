@@ -46,6 +46,7 @@ dd {
 
 /* Set core body defaults */
 body {
+  padding-top: 10vh;
   min-height: 100vh;
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
@@ -80,23 +81,4 @@ button,
 textarea,
 select {
   font: inherit;
-}
-
-#link {
-  color: black !important;
-  text-decoration: none !important;
-}
-
-.form-control {
-  border: 2px solid #4393ac;
-}
-
-h1 {
-  color: #4393ac;
-  font-weight: 900;
-}
-
-.square {
-  background-color: rgb(208, 228, 234, 0.7);
-  border: 2px solid rgb(208, 228, 234, 0.7);
 }

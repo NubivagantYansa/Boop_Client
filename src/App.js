@@ -2,7 +2,7 @@ import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter, Switch } from "react-router-dom";
 import "./App.css";
-import "./Buttons.css";
+import "./BoopTheme.css";
 import Navbar from "./components/Layout/Navbar";
 import AnonRoute from "./components/auth/AnonRoute";
 import PrivateRoute from "./components/auth/PrivateRoute";

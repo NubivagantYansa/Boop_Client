@@ -1,0 +1,8 @@
+.board-background-image {
+  background-image: url("/images/patrick-tomasso-QMDap1TAu0g-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+}

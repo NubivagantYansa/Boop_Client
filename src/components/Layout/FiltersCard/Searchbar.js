@@ -28,12 +28,12 @@ export default class Searchbar extends Component {
 
   render() {
     return (
-      <div className='m-3'>
-        <label>Search keyword: </label>
+      <div className='d-flex justify-content-center mt-4 w-50'>
         <input
+          className='form-control text-center'
           type='text'
           name='srchwrd'
-          placeholder='dog lover'
+          placeholder='Search keyword'
           value={this.state.srchwrd}
           onChange={this.handleOnChange}
         />
