@@ -11,15 +11,15 @@ const Home = () => {
           <h2 className='display-4'>Local, Loving Pet Care</h2>
           <h4 className='p-3 lead'>
             Book trusted sitters and dog walkers who'll treat your pets like
-            family or join ad dog owner and wait for a dogsitter to get in touch
-            with you!
+            family or join ad dog owner and join the community and wait for a
+            dogsitter to get in touch with you!
           </h4>
         </div>
       </div>
       <div className='text-center band p-3'>
         <p className='lead'>
           Perfect if you need overnight pet care or house-sitting services. Get
-          i ntouch wenever your dog needs a walk or ask for daytime pet care in
+          in touch whenever your dog needs a walk or ask for daytime pet care in
           your sitter’s dog-friendly home.
         </p>
         <h5 className=' p-2 m-1 '>Why not organise a play date?</h5>
