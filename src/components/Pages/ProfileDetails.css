@@ -1,0 +1,12 @@
+.imge-card {
+  max-width: 400px;
+}
+
+.profile-background-image {
+  background-image: url("/images/kevin-borrill-7_N1zLrY7ns-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100%;
+  width: 100vw;
+}

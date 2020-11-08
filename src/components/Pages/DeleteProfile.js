@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { deleteProfile } from "../../services/userService";
 import { useUser } from "../context/userContext";
+import "./DeleteProfile.css";
 
 const DeleteProfile = () => {
   const { user, handleLogout } = useUser();
@@ -13,15 +14,14 @@ const DeleteProfile = () => {
   };
   return (
     <>
-      <h1>Delete profile page</h1>
-      <div className='box'>
+      <div className='container delete-background-image'>
         <p>Are you sure you want to delete your profile?</p>
         <form onSubmit={handleSubmit}>
-          <button className='button is-danger'>Delete</button>
+          <button className='btn danger'>Delete</button>
         </form>
-        <div>
+        <button className='btn info' id='link'>
           <Link to='/dashboard'>Back</Link>
-        </div>
+        </button>
       </div>
     </>
   );

@@ -3,36 +3,32 @@ import { Link } from "react-router-dom";
 
 const Settings = () => {
   return (
-    <div className='column is-flex-direction-column'>
-      <div className='box buttons is-flex-direction-column  '>
+    <div className=' d-flex flex-column  '>
+      <div className='mb-4 btn-group d-block d-flex flex-column align-items-center container shadow bg-white  p-3 '>
         {
           <Link to='/delete-profile'>
-            <button className='button is-danger is-rounded'>
-              Delete Profile
-            </button>
+            <button className='m-1 btn danger rounded'>Delete Profile</button>
           </Link>
         }
         {
           <Link to='/edit-password'>
-            <button className='button is-link is-rounded'>Edit Password</button>
+            <button className='m-1 btn info rounded'>Edit Password</button>
           </Link>
         }
         {
           <Link to='/edit-profile'>
-            <button className='button is-link is-rounded'>Edit Profile</button>
+            <button className='m-1 btn info rounded'>Edit Profile</button>
           </Link>
         }
       </div>
 
-      <div className='box buttons is-flex-direction-column'>
+      <div className='mt-4 btn-group d-block d-flex flex-column align-items-center container shadow bg-white p-3'>
         <span>
-          <h1>Begin your search!</h1>
+          <p className='lead'>Begin your search!</p>
         </span>
         {
           <Link to='/board'>
-            <button className='button is-info is-rounded m-2'>
-              Search profiles
-            </button>
+            <button className='m-1 btn info rounded'>Search profiles</button>
           </Link>
         }
       </div>

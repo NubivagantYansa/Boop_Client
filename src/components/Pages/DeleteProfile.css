@@ -1,0 +1,8 @@
+.delete-background-image {
+  background-image: url("/images/jc-gellidon-TPZNooS1Meg-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+}

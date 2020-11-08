@@ -3,7 +3,7 @@ import { useBoardData } from "../../hooks/useBoardData";
 import FeatBorFilter from "../Layout/FiltersCard/FeatBorFilter";
 import RoleFilter from "../Layout/FiltersCard/RoleFilter";
 import Searchbar from "../Layout/FiltersCard/Searchbar";
-import ProfilesList from "../Layout/ProfilesList";
+import ProfilesList from "../Layout/Profile/ProfilesList";
 import "./Board.css";
 
 const Board = (props) => {
@@ -21,7 +21,7 @@ const Board = (props) => {
     <div className='mt-1 text-center p-2 board-background-image'>
       <section className='container-fluid '>
         <div className='row p-2'>
-          <div className='col-sm'>
+          <div className='col-sm mt-3'>
             <RoleFilter filterRole={filterRole} />
           </div>
         </div>
