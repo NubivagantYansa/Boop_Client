@@ -1,11 +1,11 @@
-import React, { Component, useState } from "react";
+import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { editPassword } from "../../services/userService";
 import { useUser } from "../context/userContext";
 import Settings from "../Layout/Settings";
 
 const EditPassword = () => {
-  const { accessToken, authenticate } = useUser();
+  const { user, accessToken, authenticate } = useUser();
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const history = useHistory();
@@ -24,13 +24,18 @@ const EditPassword = () => {
       accessToken
     )
       .then((response) => {
-        console.log("EDITED password", response);
+        if (response.errorMessage) {
+          authenticate(user);
+          history.push("/edit-password");
+          return setErrorMessage(response.errorMessage);
+        }
         authenticate(response.user);
         return history.push("/dashboard");
       })
       .catch((error) => {
-        setErrorMessage(error);
-        console.log(error);
+        authenticate(user);
+        history.push("/edit-password");
+        return setErrorMessage(error);
       });
   };
 
@@ -38,7 +43,6 @@ const EditPassword = () => {
     <div>
       <Settings />
       <h1>Edit password</h1>
-      {errorMessage !== "" && errorMessage}
       <p>{password}</p>
       <form onSubmit={handleSubmit}>
         <div className='field'>
@@ -53,6 +57,7 @@ const EditPassword = () => {
               required
             />
           </div>
+          {errorMessage !== "" && errorMessage}
         </div>
         <button className='button is-link' type='submit'>
           Save

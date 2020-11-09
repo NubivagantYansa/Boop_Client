@@ -11,7 +11,14 @@ export const validateSession = (accessToken) => {
     .then((response) => {
       return response.data;
     })
-    .catch((err) => err);
+    .catch((err) => {
+      console.log("VALIDATE", err.response);
+      return {
+        errorMessage: err.response?.data.errorMessage,
+        status: false,
+        statusCode: err.response.status,
+      };
+    });
 };
 
 //signup
@@ -71,7 +78,14 @@ export const userLogout = (accessToken) => {
   return service
     .post(`auth/logout/${accessToken}`)
     .then((response) => response.data)
-    .catch((error) => console.log(error));
+    .catch((err) => {
+      console.log(err.response);
+      return {
+        errorMessage: err.response?.data.errorMessage,
+        status: false,
+        statusCode: err.response.status,
+      };
+    });
 };
 
 //upload image
@@ -82,7 +96,14 @@ export function uploadImage(image) {
   return service
     .post("user/image", uploadData)
     .then(({ data }) => data)
-    .catch(console.error);
+    .catch((err) => {
+      console.log(err.response);
+      return {
+        errorMessage: err.response?.data.errorMessage,
+        status: false,
+        statusCode: err.response.status,
+      };
+    });
 }
 
 // edit profile
@@ -96,7 +117,14 @@ export const editProfile = (editInfo, token) => {
     .then((editResp) => {
       return editResp.data;
     })
-    .catch((error) => console.log(error));
+    .catch((err) => {
+      console.log("EDIT PROFILE", err.response);
+      return {
+        errorMessage: err.response?.data.errorMessage,
+        status: false,
+        statusCode: err.response.status,
+      };
+    });
 };
 
 // edit password
@@ -107,9 +135,16 @@ export const editPassword = (editedPassword, token) => {
   return service
     .post("user/edit-password", editedPassword, { headers })
     .then((response) => {
-      return response.data;
+      return { ...response.data, status: true };
     })
-    .catch((error) => console.log(error));
+    .catch((err) => {
+      console.log("EDIT PASSWORD ERROR", err.response);
+      return {
+        errorMessage: err.response?.data.errorMessage,
+        status: false,
+        statusCode: err.response.status,
+      };
+    });
 };
 
 //delete profile
@@ -118,5 +153,12 @@ export const deleteProfile = (userId) => {
   return service
     .post(`user/delete-profile/${userId}`)
     .then((response) => console.log(response.data))
-    .catch((error) => console.log(error));
+    .catch((err) => {
+      console.log(err.response);
+      return {
+        errorMessage: err.response?.data.errorMessage,
+        status: false,
+        statusCode: err.response.status,
+      };
+    });
 };

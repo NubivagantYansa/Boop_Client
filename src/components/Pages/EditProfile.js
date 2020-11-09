@@ -18,13 +18,19 @@ const EditProfile = () => {
     e.preventDefault();
     editProfile(user, accessToken)
       .then((response) => {
+        if (response.errorMessage) {
+          authenticate(user);
+          history.push("/edit-profile");
+          return setErrorMessage(response.errorMessage);
+        }
         authenticate(response.user);
         history.push("/dashboard");
         return response;
       })
       .catch((error) => {
-        setErrorMessage(error);
-        console.log(error);
+        authenticate(user);
+        history.push("/edit-profile");
+        return setErrorMessage(error);
       });
   };
 

@@ -22,6 +22,7 @@ const EditFeatures = () => {
 
   const handleChangeFeat = (e) => {
     const { name, value } = e.target;
+
     setUser((u) => ({ ...u, features: { ...u.features, [name]: value } }));
     if (name === "breed") {
       return handleSearchBreed(value);
@@ -89,7 +90,7 @@ const EditFeatures = () => {
                 onChange={handleChangeFeat}
                 required
               >
-                <option value='none'>none</option>
+                <option value=''>none</option>
                 <option value='Small'>Small</option>
                 <option value='Medium'>Medium</option>
                 <option value='Large'>Large</option>
@@ -110,7 +111,7 @@ const EditFeatures = () => {
                 onChange={handleChangeFeat}
                 required
               >
-                <option value='none'>none</option>
+                <option value=''>none</option>
                 <option value='Tornado'>Tornado</option>
                 <option value='Chilled'>Chilled</option>
                 <option value='Couch potato'>Couch Potato</option>
@@ -131,7 +132,7 @@ const EditFeatures = () => {
                 onChange={handleChangeFeat}
                 required
               >
-                <option value='none'>none</option>
+                <option value=''>none</option>
                 <option value='Soldier'>Soldier</option>
                 <option value='I kinda get it'>I kinda get it</option>
                 <option value='huh?'>huh?</option>
@@ -155,7 +156,7 @@ const EditFeatures = () => {
                 onChange={handleChangeFeat}
                 required
               >
-                <option value='none'>none</option>
+                <option value=''>none</option>
                 <option value='Expert'>Expert</option>
                 <option value='Okay'>Okay</option>
                 <option value='Ouch!'>Ouch!</option>
@@ -176,7 +177,7 @@ const EditFeatures = () => {
                 onChange={handleChangeFeat}
                 required
               >
-                <option value='none'>none</option>
+                <option value=''>none</option>
                 <option value='Outdoor'>Outdoor</option>
                 <option value='Indoor'>Indoor</option>
               </select>
