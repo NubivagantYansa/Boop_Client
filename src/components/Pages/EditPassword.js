@@ -26,8 +26,7 @@ const EditPassword = () => {
       .then((response) => {
         console.log("EDITED password", response);
         authenticate(response.user);
-        history.push("/dashboard");
-        return response;
+        return history.push("/dashboard");
       })
       .catch((error) => {
         setErrorMessage(error);
