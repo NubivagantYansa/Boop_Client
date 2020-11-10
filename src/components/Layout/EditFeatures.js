@@ -8,7 +8,6 @@ const EditFeatures = () => {
   const { breed, size, behaves, energy, pottyTraining, chill } = user.features;
   const [breedsList, setBreedsList] = useState("");
   const [results, setResults] = useState("");
-  const [errorMerrage, setErrorMessage] = useState("");
 
   useEffect(() => {
     getAllBreeds()
@@ -41,150 +40,151 @@ const EditFeatures = () => {
   };
 
   return (
-    <div>
-      <div>
+    <div className='container p-3 mb-2rounded'>
+      <div className='row no-gutters'>
         {user.userRole === "Dog owner" ? (
-          <h1>My ID:</h1>
+          <div className='d-inline-flex p-2'>
+            <span className='mr-2'>
+              <img src='/icons/dog.png' />
+            </span>
+            <span>
+              <h1> ID:</h1>
+            </span>
+          </div>
         ) : (
-          <h1>My peferences</h1>
+          <div className='d-inline-flex p-2'>
+            <span className='mr-2'>
+              <img src='/icons/dog.png' />
+            </span>
+            <span>
+              <h1> picks:</h1>
+            </span>
+          </div>
         )}
       </div>
       {/* 
                         breed
    */}
-      <div className='field column'>
-        <label className='label'>Breed</label>
-        <div className='control'>
-          <input
-            className='input'
-            placeholder='Pinsher'
-            name='breed'
-            value={breed}
-            onChange={handleChangeFeat}
-            required
-            type='text'
-          />
-          <Suggestions
-            results={results}
-            selectedBreed={(breed) => {
-              setUser((u) => ({
-                ...u,
-                features: { ...u.features, breed: breed },
-              }));
-              setResults([]);
-            }}
-          />
-        </div>
-      </div>
-      {/* 
+      <div className='square p-2'>
+        <div className='row p-2'>
+          <div className='col-sm'>
+            <label>Breed</label>
+
+            <input
+              className='form-control'
+              placeholder='Pinsher'
+              name='breed'
+              value={breed}
+              onChange={handleChangeFeat}
+              required
+              type='text'
+            />
+            <Suggestions
+              results={results}
+              selectedBreed={(breed) => {
+                setUser((u) => ({
+                  ...u,
+                  features: { ...u.features, breed: breed },
+                }));
+                setResults([]);
+              }}
+            />
+          </div>
+          {/* 
                         size
    */}
-      <span className='columns is-desktop'>
-        <div className='field column'>
-          <label className='label'>Size</label>
-          <div className='control'>
-            <div className='select'>
-              <select
-                name='size'
-                value={size}
-                onChange={handleChangeFeat}
-                required
-              >
-                <option value=''>none</option>
-                <option value='Small'>Small</option>
-                <option value='Medium'>Medium</option>
-                <option value='Large'>Large</option>
-              </select>
-            </div>
+          <div className='col-sm'>
+            <label>Size</label>
+
+            <select
+              className='form-control'
+              name='size'
+              value={size}
+              onChange={handleChangeFeat}
+              required
+            >
+              <option value=''>none</option>
+              <option value='Small'>Small</option>
+              <option value='Medium'>Medium</option>
+              <option value='Large'>Large</option>
+            </select>
           </div>
-        </div>
-        {/* 
+          {/* 
                             energy
    */}
-        <div className='field column'>
-          <label className='label'>Energy levels</label>
-          <div className='control'>
-            <div className='select'>
-              <select
-                name='energy'
-                value={energy}
-                onChange={handleChangeFeat}
-                required
-              >
-                <option value=''>none</option>
-                <option value='Tornado'>Tornado</option>
-                <option value='Chilled'>Chilled</option>
-                <option value='Couch potato'>Couch Potato</option>
-              </select>
-            </div>
+          <div className='col-sm'>
+            <label>Energy levels</label>
+            <select
+              className='form-control'
+              name='energy'
+              value={energy}
+              onChange={handleChangeFeat}
+              required
+            >
+              <option value=''>none</option>
+              <option value='Tornado'>Tornado</option>
+              <option value='Chilled'>Chilled</option>
+              <option value='Couch potato'>Couch Potato</option>
+            </select>
           </div>
         </div>
         {/* 
                             training
    */}
-        <div className='field column'>
-          <label className='label'>Training</label>
-          <div className='control'>
-            <div className='select'>
-              <select
-                name='behaves'
-                value={behaves}
-                onChange={handleChangeFeat}
-                required
-              >
-                <option value=''>none</option>
-                <option value='Soldier'>Soldier</option>
-                <option value='I kinda get it'>I kinda get it</option>
-                <option value='huh?'>huh?</option>
-              </select>
-            </div>
+        <div className='row p-2'>
+          <div className='col-sm'>
+            <label>Training</label>
+            <select
+              className='form-control'
+              name='behaves'
+              value={behaves}
+              onChange={handleChangeFeat}
+              required
+            >
+              <option value=''>none</option>
+              <option value='Soldier'>Soldier</option>
+              <option value='I kinda get it'>I kinda get it</option>
+              <option value='huh?'>huh?</option>
+            </select>
           </div>
-        </div>
-      </span>
 
-      <span className='columns is-desktop'>
-        {/* 
+          {/* 
                             potty training
    */}
-        <div className=' field column'>
-          <label className='label'>Potty training</label>
-          <div className='control'>
-            <div className='select'>
-              <select
-                name='pottyTraining'
-                value={pottyTraining}
-                onChange={handleChangeFeat}
-                required
-              >
-                <option value=''>none</option>
-                <option value='Expert'>Expert</option>
-                <option value='Okay'>Okay</option>
-                <option value='Ouch!'>Ouch!</option>
-              </select>
-            </div>
+          <div className='col-sm'>
+            <label>Potty training</label>
+            <select
+              className='form-control'
+              name='pottyTraining'
+              value={pottyTraining}
+              onChange={handleChangeFeat}
+              required
+            >
+              <option value=''>none</option>
+              <option value='Expert'>Expert</option>
+              <option value='Okay'>Okay</option>
+              <option value='Ouch!'>Ouch!</option>
+            </select>
           </div>
-        </div>
-        {/* 
+          {/* 
                             I like to chill
    */}
-        <div className='field column'>
-          <label className='label'>I like to chill</label>
-          <div className='control'>
-            <div className='select'>
-              <select
-                name='chill'
-                value={chill}
-                onChange={handleChangeFeat}
-                required
-              >
-                <option value=''>none</option>
-                <option value='Outdoor'>Outdoor</option>
-                <option value='Indoor'>Indoor</option>
-              </select>
-            </div>
+          <div className='col-sm'>
+            <label>I like to chill</label>
+            <select
+              className='form-control'
+              name='chill'
+              value={chill}
+              onChange={handleChangeFeat}
+              required
+            >
+              <option value=''>none</option>
+              <option value='Outdoor'>Outdoor</option>
+              <option value='Indoor'>Indoor</option>
+            </select>
           </div>
         </div>
-      </span>
+      </div>
     </div>
   );
 };

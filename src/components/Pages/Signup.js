@@ -47,6 +47,7 @@ const Signup = (props) => {
             <img
               className='image img-thumbnail img-fluid rounded mx-auto d-block'
               src={stateInfo.image}
+              alt='imgadded'
             />
           ) : (
             <img

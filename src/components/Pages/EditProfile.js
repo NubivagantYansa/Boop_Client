@@ -6,7 +6,7 @@ import AddImage from "../Layout/AddImage";
 import EditFeatures from "../Layout/EditFeatures";
 import Settings from "../Layout/Settings";
 import UserInfo from "../Layout/UserInfo";
-import "./Dasboard.css";
+import "./EditProfile.css";
 
 const EditProfile = () => {
   const { user, setUser, authenticate, accessToken } = useUser();
@@ -35,49 +35,84 @@ const EditProfile = () => {
   };
 
   return (
-    <>
-      <Settings />
-      <div>
-        <h1> Edit {user.username}'s profile</h1>
-      </div>
-
-      <div className='box'>
-        <div className='box'>
-          {/* 
-                            image
+    <div className='edit-background-image container-fluid'>
+      {/* 
+                            title
        */}
-          <div className='box'>
-            {image && <img className='image' src={user.image} />}
-            <AddImage
-              addImage={(image) => {
-                setImage(image);
-                setUser({ ...user, image });
-              }}
-            />
-          </div>
-          {/* 
-                            edit form
-       */}
-          <form onSubmit={handleSubmit}>
-            <div className='box'>
-              <UserInfo />
-            </div>
-
-            <div className='box'>
-              <EditFeatures />
-            </div>
-
-            {errorMessage !== "" && errorMessage}
-            <button className='button is-link' type='submit'>
-              Save
-            </button>
-          </form>
+      <div className='p-3 text-center row no-gutters'>
+        <h1 className='p-3 display-4 col-sm-9 align-self-end '>
+          Edit {user.username}'s profile
+        </h1>
+        <div className='p-3 col-sm-3 align-self-center'>
+          <Link to='/dashboard'>
+            <button className='btn info'>Back</button>
+          </Link>
         </div>
       </div>
-      <div>
-        <Link to='/dashboard'>Back</Link>
+
+      {/* 
+                            body
+       */}
+      <div className='p-3 text-center row no-gutters'>
+        <section className='container mt-4'>
+          <div className='row justify-content-center'>
+            {/* 
+                            card column
+       */}
+
+            <div className='col-md-9 mb-3'>
+              <div className='card card-background rounded'>
+                {/* 
+                            image
+       */}
+                <div className='text-center align-self-center'>
+                  {image && (
+                    <img
+                      className='card-image-top img-card rounded mx-auto  rounded'
+                      src={user.image}
+                      alt={user.username}
+                    />
+                  )}
+                  <AddImage
+                    addImage={(image) => {
+                      setImage(image);
+                      setUser({ ...user, image });
+                    }}
+                  />
+                </div>
+                {/* 
+                            edit form
+       */}
+                <div className='card-body '>
+                  <form onSubmit={handleSubmit}>
+                    <div className='container'>
+                      <UserInfo />
+                    </div>
+
+                    <div className='container'>
+                      <EditFeatures />
+                    </div>
+                    <div>{errorMessage !== "" && errorMessage}</div>
+                    <div className='row justify-content-center'>
+                      <button className='col-3m btn info' type='submit'>
+                        Save
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+
+            {/* 
+                            settings column
+       */}
+            <div className='col-md-3 '>
+              <Settings />
+            </div>
+          </div>
+        </section>
       </div>
-    </>
+    </div>
   );
 };
 

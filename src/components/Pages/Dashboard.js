@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { useUser } from "../context/userContext";
 import Settings from "../Layout/Settings";
 import "./Dasboard.css";
+
 function Dashboard() {
   const { user } = useUser();
   const { username, userRole, email, borough, aboutMe, image } = user;
@@ -31,7 +32,9 @@ function Dashboard() {
                             card - image
        */}
                 <div className='col-md-4 d-flex justify-content-center'>
-                  {image && <img className='img-card' src={image} />}
+                  {image && (
+                    <img className='img-card' src={image} alt='profile-img' />
+                  )}
                 </div>
 
                 {/* 
@@ -58,7 +61,7 @@ function Dashboard() {
                   {userRole === "Dog owner" ? (
                     <div className='d-inline-flex p-2'>
                       <span className='mr-2'>
-                        <img src='/icons/dog.png' />
+                        <img src='/icons/dog.png' alt='dog-img' />
                       </span>
                       <span>
                         <h1> ID:</h1>
@@ -67,7 +70,7 @@ function Dashboard() {
                   ) : (
                     <div className='d-inline-flex '>
                       <span className='mr-2'>
-                        <img src='/icons/dog.png' />
+                        <img src='/icons/dog.png' alt='dogsitter-img' />
                       </span>
                       <span>
                         <h1> picks:</h1>

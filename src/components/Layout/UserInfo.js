@@ -11,15 +11,16 @@ const UserInfo = () => {
   };
 
   return (
-    <>
-      {/* 
+    <div className='container-fluid'>
+      <div className='form-group container p-4   rounded'>
+        {/* 
                               Role
       */}
-      <div className='field'>
-        <label className='label'>I am: </label>
-        <div className='control'>
-          <div className='select'>
+        <div className='row p-2'>
+          <div className='col-sm'>
+            <label>I am: </label>
             <select
+              className='form-control'
               name='userRole'
               value={userRole}
               onChange={handleChange}
@@ -30,73 +31,69 @@ const UserInfo = () => {
               <option value='Dogsitter'>Dogsitter</option>
             </select>
           </div>
-        </div>
-      </div>
-      {/* 
+          {/* 
                               Username
       */}
-      <div className='field'>
-        <label className='label'>Username: </label>
-        <div className='control has-icons-left'>
-          <input
-            className='input'
-            name='username'
-            value={username}
-            onChange={handleChange}
-            required
-            type='text'
-          />
-        </div>
-      </div>
-      {/* 
+          <div className='col-sm'>
+            <label>Username: </label>
+
+            <input
+              className='form-control'
+              name='username'
+              value={username}
+              onChange={handleChange}
+              required
+              type='text'
+            />
+          </div>
+
+          {/* 
                               Email
       */}
-      <div className='field'>
-        <label className='label'>Email: </label>
-        <div className='control has-icons-left'>
-          <input
-            className='input'
-            name='email'
-            value={email}
-            onChange={handleChange}
-            required
-            type='email'
-          />
+          <div className='col-sm'>
+            <label>Email: </label>
+            <input
+              className='form-control'
+              name='email'
+              value={email}
+              onChange={handleChange}
+              required
+              type='email'
+            />
+          </div>
         </div>
-      </div>
-      {/* 
+        {/* 
                               About me
       */}
-      <div className='field'>
-        <label className='label'>About me: </label>
-        <div className='control'>
-          <textarea
-            className='textarea'
-            name='aboutMe'
-            value={aboutMe}
-            onChange={handleChange}
-            required
-            type='text'
-          />
-        </div>
-      </div>
-      {/* 
+        <div className='row p-2'>
+          <div className='col-sm'>
+            <label>About me: </label>
+            <textarea
+              className='form-control'
+              name='aboutMe'
+              value={aboutMe}
+              onChange={handleChange}
+              required
+              type='text'
+            />
+          </div>
+          {/* 
                               Borough
       */}
-      <div className='field'>
-        <label className='label'>Borough: </label>
-        <div className='control'>
-          <input
-            className='input'
-            name='borough'
-            value={borough}
-            onChange={handleChange}
-            required
-            type='text'
-          />
+          <div className='col-sm'>
+            <label>Borough: </label>
+            <input
+              className='form-control'
+              name='borough'
+              value={borough}
+              onChange={handleChange}
+              required
+              type='text'
+            />
+          </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
