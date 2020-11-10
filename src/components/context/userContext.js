@@ -4,7 +4,7 @@ import { userLogout, validateSession } from "../../services/userService";
 const UserContext = createContext({});
 
 export function UserWrapper({ children }) {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [user, setUser] = useState(null);
   const [accessToken, setAccessToken] = useState("");
 
@@ -39,7 +39,7 @@ export function UserWrapper({ children }) {
     return setUser(null);
   }
 
-  console.log("LOAAAAD", loading);
+  console.log("LOAAAAD", loading, isAuthenticated);
 
   if (loading) {
     return <div>loading... </div>;

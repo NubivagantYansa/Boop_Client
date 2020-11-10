@@ -6,21 +6,40 @@ export default function SignIn() {
   const [room, setRoom] = useState("");
 
   return (
-    <div className='container chat-background-image align-middle'>
+    <div className='chat-background-image align-middle'>
       <div className='container text-center align-middle' id='max-input'>
         <h1> Boop Live chat</h1>
         <h5 className='lead'>Join us!</h5>
         <div>
           <input
-            placeholder='Name'
+            placeholder='Boopie'
             className='form-control'
             type='text'
             onChange={(event) => setName(event.target.value)}
+            required
           />
         </div>
         <div>
+          <div className='field column'>
+            <h5 className='lead'>Pick your room</h5>
+            <div className='control'>
+              <div className='select'>
+                <select
+                  className='mt-2 form-control'
+                  name='size'
+                  onChange={(event) => setRoom(event.target.value)}
+                  required
+                >
+                  <option value='East London'>East London</option>
+                  <option value='West London'>West London</option>
+                  <option value='South London'>South London</option>
+                  <option value='North London'>North London</option>
+                </select>
+              </div>
+            </div>
+          </div>
           <input
-            placeholder='Room'
+            placeholder='Park'
             className='mt-2 form-control'
             type='text'
             onChange={(event) => setRoom(event.target.value)}

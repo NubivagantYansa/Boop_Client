@@ -33,6 +33,7 @@ const Chat = ({ location }) => {
         alert(error);
       }
     });
+    return () => socket.disconnect();
   }, [process.env.REACT_APP_API_BASE_URL, location.search]);
 
   // actioned at send message
@@ -55,7 +56,7 @@ const Chat = ({ location }) => {
       socket.emit("sendMessage", message, () => setMessage(""));
     }
   };
-  console.log(messages);
+
   return (
     <div className='container mt-4'>
       <div className='row justify-content-center'>
