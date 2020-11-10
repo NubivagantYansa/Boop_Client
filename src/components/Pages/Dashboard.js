@@ -12,8 +12,8 @@ function Dashboard() {
       {/* 
                             title
        */}
-      <div className='m-1 p-4 text-center'>
-        <h1 className='display-3'>Welcome to your dashboard</h1>
+      <div className='p-4 text-center'>
+        <h1 className='display-4'>Welcome to your dashboard</h1>
       </div>
 
       {/* 

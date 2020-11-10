@@ -6,6 +6,7 @@ import Input from "../../Layout/Chat/Input";
 import TextContainer from "../../Layout/Chat/TextContainer";
 import Messages from "../../Layout/Chat/Messages";
 
+import "./Join.css";
 let socket;
 
 const Chat = ({ location }) => {
@@ -58,35 +59,37 @@ const Chat = ({ location }) => {
   };
 
   return (
-    <div className='container mt-4'>
-      <div className='row justify-content-center'>
-        <div className='col-md-9 mb-3'>
-          <div className='text-center'>
-            <h1 className='text-center'>
-              Boop Instant Chat
-              <span role='img' aria-label='emoji'>
-                💬
-              </span>
-            </h1>
-            <h5>
-              Get in touch with your dogsitter
-              <span role='img' aria-label='emoji'>
-                ❤️
-              </span>
-            </h5>
+    <div className='chat-background-image align-middle'>
+      <div className='container p-2'>
+        <div className='row justify-content-center'>
+          <div className='col-md-9 mb-3'>
+            <div className='text-center'>
+              <h1 className='p-2'>
+                Boop Instant Chat
+                <span role='img' aria-label='emoji'>
+                  💬
+                </span>
+              </h1>
+              <h5 className='p-2 mb-4'>
+                Get in touch with your dogsitter
+                <span role='img' aria-label='emoji'>
+                  ❤️
+                </span>
+              </h5>
+            </div>
+            <div className=' border border-info shadow'>
+              <InfoBar room={room} />
+              <Messages messages={messages} name={name} />
+              <Input
+                message={message}
+                setMessage={setMessage}
+                sendMessage={sendMessage}
+              />
+            </div>
           </div>
-          <div className=' border border-info shadow'>
-            <InfoBar room={room} />
-            <Messages messages={messages} name={name} />
-            <Input
-              message={message}
-              setMessage={setMessage}
-              sendMessage={sendMessage}
-            />
+          <div className='col-md-3 '>
+            <TextContainer users={users} room={room} />
           </div>
-        </div>
-        <div className='col-md-3 '>
-          <TextContainer users={users} room={room} />
         </div>
       </div>
     </div>

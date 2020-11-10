@@ -1,7 +1,7 @@
 import React from "react";
 
 const Input = ({ setMessage, sendMessage, message }) => (
-  <form className='container '>
+  <form className='container square'>
     <input
       className='form-control'
       type='text'

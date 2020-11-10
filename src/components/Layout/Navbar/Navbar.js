@@ -7,7 +7,7 @@ const Navbar = () => {
   const { isAuthenticated, handleLogout } = useUser();
   return (
     <nav
-      className='navbar navbar-expand-md navbar-dark overflow-hidden fixed-top'
+      className='navbar navbar-expand navbar-dark overflow-hidden fixed-top'
       id='navbar'
       role='navigation'
       aria-label='main navigation'
@@ -22,7 +22,7 @@ const Navbar = () => {
         </span>
       </div>
 
-      <button
+      {/* <button
         className='navbar-toggler'
         type='button'
         data-toggle='collapse'
@@ -32,19 +32,9 @@ const Navbar = () => {
         aria-label='Toggle navigation'
       >
         <span className='navbar-toggler-icon'></span>
-      </button>
+      </button> */}
       <div className=' collapse navbar-collapse ' id='navbarBoop'>
         <ul className='navbar-nav mr-auto'>
-          <li className='nav-item active'>
-            <div className='nav-link'>
-              {isAuthenticated && (
-                <Link to='/dashboard'>
-                  <span id='link'>Dashboard</span>
-                  <span className='sr-only'> (current)</span>
-                </Link>
-              )}
-            </div>
-          </li>
           <li className='nav-item active'>
             <div className='nav-link'>
               {!isAuthenticated && (
@@ -68,8 +58,8 @@ const Navbar = () => {
           <li className='nav-item active'>
             <div className='nav-link'>
               {isAuthenticated && (
-                <Link to={"/"} onClick={handleLogout}>
-                  <span id='link'>Logout</span>
+                <Link to='/dashboard'>
+                  <span id='link'>Dashboard</span>
                   <span className='sr-only'> (current)</span>
                 </Link>
               )}
@@ -88,8 +78,8 @@ const Navbar = () => {
           <li className='nav-item active'>
             <div className='nav-link'>
               {isAuthenticated && (
-                <Link to='/chat'>
-                  <span id='link'>Chat</span>
+                <Link to={"/"} onClick={handleLogout}>
+                  <span id='link'>Logout</span>
                   <span className='sr-only'> (current)</span>
                 </Link>
               )}

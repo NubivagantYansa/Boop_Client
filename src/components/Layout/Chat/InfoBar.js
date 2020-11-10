@@ -5,7 +5,7 @@ import "./InfoBar.css";
 
 const InfoBar = ({ room }) => {
   return (
-    <div className='pt-1 pb-1 top-bar'>
+    <div className='p-3 pb-1 top-bar'>
       <div className='row no-gutters'>
         <div className='col-1'>
           <img src='/icons/chat.png' alt='online-icon' className='ml-1' />

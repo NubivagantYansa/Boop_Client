@@ -1,6 +1,6 @@
 import React from "react";
 import { useBoardData } from "../../hooks/useBoardData";
-import FeatBorFilter from "../Layout/FiltersCard/FeatBorFilter";
+import FeatBorFilter from "../Layout/FiltersCard/FeaturesFilter";
 import RoleFilter from "../Layout/FiltersCard/RoleFilter";
 import Searchbar from "../Layout/FiltersCard/Searchbar";
 import ProfilesList from "../Layout/Profile/ProfilesList";
@@ -18,7 +18,7 @@ const Board = (props) => {
 
   console.log(profilesToShow);
   return (
-    <div className='mt-1 text-center p-2 board-background-image'>
+    <div className='text-center p-2 board-background-image'>
       <section className='container-fluid '>
         <div className='row p-2'>
           <div className='col-sm mt-3'>
@@ -36,7 +36,7 @@ const Board = (props) => {
           <div className='container-fluid'>
             {expand && (
               <div>
-                <div className='row p-2 '>
+                <div className='row p-2'>
                   <div className=' col-sm d-flex justify-content-center '>
                     <Searchbar handleSearch={handleSearch} />
                   </div>

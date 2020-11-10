@@ -85,7 +85,7 @@ export default function FeaturesFilter({ filterFeatures = () => {} }) {
         </div>
         <div className='row p-2'>
           <div className='col-sm'>
-            <label>Potty training</label>
+            <label id='link-board'>Potty training</label>
 
             <select
               className='form-control'

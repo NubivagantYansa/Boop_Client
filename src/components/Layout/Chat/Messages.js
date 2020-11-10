@@ -5,7 +5,7 @@ import Message from "./Message";
 import "./Messages.css";
 
 const Messages = ({ messages, name }) => (
-  <ScrollToBottom className='messages'>
+  <ScrollToBottom className='messages square'>
     {messages.map((message, i) => (
       <div key={i}>
         <Message message={message} name={name} />

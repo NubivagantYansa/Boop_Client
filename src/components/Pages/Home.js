@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import FeatBorFilter from "../Layout/FiltersCard/FeatBorFilter";
+import FeatBorFilter from "../Layout/FiltersCard/FeaturesFilter";
 import "./Home.css";
 
 const Home = () => {

@@ -11,7 +11,7 @@ const Message = ({ message: { text, user }, name }) => {
   }
 
   return isSentByCurrentUser ? (
-    <div className='container '>
+    <div className='container'>
       <div className='row no-gutters justify-content-end'>
         <div>
           <p>
