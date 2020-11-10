@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-export default function FeaturesFilter({ filterFeatures }) {
+export default function FeaturesFilter({ filterFeatures = () => {} }) {
   const [features, setFeatures] = useState({});
   const {
     size = "",
@@ -17,7 +17,7 @@ export default function FeaturesFilter({ filterFeatures }) {
   };
 
   useEffect(() => {
-    // filterFeatures(size, energy, behaves, pottyTraining, chill, breed);
+    filterFeatures(size, energy, behaves, pottyTraining, chill, breed);
   }, [features]);
 
   return (

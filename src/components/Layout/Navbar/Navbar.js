@@ -7,7 +7,7 @@ const Navbar = () => {
   const { isAuthenticated, handleLogout } = useUser();
   return (
     <nav
-      className='navbar navbar-expand navbar-dark overflow-hidden fixed-top'
+      className='navbar navbar-expand-md navbar-dark overflow-hidden fixed-top'
       id='navbar'
       role='navigation'
       aria-label='main navigation'
@@ -22,7 +22,7 @@ const Navbar = () => {
         </span>
       </div>
 
-      {/* <button
+      <button
         className='navbar-toggler'
         type='button'
         data-toggle='collapse'
@@ -32,7 +32,7 @@ const Navbar = () => {
         aria-label='Toggle navigation'
       >
         <span className='navbar-toggler-icon'></span>
-      </button> */}
+      </button>
       <div className=' collapse navbar-collapse ' id='navbarBoop'>
         <ul className='navbar-nav mr-auto'>
           <li className='nav-item active'>
