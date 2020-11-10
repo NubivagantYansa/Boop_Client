@@ -15,7 +15,7 @@ export default function SignIn() {
             placeholder='Name'
             className='form-control'
             type='text'
-            // onChange={(event) => setName(event.target.value)}
+            onChange={(event) => setName(event.target.value)}
           />
         </div>
         <div>
@@ -23,7 +23,7 @@ export default function SignIn() {
             placeholder='Room'
             className='mt-2 form-control'
             type='text'
-            // onChange={(event) => setRoom(event.target.value)}
+            onChange={(event) => setRoom(event.target.value)}
           />
         </div>
         <Link

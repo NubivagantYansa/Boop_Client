@@ -85,7 +85,7 @@ const Navbar = () => {
               )}
             </div>
           </li>
-          {/* <li className='nav-item active'>
+          <li className='nav-item active'>
             <div className='nav-link'>
               {isAuthenticated && (
                 <Link to='/chat'>
@@ -94,7 +94,7 @@ const Navbar = () => {
                 </Link>
               )}
             </div>
-          </li> */}
+          </li>
         </ul>
       </div>
     </nav>
