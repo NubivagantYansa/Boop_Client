@@ -2,6 +2,14 @@ import React, { useState, useEffect } from "react";
 
 export default function FeaturesFilter({ filterFeatures }) {
   const [features, setFeatures] = useState({});
+  const {
+    size = "",
+    energy = "",
+    behaves = "",
+    pottyTraining = "",
+    chill = "",
+    breed = "",
+  } = features;
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -9,17 +17,8 @@ export default function FeaturesFilter({ filterFeatures }) {
   };
 
   useEffect(() => {
-    filterFeatures(
-      features.size,
-      features.energy,
-      features.behaves,
-      features.pottyTraining,
-      features.chill,
-      features.breed
-    );
+    filterFeatures(size, energy, behaves, pottyTraining, chill, breed);
   }, [features]);
-
-  const { size, energy, behaves, pottyTraining, chill, breed } = features;
 
   return (
     <div className='container shadow p-3 mb-5 bg-white rounded'>
