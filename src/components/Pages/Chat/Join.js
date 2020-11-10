@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
+import "./Join.css";
 export default function SignIn() {
   const [name, setName] = useState("");
   const [room, setRoom] = useState("");
 
   return (
-    <div className='container mt-5'>
-      <div className='container'>
+    <div className='container chat-background-image align-middle'>
+      <div className='container text-center align-middle' id='max-input'>
         <h1> Boop Live chat</h1>
         <h5 className='lead'>Join us!</h5>
         <div>
@@ -35,7 +35,6 @@ export default function SignIn() {
           </button>
         </Link>
       </div>
-      <div>Page under construction...</div>
     </div>
   );
 }

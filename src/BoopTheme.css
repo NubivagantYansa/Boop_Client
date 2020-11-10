@@ -43,6 +43,10 @@
   border: 2px solid rgb(208, 228, 234, 0.7);
 }
 
+#max-input {
+  max-width: 300px;
+}
+
 /* typography */
 h1 {
   color: #4393ac;
@@ -53,8 +57,3 @@ h3 {
   color: white;
   font-weight: 900;
 }
-
-/* label {
-  background-color: white;
-  width: fit-content;
-} */

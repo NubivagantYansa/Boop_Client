@@ -1,0 +1,8 @@
+.chat-background-image {
+  background-image: url("/images/alvan-nee-1VgfQdCuX-4-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+}

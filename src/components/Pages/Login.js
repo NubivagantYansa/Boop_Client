@@ -22,7 +22,7 @@ const Login = (props) => {
         >
           {/* <img class='rounded mx-auto d-block' src='/images/Logo.png' alt='' /> */}
 
-          <div id='forma '>
+          <div id='max-input '>
             <h1 className='m2'>Please login</h1>
 
             <p>
