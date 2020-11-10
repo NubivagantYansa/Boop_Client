@@ -14,16 +14,16 @@ const ProfileCard = (props) => {
   const aboutMeBrief = aboutMe.slice(0, 40);
 
   return (
-    <div className=' card m-1 pt-4'>
+    <div className=' card m-3 pt-4 card-background rounded'>
       <Link to={`/profile/${_id}`}>
         <img
-          className='card-image-top img-card rounded mx-auto d-block'
+          className='card-image-top img-card rounded mx-auto  rounded'
           src={image}
           alt={username}
         />
       </Link>
 
-      <div className='card-body'>
+      <div className='card-body '>
         <h5 className='card-title'>{username}</h5>
         <h6 className='card-subtitle mb-2 text-muted'>{borough}</h6>
         <div className='card-tex'>

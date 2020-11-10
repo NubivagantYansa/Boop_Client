@@ -61,15 +61,15 @@ const ProfileDetails = () => {
   const { breed, chill, behaves, size, energy, pottyTraining } = features;
   return (
     <div className='profile-background-image'>
-      <section className='container pt-4'>
-        <div className='card mb-3 '>
+      <section className='container pt-4 '>
+        <div className='card mb-3 rounded card-background'>
           <img
             className='m-2 card-img-top imge-card rounded mx-auto d-block'
             src={image}
             alt={username}
           />
 
-          <div className='card-body'>
+          <div className='card-body p-4'>
             <h5 className='card-title'>{username}</h5>
             <h6 className='card-subtitle mb-2 text-muted'>
               <strong>Borough : </strong>
@@ -79,7 +79,7 @@ const ProfileDetails = () => {
               <strong>About me </strong>: {aboutMe}
             </p>
 
-            <div className='row no-gutters mt-4'>
+            <div className='row no-gutters mt-4 justify-content-center'>
               <div className='col-md-4 d-flex justify-content-center'>
                 {userRole === "Dog owner" ? (
                   <div className='d-inline-flex p-2'>
@@ -101,40 +101,50 @@ const ProfileDetails = () => {
                   </div>
                 )}
               </div>
-              <div className=' col-md-8  p-2'>
-                <div className='card-body'>
+              <div className=' col-md-5 p-2 '>
+                <div className='card-body border border-info rounded'>
                   <div>
-                    <div>
-                      <p>
-                        <strong>Size : </strong> {size}
-                      </p>
-                      <p>
-                        <strong>Training : </strong> {behaves}
-                      </p>
-                      <p>
-                        <strong>Breed : </strong> {breed}
-                      </p>
-                      <p>
-                        <strong>I like to chill : </strong>
-                        {chill}
-                      </p>
-                      <p>
-                        <strong>Energy levels : </strong> {energy}
-                      </p>
-                      <p>
-                        <strong>Potty training : </strong> {pottyTraining}
-                      </p>
-                    </div>
+                    <p>
+                      <strong>Size : </strong> {size}
+                    </p>
+                    <p>
+                      <strong>Training : </strong> {behaves}
+                    </p>
+                    <p>
+                      <strong>Breed : </strong> {breed}
+                    </p>
+                    <p>
+                      <strong>I like to chill : </strong>
+                      {chill}
+                    </p>
+                    <p>
+                      <strong>Energy levels : </strong> {energy}
+                    </p>
+                    <p>
+                      <strong>Potty training : </strong> {pottyTraining}
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
-            <div>
-              <Link to='/'>Back to Board</Link>
-            </div>
-            <div>
+            <div className='mb-4 btn-group d-block d-flex justify-content-around container p-3 '>
+              <Link to='/'>
+                {" "}
+                <button className='m-1 btn info rounded' id='link'>
+                  Back to Board{" "}
+                </button>
+              </Link>
+
               <a href='#' onClick={readMore}>
-                {expand ? "Read Less" : "Get in touch"}
+                {expand ? (
+                  <button className='m-1 btn info rounded' id='link'>
+                    Read Less
+                  </button>
+                ) : (
+                  <button className='m-1 btn info rounded' id='link'>
+                    Get in touch
+                  </button>
+                )}
               </a>
             </div>
             <div>

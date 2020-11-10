@@ -16,7 +16,7 @@ const Navbar = () => {
         <span className='logo-container'>
           {
             <Link to='/'>
-              <img src='/images/Logo boop.png' alt='logo' />
+              <img src='/images/Boop-white.png' alt='logo' />
             </Link>
           }
         </span>
@@ -75,6 +75,26 @@ const Navbar = () => {
               )}
             </div>
           </li>
+          <li className='nav-item active'>
+            <div className='nav-link'>
+              {isAuthenticated && (
+                <Link to='/join'>
+                  <span id='link'>Live Chat</span>
+                  <span className='sr-only'> (current)</span>
+                </Link>
+              )}
+            </div>
+          </li>
+          {/* <li className='nav-item active'>
+            <div className='nav-link'>
+              {isAuthenticated && (
+                <Link to='/chat'>
+                  <span id='link'>Chat</span>
+                  <span className='sr-only'> (current)</span>
+                </Link>
+              )}
+            </div>
+          </li> */}
         </ul>
       </div>
     </nav>

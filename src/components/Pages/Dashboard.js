@@ -20,12 +20,12 @@ function Dashboard() {
                             body
        */}
       <section className='container mt-4'>
-        <div className='row'>
+        <div className='row justify-content-center'>
           {/* 
                             card column
        */}
-          <div className=' col-9'>
-            <div className='card mb-3'>
+          <div className=' col-md-9 mb-3'>
+            <div className='card mb-3 card-background'>
               <div className='row no-gutters'>
                 {/* 
                             card - image
@@ -53,7 +53,7 @@ function Dashboard() {
                   </div>
                 </div>
               </div>
-              <div className='row no-gutters'>
+              <div className='row no-gutters justify-content-center'>
                 <div className='col-md-4 d-flex justify-content-center'>
                   {userRole === "Dog owner" ? (
                     <div className='d-inline-flex p-2'>
@@ -65,7 +65,7 @@ function Dashboard() {
                       </span>
                     </div>
                   ) : (
-                    <div className='d-inline-flex p-2'>
+                    <div className='d-inline-flex '>
                       <span className='mr-2'>
                         <img src='/icons/dog.png' />
                       </span>
@@ -75,8 +75,9 @@ function Dashboard() {
                     </div>
                   )}
                 </div>
-                <div className=' col-md-8  p-2'>
-                  <div className='card-body'>
+
+                <div className='col-sm-5 card-body border border-info rounded mb-2 p-3 m-2'>
+                  <div>
                     <p>
                       <strong>Size : </strong>
                       {size}
@@ -105,7 +106,11 @@ function Dashboard() {
               </div>
             </div>
           </div>
-          <div className='col-3 '>
+
+          {/* 
+                            settings column
+       */}
+          <div className='col-md-3 '>
             <Settings />
           </div>
         </div>

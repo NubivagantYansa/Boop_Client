@@ -44,7 +44,7 @@ export default class FeaturesFilter extends Component {
         <div className='square p-2'>
           <div className='row p-2'>
             <div className='col-sm'>
-              <label>Size </label>
+              <label id='link-board'>Size </label>
 
               <select
                 className='form-control'
@@ -62,7 +62,7 @@ export default class FeaturesFilter extends Component {
                                 energy
        */}
             <div className='col-sm'>
-              <label>Energy levels </label>
+              <label id='link-board'>Energy levels </label>
 
               <select
                 className='form-control'
@@ -80,7 +80,7 @@ export default class FeaturesFilter extends Component {
                                 training
        */}
             <div className='col-sm'>
-              <label>Training</label>
+              <label id='link-board'>Training</label>
 
               <select
                 className='form-control'
@@ -119,7 +119,7 @@ export default class FeaturesFilter extends Component {
                                 I like to chill
        */}
             <div className='col-sm'>
-              <label>I like to chill</label>
+              <label id='link-board'>I like to chill</label>
 
               <select
                 className='form-control'
@@ -134,7 +134,7 @@ export default class FeaturesFilter extends Component {
             </div>
 
             <div className='col-sm'>
-              <label>Breed </label>
+              <label id='link-board'>Breed </label>
 
               <input
                 className='form-control'

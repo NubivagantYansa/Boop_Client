@@ -3,6 +3,7 @@
   color: white;
   background-color: #4393ac;
   width: fit-content;
+  font-weight: 600;
 }
 
 .choice {
@@ -10,18 +11,26 @@
   border: 2px solid white;
   background-color: #4393ac;
   width: fit-content;
+  font-weight: 600;
 }
 
 .danger {
   color: white;
   background-color: #cb3b28;
   width: fit-content;
+  font-weight: 600;
 }
 
 /* links */
 #link {
-  color: black !important;
+  color: white !important;
   text-decoration: none !important;
+}
+
+/* cards-background */
+.card-background {
+  background-color: rgba(253, 253, 253, 0.83);
+  border: 2px solid rgb(208, 228, 234, 0.7);
 }
 
 /* forms and layouts */

@@ -3,10 +3,10 @@
 }
 
 .dashboard-background-image {
-  background-image: url("/images/t-r-photography-TzjMd7i5WQI-unsplash.jpg");
+  background-image: url("/images/fabian-gieske-7ffF2Cg_Faw-unsplash.jpg");
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  height: 100vh;
+  height: 100%;
   width: 100vw;
 }
