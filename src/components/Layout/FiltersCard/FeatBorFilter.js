@@ -17,7 +17,7 @@ export default function FeaturesFilter({ filterFeatures }) {
   };
 
   useEffect(() => {
-    filterFeatures(size, energy, behaves, pottyTraining, chill, breed);
+    // filterFeatures(size, energy, behaves, pottyTraining, chill, breed);
   }, [features]);
 
   return (
