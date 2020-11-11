@@ -12,7 +12,7 @@ export const validateSession = (accessToken) => {
       return response.data;
     })
     .catch((err) => {
-      console.log("VALIDATE", err.response);
+      console.log(err.response);
       return {
         errorMessage: err.response?.data.errorMessage,
         status: false,
@@ -118,7 +118,7 @@ export const editProfile = (editInfo, token) => {
       return editResp.data;
     })
     .catch((err) => {
-      console.log("EDIT PROFILE", err.response);
+      console.log(err.response);
       return {
         errorMessage: err.response?.data.errorMessage,
         status: false,

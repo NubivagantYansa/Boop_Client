@@ -51,7 +51,6 @@ const useAuth = (form, typeOfAuth) => {
   const handleChange = (e) => {
     setStateInfo({ ...stateInfo, [e.target.name]: e.target.value });
   };
-  console.log("fEAT", stateInfo);
 
   return { stateInfo, setStateInfo, errorMessage, handleChange, handleSubmit };
 };

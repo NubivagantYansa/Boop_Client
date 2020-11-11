@@ -29,7 +29,6 @@ const EditFeatures = () => {
   };
 
   const handleSearchBreed = (value) => {
-    console.log("triggered", value);
     if (value === "") {
       return;
     }

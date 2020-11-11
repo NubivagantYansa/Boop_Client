@@ -1,12 +1,13 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
 import { useUser } from "../context/userContext";
+import Loading from "../Pages/Loading/Loading";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const { isAuthenticated, user, loading } = useUser();
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loading />;
   }
   return (
     <Route

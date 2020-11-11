@@ -25,7 +25,6 @@ const SignupFeatures = (props) => {
     const { name, value } = e.target;
     setFeatures({ ...features, [name]: value });
     handleSearchBreed(value);
-    console.log("features", features);
   }
 
   const handleSearchBreed = (value) => {

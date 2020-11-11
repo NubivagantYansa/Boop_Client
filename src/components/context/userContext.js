@@ -1,5 +1,6 @@
 import React, { useState, createContext, useContext, useEffect } from "react";
 import { userLogout, validateSession } from "../../services/userService";
+import Loading from "../Pages/Loading/Loading";
 
 const UserContext = createContext({});
 
@@ -39,10 +40,8 @@ export function UserWrapper({ children }) {
     return setUser(null);
   }
 
-  console.log("LOAAAAD", loading, isAuthenticated);
-
   if (loading) {
-    return <div>loading... </div>;
+    return <Loading />;
   }
 
   return (

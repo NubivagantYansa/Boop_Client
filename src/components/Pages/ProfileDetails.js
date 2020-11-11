@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getProfileDetails, sendEmail } from "../../services/communityService";
 import { useUser } from "../context/userContext";
+import Loading from "./Loading/Loading";
 import "./ProfileDetails.css";
 
 const ProfileDetails = () => {
@@ -35,7 +36,6 @@ const ProfileDetails = () => {
 
   const handleChangeEmail = (e) => {
     const { value } = e.target;
-    console.log("email values", value);
     return setBodyEmail(value);
   };
 
@@ -54,7 +54,7 @@ const ProfileDetails = () => {
   };
 
   if (isLoading) {
-    return <div>loading... </div>;
+    return <Loading />;
   }
   const { username, userRole, aboutMe, borough, image } = profile;
 
