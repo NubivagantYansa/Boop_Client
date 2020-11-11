@@ -1,7 +1,7 @@
 {
   "short_name": "Boop",
   "name": "Boop: do you need a dogsitter?",
-  "description": "Platform to find dogsitters",
+  "description": "Welcome to the best app to find a dogsitter.",
   "icons": [
     {
       "src": "favicon.ico",
@@ -14,9 +14,9 @@
       "sizes": "192x192"
     },
     {
-      "src": "logo512.png",
+      "src": "logo384.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "384x384"
     }
   ],
   "start_url": ".",
