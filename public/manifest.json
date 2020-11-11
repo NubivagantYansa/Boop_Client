@@ -1,6 +1,7 @@
 {
   "short_name": "Boop",
-  "name": "Boop",
+  "name": "Boop: do you need a dogsitter?",
+  "description": "Platform to find dogsitters",
   "icons": [
     {
       "src": "favicon.ico",
