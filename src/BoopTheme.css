@@ -43,7 +43,7 @@
   border: 2px solid rgb(208, 228, 234, 0.7);
 }
 
-#max-input {
+.max-input {
   max-width: 300px;
 }
 

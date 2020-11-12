@@ -7,7 +7,7 @@ export default function SignIn() {
 
   return (
     <div className='chat-background-image align-middle'>
-      <div className='container text-center align-middle' id='max-input'>
+      <div className='container text-center align-middle max-input'>
         <h1> Boop Live chat</h1>
         <h5 className='lead mt-2'>Join us!</h5>
         <div>

@@ -7,16 +7,21 @@ import Settings from "../Layout/Settings";
 const EditPassword = () => {
   const { user, accessToken, authenticate } = useUser();
   const [password, setPassword] = useState("");
+  const [password2, setPassword2] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const history = useHistory();
 
   const handleChange = (e) => {
-    const { value } = e.target;
-    setPassword(value);
+    const { name, value } = e.target;
+    if (name === "password") setPassword(value);
+    if (name === "password2") setPassword2(value);
+    console.log(password, password2);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (password !== password2)
+      return setErrorMessage("Error! Passwords do not match");
     editPassword(
       {
         password: password,
@@ -40,31 +45,71 @@ const EditPassword = () => {
   };
 
   return (
-    <div>
-      <Settings />
-      <h1>Edit password</h1>
-      <p>{password}</p>
-      <form onSubmit={handleSubmit}>
-        <div className='field'>
-          <label className='label'>New Password: </label>
-          <div className='control'>
-            <input
-              className='input'
-              name='password'
-              type='password'
-              value={password}
-              onChange={handleChange}
-              required
-            />
-          </div>
-          {errorMessage !== "" && errorMessage}
+    <div className='edit-background-image container-fluid'>
+      {/* 
+                            title
+       */}
+      <div className='p-3 text-center row no-gutters'>
+        <h1 className='p-3 display-4 col-sm-9 align-self-end '>
+          Edit {user.username}'s password
+        </h1>
+        <div className='p-3 col-sm-3 align-self-center'>
+          <Link to='/dashboard'>
+            <button className='btn info'>Back</button>
+          </Link>
         </div>
-        <button className='button is-link' type='submit'>
-          Save
-        </button>
-      </form>
-      <div>
-        <Link to='/dashboard'>Back</Link>
+      </div>
+
+      {/* 
+                            body
+       */}
+      <div className='p-3 text-center row no-gutters '>
+        <section className='container mt-4'>
+          <div className='row justify-content-center'>
+            <div className='col-md-9 '>
+              <div className='card-body text-center'>
+                <form
+                  className='d-flex flex-column align-items-center card-background p-3'
+                  onSubmit={handleSubmit}
+                >
+                  <label className=' mt-2'>New password: </label>
+
+                  <input
+                    className='form-control p-3 m-3 max-input'
+                    name='password'
+                    type='password'
+                    value={password}
+                    onChange={handleChange}
+                    required
+                  />
+                  <label className=' mt-2'> Confirm password: </label>
+
+                  <input
+                    className='form-control p-3 m-2 max-input'
+                    name='password2'
+                    type='password'
+                    value={password2}
+                    onChange={handleChange}
+                    required
+                  />
+
+                  <div className='p-2'>
+                    {errorMessage !== "" && errorMessage}
+                  </div>
+                  <button className='btn info p-2' type='submit'>
+                    Save
+                  </button>
+                </form>
+              </div>
+            </div>
+            {/* 
+                            settings (column)
+       */}
+            <div className='col-md '>
+              <Settings />
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   );

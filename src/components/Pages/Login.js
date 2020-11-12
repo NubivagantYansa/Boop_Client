@@ -20,9 +20,7 @@ const Login = (props) => {
           className=' form-signin m-4 p-4  '
           onSubmit={(e) => handleSubmit(e)}
         >
-          {/* <img class='rounded mx-auto d-block' src='/images/Logo.png' alt='' /> */}
-
-          <div id='max-input '>
+          <div className='max-input '>
             <h1 className='m2'>Please login</h1>
 
             <p>
@@ -53,7 +51,7 @@ const Login = (props) => {
               placeholder='********'
             />
 
-            {errorMessage !== "" && errorMessage}
+            <div className='p-2'>{errorMessage !== "" && errorMessage}</div>
             <button className='btn  m-2 info' type='submit'>
               Login
             </button>

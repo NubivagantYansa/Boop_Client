@@ -35,7 +35,7 @@ const EditProfile = () => {
   };
 
   return (
-    <div className='edit-background-image container-fluid'>
+    <div className=' edit-background-image container-fluid'>
       {/* 
                             title
        */}
@@ -57,42 +57,48 @@ const EditProfile = () => {
         <section className='container mt-4'>
           <div className='row justify-content-center'>
             {/* 
-                            card column
+                            card (column)
        */}
 
-            <div className='col-md-9 mb-3'>
-              <div className='card card-background rounded'>
+            <div className='col-md-9'>
+              <div className='card rounded card-background mb-3'>
                 {/* 
                             image
        */}
-                <div className='text-center align-self-center'>
+                <div>
                   {image && (
-                    <img
-                      className='card-image-top img-card rounded mx-auto  rounded'
-                      src={user.image}
-                      alt={user.username}
-                    />
+                    <div className='row no-gutters justify-content-center'>
+                      <img
+                        className='card-image-top img-card rounded'
+                        src={user.image}
+                        alt={user.username}
+                      />
+                    </div>
                   )}
-                  <AddImage
-                    addImage={(image) => {
-                      setImage(image);
-                      setUser({ ...user, image });
-                    }}
-                  />
+                  <div className='row no-gutters justify-content-center'>
+                    <AddImage
+                      addImage={(image) => {
+                        setImage(image);
+                        setUser({ ...user, image });
+                      }}
+                    />
+                  </div>
                 </div>
                 {/* 
                             edit form
        */}
                 <div className='card-body '>
                   <form onSubmit={handleSubmit}>
-                    <div className='container'>
+                    <div className=''>
                       <UserInfo />
                     </div>
 
-                    <div className='container'>
+                    <div className=''>
                       <EditFeatures />
                     </div>
-                    <div>{errorMessage !== "" && errorMessage}</div>
+                    <div className='p-2'>
+                      {errorMessage !== "" && errorMessage}
+                    </div>
                     <div className='row justify-content-center'>
                       <button className='col-3m btn info' type='submit'>
                         Save
@@ -104,9 +110,9 @@ const EditProfile = () => {
             </div>
 
             {/* 
-                            settings column
+                            settings (column)
        */}
-            <div className='col-md-3 '>
+            <div className='col-md '>
               <Settings />
             </div>
           </div>
