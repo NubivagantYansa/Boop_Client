@@ -1,13 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
+import ReactMapGL, { Marker } from "react-map-gl";
 import { useUser } from "../context/userContext";
 import Settings from "../Layout/Settings";
 import "./Dasboard.css";
 
 function Dashboard() {
   const { user } = useUser();
-  const { username, userRole, email, borough, aboutMe, image } = user;
+  const { username, userRole, email, address, aboutMe, image } = user;
   const { behaves, breed, chill, energy, pottyTraining, size } = user.features;
-
+  const { coordinates } = user.location;
+  const [viewport, setViewport] = useState({
+    longitude: coordinates[0],
+    latitude: coordinates[1],
+    width: "80vw",
+    height: "40vh",
+    zoom: 15,
+  });
+  const mapStyle = "mapbox://styles/nubivagant/ckhg4igin14hf19kzu7hspq52";
+  console.log(user);
   return (
     <div className='dashboard-background-image'>
       {/* 
@@ -48,38 +58,67 @@ function Dashboard() {
                       {email}
                     </p>
                     <p>
-                      <strong>Borough:</strong> {borough}
+                      <strong>About:</strong> {aboutMe}
                     </p>
                     <p>
-                      <strong>About:</strong> {aboutMe}
+                      <strong>Address:</strong> {address}
                     </p>
                   </div>
                 </div>
               </div>
-              <div className='row no-gutters justify-content-center'>
-                <div className='col-md-4 d-flex justify-content-center'>
+
+              {/*
+                            map
+       */}
+
+              <div className='row no-gutters justify-content-center p-2'>
+                <ReactMapGL
+                  className='rounded'
+                  {...viewport}
+                  mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+                  mapStyle={mapStyle}
+                  onViewportChange={(viewport) => setViewport(viewport)}
+                >
+                  {
+                    <Marker
+                      key={user.username}
+                      longitude={coordinates[0]}
+                      latitude={coordinates[1]}
+                    >
+                      <img src='/icons/pin.png' alt='pointer' />
+                    </Marker>
+                  }
+                </ReactMapGL>
+              </div>
+
+              {/*
+                            Features
+       */}
+
+              <div className='row no-gutters  '>
+                <div className='col-md text-center'>
                   {userRole === "Dog owner" ? (
-                    <div className='d-inline-flex p-2'>
-                      <span className='mr-2'>
+                    <div>
+                      <div className='row no-gutters justify-content-center '>
                         <img src='/icons/dog.png' alt='dog-img' />
-                      </span>
-                      <span>
+                      </div>
+                      <div className='row no-gutters justify-content-center  '>
                         <h1> ID:</h1>
-                      </span>
+                      </div>
                     </div>
                   ) : (
-                    <div className='d-inline-flex '>
-                      <span className='mr-2'>
+                    <div>
+                      <div className='row no-gutters justify-content-center '>
                         <img src='/icons/dog.png' alt='dogsitter-img' />
-                      </span>
-                      <span>
-                        <h1> picks:</h1>
-                      </span>
+                      </div>
+                      <div className='row no-gutters justify-content-center  '>
+                        <h1> Picks:</h1>
+                      </div>
                     </div>
                   )}
                 </div>
 
-                <div className='col-sm-5 card-body border border-info rounded mb-2 p-3 m-2'>
+                <div className='col-sm-8 card-body rounded mb-2 p-3 m-2'>
                   <div>
                     <p>
                       <strong>Size : </strong>
