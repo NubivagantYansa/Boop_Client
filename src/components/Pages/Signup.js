@@ -179,7 +179,7 @@ const Signup = (props) => {
                     onChange={handleChange}
                     required
                     type='text'
-                    placeholder='London, E3 (city, postcode)'
+                    placeholder='London, E3 5TJ - (city, postcode)'
                   />
                 </div>
               </div>

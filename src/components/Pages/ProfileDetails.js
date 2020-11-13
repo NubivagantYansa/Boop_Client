@@ -34,7 +34,7 @@ const ProfileDetails = () => {
         if (profileDB) {
           setProfile(profileDB);
           setFeatures(profileDB.features);
-          console.log("profileee", profile);
+
           setCoordinates([
             profileDB.location.coordinates[0],
             profileDB.location.coordinates[1],
@@ -74,7 +74,7 @@ const ProfileDetails = () => {
       })
       .catch((error) => console.log(error));
   };
-  console.log(profile);
+
   if (isLoading) {
     return <Loading />;
   }

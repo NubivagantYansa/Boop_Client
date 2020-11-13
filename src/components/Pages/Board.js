@@ -23,7 +23,6 @@ const Board = (props) => {
     resetFilters,
   } = useBoardData(props);
 
-  console.log(profilesToShow);
   return (
     <div className='text-center p-2 board-background-image'>
       <section className='container-fluid '>

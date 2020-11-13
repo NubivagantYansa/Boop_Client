@@ -20,11 +20,11 @@ export function useBoardData() {
 
   //map hooks
   const [viewport, setViewport] = useState({
-    longitude: -0.12624,
-    latitude: 51.50015,
+    longitude: user.location.coordinates[0],
+    latitude: user.location.coordinates[1],
     width: "80vw",
     height: "40vh",
-    zoom: 10,
+    zoom: 13,
   });
   const mapStyle = "mapbox://styles/nubivagant/ckhg4igin14hf19kzu7hspq52";
 

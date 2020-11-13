@@ -15,7 +15,6 @@ const EditPassword = () => {
     const { name, value } = e.target;
     if (name === "password") setPassword(value);
     if (name === "password2") setPassword2(value);
-    console.log(password, password2);
   };
 
   const handleSubmit = (e) => {
