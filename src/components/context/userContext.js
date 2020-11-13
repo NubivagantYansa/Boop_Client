@@ -31,7 +31,9 @@ export function UserWrapper({ children }) {
   }, []);
 
   function authenticate(userFromInput) {
+    const localAccessToken = localStorage.getItem("accessToken");
     setUser(userFromInput);
+    setAccessToken(localAccessToken);
   }
 
   async function handleLogout() {
