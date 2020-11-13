@@ -8,6 +8,8 @@ function Dashboard() {
   const { user } = useUser();
   const { username, userRole, email, address, aboutMe, image } = user;
   const { behaves, breed, chill, energy, pottyTraining, size } = user.features;
+
+  //mapbox
   const { coordinates } = user.location;
   const [viewport, setViewport] = useState({
     longitude: coordinates[0],

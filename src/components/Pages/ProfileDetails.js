@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { getProfileDetails, sendEmail } from "../../services/communityService";
 import { useUser } from "../context/userContext";
+import ReactMapGL, { Marker } from "react-map-gl";
 import Loading from "./Loading/Loading";
 import "./ProfileDetails.css";
 
@@ -14,6 +15,17 @@ const ProfileDetails = () => {
   const [bodyEmail, setBodyEmail] = useState("");
   const [isEmailSent, setIsEmailSent] = useState(false);
   const { id } = useParams();
+  const [coordinates1, setCoordinates] = useState([-0.12624, 51.50015]);
+  //mapbox
+
+  const [viewport, setViewport] = useState({
+    longitude: coordinates1[0],
+    latitude: coordinates1[1],
+    width: "80vw",
+    height: "40vh",
+    zoom: 15,
+  });
+  const mapStyle = "mapbox://styles/nubivagant/ckhg4igin14hf19kzu7hspq52";
 
   useEffect(() => {
     setIsLoading(true);
@@ -22,6 +34,16 @@ const ProfileDetails = () => {
         if (profileDB) {
           setProfile(profileDB);
           setFeatures(profileDB.features);
+          console.log("profileee", profile);
+          setCoordinates([
+            profileDB.location.coordinates[0],
+            profileDB.location.coordinates[1],
+          ]);
+          setViewport({
+            ...viewport,
+            longitude: profileDB.location.coordinates[0],
+            latitude: profileDB.location.coordinates[1],
+          });
           return setIsLoading(false);
         }
         return;
@@ -52,7 +74,7 @@ const ProfileDetails = () => {
       })
       .catch((error) => console.log(error));
   };
-
+  console.log(profile);
   if (isLoading) {
     return <Loading />;
   }
@@ -79,6 +101,33 @@ const ProfileDetails = () => {
               <strong>About me </strong>: {aboutMe}
             </p>
 
+            {/*
+                            map
+       */}
+
+            <div className='row no-gutters justify-content-center p-2'>
+              <ReactMapGL
+                className='rounded'
+                {...viewport}
+                mapboxApiAccessToken={process.env.REACT_APP_MAPBOX_TOKEN}
+                mapStyle={mapStyle}
+                onViewportChange={(viewport) => setViewport(viewport)}
+              >
+                {
+                  <Marker
+                    key={profile.username}
+                    longitude={coordinates1[0]}
+                    latitude={coordinates1[1]}
+                  >
+                    <img src='/icons/pin.png' alt='pointer' />
+                  </Marker>
+                }
+              </ReactMapGL>
+            </div>
+
+            {/*
+                            Features
+       */}
             <div className='row no-gutters mt-4 justify-content-center'>
               <div className='col-md-4 d-flex justify-content-center'>
                 {userRole === "Dog owner" ? (

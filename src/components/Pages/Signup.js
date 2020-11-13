@@ -179,7 +179,7 @@ const Signup = (props) => {
                     onChange={handleChange}
                     required
                     type='text'
-                    placeholder='1 Fairy Street, Neverland, E3 2MG'
+                    placeholder='London, E3 (city, postcode)'
                   />
                 </div>
               </div>

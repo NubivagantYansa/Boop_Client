@@ -4,15 +4,14 @@ import "./ProfileCard.css";
 
 const ProfileCard = (props) => {
   const [isExpanded, setExpand] = useState(false);
+  const { profile } = props;
+  const { username, address, aboutMe, image, _id } = profile;
+  const aboutMeBrief = aboutMe.slice(0, 40);
 
   const readMore = (e) => {
     e.preventDefault();
     setExpand(!isExpanded);
   };
-  const { profile } = props;
-  const { username, address, aboutMe, image, _id } = profile;
-  const aboutMeBrief = aboutMe.slice(0, 40);
-
   return (
     <div className=' card m-3 pt-4 card-background rounded'>
       <Link to={`/profile/${_id}`}>

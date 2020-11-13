@@ -53,18 +53,16 @@ const Board = (props) => {
                 longitude={profile.location.coordinates[0]}
                 latitude={profile.location.coordinates[1]}
               >
-                <div>
-                  <button
-                    className='lead btn info'
-                    onClick={(e) => {
-                      e.preventDefault();
-                      return setSearch([profile]);
-                    }}
-                  >
-                    <strong>{profile.username}</strong>
-                  </button>
-                  <img src='/icons/pin.png' alt='pointer' />
-                </div>
+                <button
+                  className='lead no-style d-flex '
+                  onClick={(e) => {
+                    e.preventDefault();
+                    return setSearch([profile]);
+                  }}
+                >
+                  <img src='/icons/pin.png' alt='pointer' />{" "}
+                  <p>{profile.username}</p>
+                </button>
               </Marker>
             ))}
           </ReactMapGL>
