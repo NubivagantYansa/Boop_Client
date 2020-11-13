@@ -56,7 +56,7 @@ const ProfileDetails = () => {
   if (isLoading) {
     return <Loading />;
   }
-  const { username, userRole, aboutMe, borough, image } = profile;
+  const { username, userRole, aboutMe, address, image } = profile;
 
   const { breed, chill, behaves, size, energy, pottyTraining } = features;
   return (
@@ -72,8 +72,8 @@ const ProfileDetails = () => {
           <div className='card-body p-4'>
             <h5 className='card-title'>{username}</h5>
             <h6 className='card-subtitle mb-2 text-muted'>
-              <strong>Borough : </strong>
-              {borough}
+              <strong>Address : </strong>
+              {address}
             </h6>
             <p>
               <strong>About me </strong>: {aboutMe}

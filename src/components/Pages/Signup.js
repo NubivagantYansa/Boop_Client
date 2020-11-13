@@ -19,7 +19,7 @@ const Signup = (props) => {
       password: "",
       image: "",
       aboutMe: "",
-      borough: "",
+      address: "",
       features: {},
       errorMessage: "",
     },
@@ -30,7 +30,7 @@ const Signup = (props) => {
   const handleChangeFeatures = (features) => {
     setStateInfo({ ...stateInfo, features });
   };
-  const { userRole, username, email, password, aboutMe, borough } = stateInfo;
+  const { userRole, username, email, password, aboutMe, address } = stateInfo;
 
   return (
     <div className=' container-fluid signup-background-image '>
@@ -167,19 +167,19 @@ const Signup = (props) => {
                 </div>
 
                 {/* 
-                              Borough
+                              Address
       */}
                 <div className='col-sm'>
-                  <label>Borough: </label>
+                  <label>Address: </label>
 
                   <input
                     className='form-control'
-                    name='borough'
-                    value={borough}
+                    name='address'
+                    value={address}
                     onChange={handleChange}
                     required
                     type='text'
-                    placeholder='Hackney'
+                    placeholder='1 Fairy Street, Neverland, E3 2MG'
                   />
                 </div>
               </div>

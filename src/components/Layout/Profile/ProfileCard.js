@@ -10,7 +10,7 @@ const ProfileCard = (props) => {
     setExpand(!isExpanded);
   };
   const { profile } = props;
-  const { username, borough, aboutMe, image, _id } = profile;
+  const { username, address, aboutMe, image, _id } = profile;
   const aboutMeBrief = aboutMe.slice(0, 40);
 
   return (
@@ -25,7 +25,7 @@ const ProfileCard = (props) => {
 
       <div className='card-body '>
         <h5 className='card-title'>{username}</h5>
-        <h6 className='card-subtitle mb-2 text-muted'>{borough}</h6>
+        <h6 className='card-subtitle mb-2 text-muted'>{address}</h6>
         <div className='card-tex'>
           <p>{isExpanded ? aboutMe : aboutMeBrief}</p>
           <a href='#' className='card-link' onClick={readMore}>

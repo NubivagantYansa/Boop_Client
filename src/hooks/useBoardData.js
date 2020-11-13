@@ -3,9 +3,13 @@ import { useUser } from "../components/context/userContext";
 import { getAllProfiles } from "../services/communityService";
 export function useBoardData() {
   const { user } = useUser();
+
+  //filters hooks
   const [profilesList, setList] = useState([]);
   const [searchResults, setSearch] = useState([]);
   const [userRole, setUserRole] = useState("");
+
+  //features hooks
   const [breed, setBreed] = useState("");
   const [size, setSize] = useState("");
   const [energy, setEnergy] = useState("");
@@ -13,6 +17,17 @@ export function useBoardData() {
   const [pottyTraining, setPottyTraining] = useState("");
   const [chill, setChill] = useState("");
   const [expand, setExpand] = useState("");
+
+  //map hooks
+  const { coordinates } = user.location;
+  const [viewport, setViewport] = useState({
+    longitude: coordinates[0],
+    latitude: coordinates[1],
+    width: "80vw",
+    height: "40vh",
+    zoom: 2,
+  });
+  const mapStyle = "mapbox://styles/nubivagant/ckhg4igin14hf19kzu7hspq52";
 
   useEffect(() => {
     getAllProfiles()
@@ -59,6 +74,18 @@ export function useBoardData() {
   const readMore = (e) => {
     e.preventDefault();
     setExpand(!expand);
+  };
+  //reset all filters
+  const resetFilters = (e) => {
+    e.preventDefault();
+    setSearch(profilesList);
+    setBreed("");
+    setSize("");
+    setEnergy("");
+    setBehaves("");
+    setPottyTraining("");
+    setChill("");
+    setUserRole("");
   };
 
   //variable controls profiles showed on the board - checks if any filter is applied
@@ -107,5 +134,10 @@ export function useBoardData() {
     readMore,
     filterFeatures,
     profilesToShow,
+    viewport,
+    setViewport,
+    mapStyle,
+    setSearch,
+    resetFilters,
   };
 }

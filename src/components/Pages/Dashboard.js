@@ -17,7 +17,7 @@ function Dashboard() {
     zoom: 15,
   });
   const mapStyle = "mapbox://styles/nubivagant/ckhg4igin14hf19kzu7hspq52";
-  console.log(user);
+
   return (
     <div className='dashboard-background-image'>
       {/* 

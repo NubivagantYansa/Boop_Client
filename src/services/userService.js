@@ -29,7 +29,7 @@ export const signup = ({
   email,
   image,
   aboutMe,
-  borough,
+  address,
   features,
 }) => {
   return service
@@ -40,7 +40,7 @@ export const signup = ({
       email,
       image,
       aboutMe,
-      borough,
+      address,
       features,
     })
     .then((response) => {

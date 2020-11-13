@@ -16,6 +16,7 @@ const EditProfile = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     editProfile(user, accessToken)
       .then((response) => {
         if (response.errorMessage) {

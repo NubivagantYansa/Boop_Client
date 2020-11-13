@@ -3,7 +3,7 @@ import { useUser } from "../context/userContext";
 
 const UserInfo = () => {
   const { user, setUser } = useUser();
-  const { userRole, username, email, borough, aboutMe } = user;
+  const { userRole, username, email, address, aboutMe } = user;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -77,14 +77,14 @@ const UserInfo = () => {
           />
         </div>
         {/* 
-                              Borough
+                              Address
       */}
         <div className='col-sm'>
-          <label>Borough: </label>
+          <label>Address: </label>
           <input
             className='form-control'
-            name='borough'
-            value={borough}
+            name='address'
+            value={address}
             onChange={handleChange}
             required
             type='text'
