@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ReactMapGL, { Marker } from "react-map-gl";
 import { useUser } from "../context/userContext";
 import Settings from "../Layout/Settings";
@@ -19,6 +19,13 @@ function Dashboard() {
     zoom: 15,
   });
   const mapStyle = "mapbox://styles/nubivagant/ckhg4igin14hf19kzu7hspq52";
+
+  //clean board data
+  useEffect(() => {
+    return () => {
+      setViewport(null);
+    };
+  }, []);
 
   return (
     <div className='dashboard-background-image'>

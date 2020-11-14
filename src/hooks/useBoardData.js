@@ -29,12 +29,28 @@ export function useBoardData() {
   const mapStyle = "mapbox://styles/nubivagant/ckhg4igin14hf19kzu7hspq52";
 
   useEffect(() => {
-    getAllProfiles()
-      .then(({ profilesList }) => {
-        setList(profilesList);
-        setSearch(profilesList);
-      })
-      .catch((error) => console.log(error));
+    if (user) {
+      getAllProfiles()
+        .then(({ profilesList }) => {
+          setList(profilesList);
+          setSearch(profilesList);
+        })
+        .catch((error) => console.log(error));
+    }
+  }, []);
+
+  //clean board data
+  useEffect(() => {
+    return () => {
+      setViewport(null);
+      setViewport(null);
+      setBreed(null);
+      setSize(null);
+      setEnergy(null);
+      setBehaves(null);
+      setPottyTraining(null);
+      setChill(null);
+    };
   }, []);
 
   //handle the search bar
