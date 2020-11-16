@@ -15,12 +15,12 @@ const Login = (props) => {
   );
   return (
     <div>
-      <div className=' text-center align-middle  p-2 login-background-image d-flex justify-content-center'>
+      <div className=' text-center p-2 login-background-image'>
         <form
-          className=' form-signin m-4 p-4  '
+          className=' m-4 p-4 d-flex justify-content-center '
           onSubmit={(e) => handleSubmit(e)}
         >
-          <div className='max-input '>
+          <div className=''>
             <h1 className='m2'>Please login</h1>
 
             <p>
@@ -31,7 +31,7 @@ const Login = (props) => {
             </p>
 
             <input
-              className='form-control m-2'
+              className='form-control m-2 '
               name='email'
               type='email'
               value={stateInfo.email}
@@ -56,8 +56,15 @@ const Login = (props) => {
               Login
             </button>
           </div>
-          <p className='mt-5 mb-3 text-muted'>© Boop 2020</p>
         </form>
+
+        <div>
+          <p className='text-muted'>
+            <strong>Test profile credentials:</strong> laika@boop.com -
+            Boopdog123
+          </p>
+          <p className=' text-muted'>© Boop 2020</p>
+        </div>
       </div>
     </div>
   );
