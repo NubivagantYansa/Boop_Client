@@ -35,6 +35,7 @@ const useAuth = (form, typeOfAuth) => {
       })
         .then((response) => {
           if (!response.status) {
+            console.log("looook here", response);
             setErrorMessage(response.errorMessage);
             return;
           }

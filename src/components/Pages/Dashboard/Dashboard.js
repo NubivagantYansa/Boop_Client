@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ReactMapGL, { Marker } from "react-map-gl";
-import { useUser } from "../context/userContext";
-import Settings from "../Layout/Settings";
+import { useUser } from "../../context/userContext";
+import Settings from "../../Layout/SettingsC/Settings";
 import "./Dasboard.css";
 
 function Dashboard() {

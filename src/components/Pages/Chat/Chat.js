@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 import queryString from "query-string"; //to retrieve data from URL
 import io from "socket.io-client";
-import InfoBar from "../../Layout/Chat/InfoBar";
-import Input from "../../Layout/Chat/Input";
-import TextContainer from "../../Layout/Chat/TextContainer";
-import Messages from "../../Layout/Chat/Messages";
+import InfoBar from "../../Layout/Chat/InfoBar/InfoBar";
+import Input from "../../Layout/Chat/Input/Input";
+import TextContainer from "../../Layout/Chat/TextContainer/TextContainer";
+import Messages from "../../Layout/Chat/Messages/Messages";
 
 import "./Join.css";
 let socket;

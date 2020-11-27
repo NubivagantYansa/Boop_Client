@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { getProfileDetails, sendEmail } from "../../services/communityService";
-import { useUser } from "../context/userContext";
+import {
+  getProfileDetails,
+  sendEmail,
+} from "../../../services/communityService";
+import { useUser } from "../../context/userContext";
 import ReactMapGL, { Marker } from "react-map-gl";
-import Loading from "./Loading/Loading";
+import Loading from "../Loading/Loading";
 import "./ProfileDetails.css";
 
 const ProfileDetails = () => {

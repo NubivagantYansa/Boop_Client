@@ -1,7 +1,7 @@
 import React from "react";
-import useAuth from "../../hooks/useAuth";
-import AddImage from "../Layout/AddImage";
-import SignupFeatures from "../Layout/SignupFeatures";
+import useAuth from "../../../hooks/useAuth";
+import AddImage from "../../Layout/AddImage/AddImage";
+import SignupFeatures from "../../Layout/Features/SignupFeatures";
 import "./Signup.css";
 
 const Signup = (props) => {
@@ -195,7 +195,7 @@ const Signup = (props) => {
               </div>
               <div className='row p-2'>
                 <button
-                  className=' col align-self-center btn info '
+                  className=' col align-self-center btn info   m-2'
                   type='submit'
                 >
                   Sign up

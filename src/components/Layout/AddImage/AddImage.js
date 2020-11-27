@@ -1,5 +1,5 @@
 import React from "react";
-import { uploadImage } from "../../services/userService";
+import { uploadImage } from "../../../services/userService";
 
 const AddImage = ({ addImage }) => {
   const handleImageUpload = (e) => {

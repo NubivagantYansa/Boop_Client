@@ -1,11 +1,10 @@
-import { Popup } from "mapbox-gl";
 import React from "react";
 import ReactMapGL, { Marker } from "react-map-gl";
-import { useBoardData } from "../../hooks/useBoardData";
-import FeatBorFilter from "../Layout/FiltersCard/FeaturesFilter";
-import RoleFilter from "../Layout/FiltersCard/RoleFilter";
-import Searchbar from "../Layout/FiltersCard/Searchbar";
-import ProfilesList from "../Layout/Profile/ProfilesList";
+import { useBoardData } from "../../../hooks/useBoardData";
+import FeatBorFilter from "../../Layout/FiltersCard/FeaturesFilter";
+import RoleFilter from "../../Layout/FiltersCard/RoleFilter";
+import Searchbar from "../../Layout/FiltersCard/Searchbar";
+import ProfilesList from "../../Layout/Profile/ProfilesList";
 import "./Board.css";
 
 const Board = (props) => {

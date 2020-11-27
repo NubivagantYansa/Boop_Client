@@ -1,6 +1,6 @@
 import React, { Component, useEffect, useState } from "react";
-import { getAllBreeds } from "../../services/breedsService";
-import Suggestions from "./Suggestions";
+import { getAllBreeds } from "../../../services/breedsService";
+import Suggestions from "../Suggestions/Suggestions";
 
 const SignupFeatures = (props) => {
   const [features, setFeatures] = useState({});

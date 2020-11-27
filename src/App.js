@@ -13,15 +13,15 @@ import PrivateRoute from "./components/auth/PrivateRoute";
 
 //platform components
 import Navbar from "./components/Layout/Navbar/Navbar";
-import Home from "./components/Pages/Home";
-import Login from "./components/Pages/Login";
-import Signup from "./components/Pages/Signup";
-import Board from "./components/Pages/Board";
-import Dashboard from "./components/Pages/Dashboard";
-import EditProfile from "./components/Pages/EditProfile";
-import DeleteProfile from "./components/Pages/DeleteProfile";
-import EditPassword from "./components/Pages/EditPassword";
-import ProfileDetails from "./components/Pages/ProfileDetails";
+import Home from "./components/Pages/Home/Home";
+import Login from "./components/Pages/Login/Login";
+import Signup from "./components/Pages/Signup/Signup";
+import Board from "./components/Pages/Board/Board";
+import Dashboard from "./components/Pages/Dashboard/Dashboard";
+import EditProfile from "./components/Pages/EditProfile/EditProfile";
+import DeleteProfile from "./components/Pages/DeleteProfile/DeleteProfile";
+import EditPassword from "./components/Pages/EditPassword/EditPassword";
+import ProfileDetails from "./components/Pages/ProfileDetails/ProfileDetails";
 import { UserWrapper } from "./components/context/userContext";
 
 // chat components

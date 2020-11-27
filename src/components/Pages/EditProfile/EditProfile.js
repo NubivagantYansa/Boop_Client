@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { useUser } from "../context/userContext";
+import { useUser } from "../../context/userContext";
 import { Link, useHistory } from "react-router-dom";
-import { editProfile } from "../../services/userService";
-import AddImage from "../Layout/AddImage";
-import EditFeatures from "../Layout/EditFeatures";
-import Settings from "../Layout/Settings";
-import UserInfo from "../Layout/UserInfo";
+import { editProfile } from "../../../services/userService";
+import AddImage from "../../Layout/AddImage/AddImage";
+import EditFeatures from "../../Layout/Features/EditFeatures";
+import Settings from "../../Layout/SettingsC/Settings";
+import UserInfo from "../../Layout/UserInfo/UserInfo";
 import "./EditProfile.css";
 
 const EditProfile = () => {
@@ -90,11 +90,11 @@ const EditProfile = () => {
        */}
                 <div className='card-body '>
                   <form onSubmit={handleSubmit}>
-                    <div className=''>
+                    <div>
                       <UserInfo />
                     </div>
 
-                    <div className=''>
+                    <div>
                       <EditFeatures />
                     </div>
                     <div className='p-2'>

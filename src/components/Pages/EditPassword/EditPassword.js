@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { editPassword } from "../../services/userService";
-import { useUser } from "../context/userContext";
-import Settings from "../Layout/Settings";
+import { editPassword } from "../../../services/userService";
+import { useUser } from "../../context/userContext";
+import Settings from "../../Layout/SettingsC/Settings";
 
 const EditPassword = () => {
   const { user, accessToken, authenticate } = useUser();

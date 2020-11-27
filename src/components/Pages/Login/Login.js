@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import useAuth from "../../hooks/useAuth";
+import useAuth from "../../../hooks/useAuth";
 import "./Login.css";
 
 const Login = (props) => {
@@ -20,7 +20,7 @@ const Login = (props) => {
           className=' m-4 p-4 d-flex justify-content-center '
           onSubmit={(e) => handleSubmit(e)}
         >
-          <div className=''>
+          <div>
             <h1 className='m2'>Please login</h1>
 
             <p>
@@ -63,7 +63,7 @@ const Login = (props) => {
             <strong>Test profile credentials:</strong> laika@boop.com -
             Boopdog123
           </p>
-          <p className=' text-muted'>© Boop 2020</p>
+          <p className=' text-muted'>© Boop 2020 - Debora Crescenzo</p>
         </div>
       </div>
     </div>

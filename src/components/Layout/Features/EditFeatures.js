@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { getAllBreeds } from "../../services/breedsService";
-import { useUser } from "../context/userContext";
-import Suggestions from "./Suggestions";
+import { getAllBreeds } from "../../../services/breedsService";
+import { useUser } from "../../context/userContext";
+import Suggestions from "../Suggestions/Suggestions";
 
 const EditFeatures = () => {
   const { user, setUser } = useUser();

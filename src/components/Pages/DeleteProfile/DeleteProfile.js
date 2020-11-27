@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { deleteProfile } from "../../services/userService";
-import { useUser } from "../context/userContext";
+import { deleteProfile } from "../../../services/userService";
+import { useUser } from "../../context/userContext";
 import "./DeleteProfile.css";
 
 const DeleteProfile = () => {
