@@ -275,7 +275,7 @@ Features {
 
 [Client Repository](https://github.com/NubivagantYansa/Boop_Client)
 
-[Deployed App Link](
+[Deployed App Link](https://b00p.netlify.app)
 
 ### Slides
 
